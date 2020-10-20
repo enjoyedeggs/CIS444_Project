@@ -17,34 +17,33 @@ Description: This file is the html for the registration page.
 		<script type="text/javascript" src="register.js"></script>
 	</head>
 	<body class="pagestyle">
+		<h1>Cougar Rescue Registration</h1>
 		<div class="formstyle">
-			<form id="registerForm">
+			<form id="registerForm" action="main.html" method="post" onsubmit="return validateFields(this)">
 				<p>
 				<a href="index.html">
 				<img src="images/cr_logo.png" alt="Cougar Rescue Forum Logo" /></a>
 				</p>
 				<p>
 				<label for="fnameField">First Name <br />
-				<input class="inputstyle" type="text" placeholder="First Name" name="fname" id="fnameField"/><br /></label>
+				<input class="inputstyle" type="text" placeholder="First Name" name="fname" id="fnameField" required /><br /></label>
 				
 				<label for="lnameField">Last Name <br />
-				<input class="inputstyle" type="text" placeholder="Last Name" name="lname" id="lnameField"/><br /></label>
+				<input class="inputstyle" type="text" placeholder="Last Name" name="lname" id="lnameField" required /><br /></label>
 				
 				<label for="emailField">CSUSM Email <br />
-				<input class="inputstyle" type="email" placeholder="CSUSM Email" name="email" id="emailField"/><br /></label>
+				<input class="inputstyle" type="email" placeholder="CSUSM Email" name="email" id="emailField" required /><br /></label>
 				
 				<label for="passField">Password <br />
-				<input class="inputstyle" type="password" placeholder="Password" name="password" id="passField"/><br /></label>
+				<input class="inputstyle" type="password" placeholder="Password" name="password" id="passField" required /><br /></label>
 				
 				<label for="cpassField">Confirm Password <br />
-				<input class="inputstyle" type="password" placeholder="Confirm Password" name="cpassword" id="cpassField"/><br /></label>
+				<input class="inputstyle" type="password" placeholder="Confirm Password" name="cpassword" id="cpassField" required /><br /></label>
 				
-				<input class="submitstyle" type="button" value="Register!" id="submitRegister"/>
+				<input class="submitstyle" type="submit" value="Register!" id="submitRegister"/>
 				</p>
 			</form>
 		</div>
-		<!--Registration for input fields-->
-		<script type="text/javascript" src="registerr.js"></script>
 	</body>
 	
 </html>
