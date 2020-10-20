@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+Project Name: Cougar Rescue Forum
+Course: CIS444
+Description: This file is the html for the index/home page.
+			 The file contains the login form for the user as well
+			 as forgot password and registration links.
+-->
+
+<html lang="en">
+	<head>
+		<!--Page Information-->
+		<title>Cougar Rescue Forum</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="login.css"/>
+		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+		<script type="text/javascript" src="login.js"></script>
+	</head>
+	<body class="pagestyle">
+		<div class="formstyle">
+			<form id="loginForm">
+				<p>
+				<a href="index.html">
+				<img src="images/cr_logo.png" alt="Cougar Rescue Forum Logo" /></a>
+				</p>
+				<p class="description">
+				Welcome to the Cougar Rescue Forum. The Cougar Rescue Forum is a student-led,
+				safe space for CSUSM students to ask course-related questions and receive 
+				guidance and answers from their classmates. 
+				</p>
+				<p id="invalidMessage" class="invalid">
+				Invalid credentials. Please try again or click the &quotForgot Password&quot link.
+				</p>
+				<label for="emailField">Email <br />
+				<input class="inputstyle" type="email" placeholder="CSUSM Email" name="email" id="emailField"/><br /></label>
+				
+				<label for="passField">Password <br />
+				<input class="inputstyle" type="password" placeholder="Password" name="password" id="passField"/><br /></label>
+				<a href="forgot_password.html">Forgot Password?</a><br /><br />
+				<a href="register.html">Don't have an account? Register here!</a><br /><br />
+				<input class="submitstyle" type="button" value="Login" id="submitLogin"/>
+			</form>
+		</div>
+		<!--Registration for input fields-->
+		<script type="text/javascript" src="loginr.js"></script>
+	</body>
+	
+</html>
