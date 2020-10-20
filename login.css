@@ -4,7 +4,7 @@ Course: CIS444
 Description: This file is the stylsheet for the login, register,
 			 and forgot password pages. The three pages use the same
 			 style, and therefore share the same css stylesheet.
-Last Validated: 10/19 
+Last Validated: 10/20
 */
 
 img {
@@ -101,4 +101,11 @@ body form {
 	margin-bottom: 10px;
 	text-align: center;
 	visibility: hidden;
+}
+
+h1 {
+	color: white;
+	font-family: Georgia;
+	font-size: 12pt;
+	text-align: center;
 }
