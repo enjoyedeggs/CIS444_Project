@@ -29,3 +29,6 @@ function login(event) {
 	}
 }
 
+function goAdmin() {
+	window.location.href = "admin_index.html";
+}

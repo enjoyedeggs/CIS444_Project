@@ -16,7 +16,9 @@ function getFlagged() {
 	{
 		var resultsDisplay = document.createElement("div");
 		resultsDisplay.setAttribute("class", "searchresults");
-		resultsDisplay.innerHTML = "<p>No flagged posts to review.</p>";
+		var innerP = document.createElement("p");
+		innerP.innerHTML = "No flagged posts to review";
+		resultsDisplay.appendChild(innerP);
 		document.getElementById("flaggedPosts").appendChild(resultsDisplay);
 	}
 	else {
@@ -26,19 +28,39 @@ function getFlagged() {
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
 			resultsDisplay.setAttribute("id", flagged[i][1]);
-			var inner = "<div>";
-			var user = '<p><span style="font-weight: bold;"> Student: </span>' + flagged[i][0] + "</p>";
-			var course = '<p><span style="font-weight: bold;"> Course: </span>' + flagged[i][2];
-			var deleteorLockPost = '<button class="submitstyle" id="' + flagged[i][1]+'db"' + ' style="margin-left:15px; margin-top:0px;" '
-			+ "onclick="+"'deletePost(" +'"flagged"'+ ", this.id);'"+">Delete Post</button>" +
-			'<input type="checkbox" class="submitstyle" id="' + flagged[i][1]+'b"' + ' style="margin-left:15px; margin-top:0px;" '
-			+ "onclick="+"'lockPost(" +'"flagged"'+ ", this.id);'"+"/><label for='" + flagged[i][1] + "'> Lock Post</label></p>";
-			var topic = '<p><span style="font-weight: bold;">Subforum: </span>' + flagged[i][3] + "</p>";
-			var description = '<p><span style="font-weight: bold;">Description: </span>' + flagged[i][4] + "</p>";
+			var inner = document.createElement("div");
+			var user = document.createElement("p");
+			user.innerHTML = '<span class="bolded"> Student: </span>' + flagged[i][0] ;
+			inner.appendChild(user);
+			var course = document.createElement("p");
+			course.innerHTML = '<span class="bolded"> Course: </span>' + flagged[i][2];
+			var delButton = document.createElement("button");
+			delButton.setAttribute("class", "submitstyle");
+			delButton.setAttribute("id", flagged[i][1]+"db");
+			delButton.setAttribute("style", "margin-left:15px; margin-top:0px;");
+			delButton.setAttribute("onclick", 'deletePost("flagged", this.id);');
+			delButton.innerHTML = "Delete Post";
+			course.appendChild(delButton);
+			var lockPost = document.createElement("input");
+			lockPost.setAttribute("type", "checkbox");
+			lockPost.setAttribute("class", "submitstyle");
+			lockPost.setAttribute("id", flagged[i][1]+"b");
+			lockPost.setAttribute("style", "margin-left:15px; margin-top:0px;");
+			lockPost.setAttribute("onclick",'lockPost("flagged", this.id);');
+			var lockLbl = document.createElement("label");
+			lockLbl.setAttribute("for", flagged[i][1]);
+			lockLbl.innerHTML = "Lock Post";
+			course.appendChild(lockPost);
+			course.appendChild(lockLbl);
+			inner.appendChild(course);
+			var topic = document.createElement("p");
+			topic.innerHTML = '<span class="bolded">Subforum: </span>' + flagged[i][3];
+			inner.appendChild(topic);
+			var description = document.createElement("p");
+			description.innerHTML = '<span class="bolded">Description: </span>' + flagged[i][4];
+			inner.appendChild(description);
+			resultsDisplay.appendChild(inner);
 			
-			inner += user + course + deleteorLockPost + topic + description + "</div>";
-			
-			resultsDisplay.innerHTML = inner;
 		
 			document.getElementById("flaggedPosts").appendChild(resultsDisplay);
 		}
@@ -139,29 +161,53 @@ function searchForum(event) {
 	{
 		var resultsDisplay = document.createElement("div");
 		resultsDisplay.setAttribute("class", "searchresults");
-		resultsDisplay.innerHTML = "<p>No matching search results.</p>";
+		var innerP = document.createElement("p");
+		innerP.innerHTML = "No matching search results.";
+		resultsDisplay.appendChild(innerP);
 		document.getElementById("searchResults").appendChild(resultsDisplay);
 	}
 	else {
 		
+			
 		for (var i = 0; i < results.length; i++) {
 			
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
 			resultsDisplay.setAttribute("id", results[i][1]);
-			var inner = "<div>";
-			var user = '<p><span class="bolded"> Student: </span>' + results[i][0] + "</p>";
-			var course = '<p><span class="bolded"> Course: </span>' + results[i][2];
-			var deleteorLockPost = '<button class="submitstyle" id="' + results[i][1]+'db"' + ' style="margin-left:15px; margin-top:0px;" '
-			+ "onclick="+"'deletePost(" +'"search"'+ ", this.id);'"+">Delete Post</button>" +
-			'<input type="checkbox" class="submitstyle" id="' + results[i][1]+'b"' + ' style="margin-left:15px; margin-top:0px;" '
-			+ "onclick="+"'lockPost(" +'"search"'+ ", this.id);'"+"/><label for='" + results[i][1] + "'> Lock Post</label></p>";
-			var topic = '<p><span class="bolded">Subforum: </span>' + results[i][3] + "</p>";
-			var description = '<p><span class="bolded">Description: </span>' + results[i][4] + "</p>";
+			var inner = document.createElement("div");
+			var user = document.createElement("p");
+			user.innerHTML = '<span class="bolded"> Student: </span>' + results[i][0] ;
+			inner.appendChild(user);
+			var course = document.createElement("p");
+			course.innerHTML = '<span class="bolded"> Course: </span>' + results[i][2];
+			var delButton = document.createElement("button");
+			delButton.setAttribute("class", "submitstyle");
+			delButton.setAttribute("id", results[i][1]+"db");
+			delButton.setAttribute("style", "margin-left:15px; margin-top:0px;");
+			delButton.setAttribute("onclick", 'deletePost("search", this.id);');
+			delButton.innerHTML = "Delete Post";
+			course.appendChild(delButton);
+			var lockPost = document.createElement("input");
+			lockPost.setAttribute("type", "checkbox");
+			lockPost.setAttribute("class", "submitstyle");
+			lockPost.setAttribute("id", results[i][1]+"b");
+			lockPost.setAttribute("style", "margin-left:15px; margin-top:0px;");
+			lockPost.setAttribute("onclick",'lockPost("search", this.id);');
+			var lockLbl = document.createElement("label");
+			lockLbl.setAttribute("for", results[i][1]);
+			lockLbl.innerHTML = "Lock Post";
+			course.appendChild(lockPost);
+			course.appendChild(lockLbl);
+			inner.appendChild(course);
+			var topic = document.createElement("p");
+			topic.innerHTML = '<span class="bolded">Subforum: </span>' + results[i][3];
+			inner.appendChild(topic);
+			var description = document.createElement("p");
+			description.innerHTML = '<span class="bolded">Description: </span>' + results[i][4];
+			inner.appendChild(description);
+			resultsDisplay.appendChild(inner);
 			
-			inner += user + course + deleteorLockPost + topic + description + "</div>";
-			
-			resultsDisplay.innerHTML = inner;
+		
 			document.getElementById("searchResults").appendChild(resultsDisplay);
 		}
 	}
@@ -218,4 +264,9 @@ function removeUser(userId) {
 
 	document.getElementById("usersTable").removeChild(dom);
 	
+}
+
+function logout() {
+	//TODO: log user out.
+	window.location.href = "admin_index.html";
 }

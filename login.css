@@ -4,7 +4,7 @@ Course: CIS444
 Description: This file is the stylsheet for the login, register,
 			 and forgot password pages. The three pages use the same
 			 style, and therefore share the same css stylesheet.
-Last Validated: 10/20
+Last Validated: 10/21
 */
 
 img {
@@ -27,7 +27,7 @@ body form {
 	border-radius: 4px;
 	font-family: Georgia;
 	margin: auto;
-	margin-bottom: 10px;
+	margin-bottom: 3px;
 	text-align: center;
 	
 }
@@ -47,17 +47,26 @@ body form {
 	
 }
 
-.submitstyle  {
+.submitstyle {
 	background-color: #0259A8;
 	border: none;
-	border-radius: 8px;
+	border-radius: 15px;
 	color: #e6eaf0;
 	font-family:Georgia;
 	margin-top: 10px;
 	padding: 8px;
 	text-align: center;	
 }
-
+.adminlogin {
+	background-color: #e6eaf0;
+	border: none;
+	border-radius: 15px;
+	color: #0259A8;
+	font-family:Georgia;
+	margin-top: 10px;
+	padding: 8px;
+	text-align: center;	
+}
 .inputcontainer {
 	border: solid 1px #e6eaf0;
 	border-radius: 4px;
@@ -82,14 +91,21 @@ body form {
 	
 }
 
+
 /*Responsive*/
 @media screen and (max-width:800px) {
+	img {
+		height: 50%;
+		width: 50%;
+		
+	}
 	.formstyle {
 		margin: 20px 50px 10px 50px;
 		
 	}
-}
+	.navlist { width: 98%; }
 
+}
 
 
 .invalid {
@@ -125,12 +141,7 @@ h1, h2 {
 	
 	
 } 
-
-@media screen and (max-width: 800px) {
-	.navlist { width: 98%; }
-
-}
-	  
+ 
 /* styling navlist anchor element */ 
 .navlist a { 
 	color: #f2f2f2; 
@@ -219,12 +230,17 @@ h1, h2 {
 	font-weight: bold;
 }
 
- th, tr,  td {
+table {
+	width: 100%;
+}
+
+th, tr,  td {
 	border: solid 1px #0259A8;
-	text-align: center;
-	width:6%;
-	
-	
+	font-family:Georgia;
+	font-size: 11pt;
+	padding: 3px;
+	position: relative; 
+	text-align:center;
 }
 
 
@@ -233,4 +249,22 @@ h1, h2 {
 	border: none;
 	color: red;
 	text-align: center;
+}
+
+.logoutNav {
+	background-color: #8EC0E7;
+	border: none;
+	border-radius: 10px;
+	color: #f2f2f2;
+	float: right;
+	font-family: Georgia;
+	font-size: 12pt; 
+	padding: 12px; 
+	text-align: center; 
+}
+
+:focus{
+	cursor: auto;
+	outline: none;
+	
 }
