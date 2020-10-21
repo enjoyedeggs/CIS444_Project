@@ -174,10 +174,9 @@ function searchForum(event) {
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
 			resultsDisplay.setAttribute("id", results[i][1]);
-			var inner = document.createElement("div");
 			var user = document.createElement("p");
 			user.innerHTML = '<span class="bolded"> Student: </span>' + results[i][0] ;
-			inner.appendChild(user);
+			resultsDisplay.appendChild(user);
 			var course = document.createElement("p");
 			course.innerHTML = '<span class="bolded"> Course: </span>' + results[i][2];
 			var delButton = document.createElement("button");
@@ -198,14 +197,13 @@ function searchForum(event) {
 			lockLbl.innerHTML = "Lock Post";
 			course.appendChild(lockPost);
 			course.appendChild(lockLbl);
-			inner.appendChild(course);
+			resultsDisplay.appendChild(course);
 			var topic = document.createElement("p");
 			topic.innerHTML = '<span class="bolded">Subforum: </span>' + results[i][3];
-			inner.appendChild(topic);
+			resultsDisplay.appendChild(topic);
 			var description = document.createElement("p");
 			description.innerHTML = '<span class="bolded">Description: </span>' + results[i][4];
-			inner.appendChild(description);
-			resultsDisplay.appendChild(inner);
+			resultsDisplay.appendChild(description);
 			
 		
 			document.getElementById("searchResults").appendChild(resultsDisplay);
