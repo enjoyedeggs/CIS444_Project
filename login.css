@@ -262,7 +262,9 @@ th, tr,  td {
 	padding: 12px; 
 	text-align: center; 
 }
-
+button:hover {
+	cursor: pointer;
+}
 :focus{
 	cursor: auto;
 	outline: none;
