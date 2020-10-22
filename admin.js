@@ -17,7 +17,7 @@ function getFlagged() {
 		var resultsDisplay = document.createElement("div");
 		resultsDisplay.setAttribute("class", "searchresults");
 		var innerP = document.createElement("p");
-		innerP.innerHTML = "No flagged posts to review";
+		innerP.innerHTML = "No flagged posts to review.";
 		resultsDisplay.appendChild(innerP);
 		document.getElementById("flaggedPosts").appendChild(resultsDisplay);
 	}
@@ -152,9 +152,9 @@ function searchForum(event) {
 	removeAllChildNodes(document.getElementById("searchResults"));
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
-	var results = new Array(new Array()); //replace with PHP function call to get results
-	results = [["Bob the Builder", "012345", "CIS444", "Homework", "This is an example of the search functionality."], 
-	["Jane Doe", "09876", "CIS444", "Exam", "The midterm was easy!"]];
+	var results = new Array(); //replace with PHP function call to get results
+	//results = [["Bob the Builder", "012345", "CIS444", "Homework", "This is an example of the search functionality."], 
+	//["Jane Doe", "09876", "CIS444", "Exam", "The midterm was easy!"]];
 	
 	
 	if (results.length == 0)
