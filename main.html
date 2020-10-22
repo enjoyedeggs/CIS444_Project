@@ -10,27 +10,35 @@
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="cougar_rescue.css"/>
 	</head>
 	
-	<body>
-		<nav class="nav-bar">
-			<div class="nav-logo">
-				<a href="main.html"><img src="images/cr_logo.png" width="130" height="100"></a>
+	<body id="admin" class="pagestyle" onload="retrieveInformation();">
+		<div id="navlist" class="navlist">
+			<div>
+				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
-			<div class="nav-control">
-				<a class="nav-link" href="main.html">Home</a>
-				<a class="nav-link" href="profile.html">Profile</a>
-				<a class="nav-link" href="logout.html">Log Out</a>
-			</div>
-		</nav>
-		<div class="search-bar">
-			<input id="search" name="search" placeholder="Search...."/>
-			<button class="search-button">
-				<i class="fa fa-search"></i>
-			</button>
-
+			<!-- seach bar left align -->
+	<!--		<div class="search">-->
+	<!--			<form action="admin.html" onsubmit="return searchForum(this)">-->
+	<!--				<input aria-label="search" type="text" placeholder=" Search forum topics" name="search" id="searchInput" required />-->
+	<!--				<button aria-label="search" type="submit"> <i class="fa fa-search" ></i> </button>-->
+	<!--			</form>-->
+	<!--		</div>-->
+			<!--Coming back to this-->
+			<button class="logoutNav" onclick="logout()">Logout</button>
+			<a href="main.html">Home</a>
+			<a href="search.html">Search</a>
 
 		</div>
+<!--		<div class="search-bar">-->
+<!--			<input id="search" name="search" placeholder="Search...."/>-->
+<!--			<button class="search-button">-->
+<!--				<i class="fa fa-search"></i>-->
+<!--			</button>-->
+
+
+<!--		</div>-->
 		<div class="forum-div">
 			<div class="table-format">
 				<div class="item-forum">Forum</div>
@@ -39,17 +47,16 @@
 				<div class="item-date">Date</div>
 			</div>
 			<div class="table-format">
-				<div>CIS444</div>
+				<div class="course-title">CIS444</div>
 			</div>
 			<div class="table-format">
 				<div class="item-forum item-category">
-					<div>
+					<div class="sub-icon">
 						<i class="fas fa-book-open"></i>
 					</div>
-					<div>
-						<h3 class="test">Homework</h3>
-						<div>Any Questions about the homework</div>
-
+					<div class="sub-title">
+						<a class="sub-heading" href="homework.html">Homework</a>
+						<div class="sub-description">Any questions about the homework</div>
 					</div>
 
 				</div>
@@ -58,13 +65,31 @@
 				<div class="item-date"></div>
 			</div>
 			<div class="table-format">
-				<div class="item-forum">Test</div>
+				<div class="item-forum item-category">
+					<div class="sub-icon">
+						<i class="fas fa-book-open"></i>
+					</div>
+					<div class="sub-title">
+						<a class="sub-heading" href="homework.html">Test</a>
+						<div class="sub-description">Any questions about the testk</div>
+					</div>
+
+				</div>
 				<div class="item-topic">0</div>
 				<div class="item-post">0</div>
 				<div class="item-date"></div>
 			</div>
 			<div class="table-format">
-				<div class="item-forum">Quiz</div>
+				<div class="item-forum item-category">
+					<div class="sub-icon">
+						<i class="fas fa-book-open"></i>
+					</div>
+					<div class="sub-title">
+						<a class="sub-heading" href="homework.html">Quiz</a>
+						<div class="sub-description">Any questions about quiz</div>
+					</div>
+
+				</div>
 				<div class="item-topic">0</div>
 				<div class="item-post">0</div>
 				<div class="item-date"></div>
