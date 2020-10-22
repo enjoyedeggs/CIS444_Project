@@ -10,7 +10,7 @@ function retrieveInformation() {
 
 function getFlagged() {
 	var flagged = new Array(); //placeholder for flagged results
-	flagged = [["Bob the Builder", "456322", "CIS444", "Exam", "The answer to the question was C"]];
+	//flagged = [["Bob the Builder", "456322", "CIS444", "Exam", "The answer to the question was C"]];
 
 	if (flagged.length == 0)
 	{
@@ -69,9 +69,9 @@ function getFlagged() {
 
 function getUsers() {
 	var users = new Array(); //placeholder for PHP function
-	users = [["Bob the Builder", ["CIS444", "CS351", "CS441"], "4th Year", "build001@cougars.csusm.edu", "12"], 
-	["Jane Doe", ["CIS444", "CS351", "CS443"],  "4th Year","doe001@cougars.csusm.edu", "4"],
-	["John Appleseed", ["CS443", "CS351", "CS441"], "3rd Year","apple001@cougars.csusm.edu", "1"]];
+	//users = [["Bob the Builder", ["CIS444", "CS351", "CS441"], "4th Year", "build001@cougars.csusm.edu", "12"], 
+	//["Jane Doe", ["CIS444", "CS351", "CS443"],  "4th Year","doe001@cougars.csusm.edu", "4"],
+	//["John Appleseed", ["CS443", "CS351", "CS441"], "3rd Year","apple001@cougars.csusm.edu", "1"]];
 	
 	if (users.length == 0) {
 		var divElem = document.createElement("div");
@@ -98,7 +98,7 @@ function getUsers() {
 		var numPostsH = document.createElement("th");
 		numPostsH.innerHTML = "# of Posts";
 		var deleteUserH = document.createElement("th");
-		deleteUserH.innerHTML = "DELETE USER";
+		deleteUserH.innerHTML = "Account Status";
 		rowH.appendChild(nameH);
 		rowH.appendChild(coursesH);
 		rowH.appendChild(yearH);
@@ -124,7 +124,7 @@ function getUsers() {
 			delButton.setAttribute("class", "delete");
 			delButton.setAttribute("id", users[i][3]+"b");
 			delButton.setAttribute("onclick", "removeUser(this.id)");
-			delButton.innerHTML = "X";
+			delButton.innerHTML = "DISABLE";
 			row.appendChild(name);
 			row.appendChild(courses);
 			row.appendChild(year);
@@ -254,13 +254,25 @@ function lockPost(from, postID) {
 }
 
 function removeUser(userId) {
-	//TODO: Remove user from database (delete User)
+	//TODO: Disable/Enable User
 	
 	//Remove user from users list
 	var subs = userId.substring(0, userId.length - 1);
 	var dom = document.getElementById(subs);
 
-	document.getElementById("usersTable").removeChild(dom);
+	//Change between "DISABLE" and "ENABLE"
+	var delButton = document.getElementById(userId);
+	if (delButton.innerHTML === "DISABLE") {
+		//TODO: Enable user in database (like reactivating acct)
+		delButton.innerHTML = "ENABLE";
+		delButton.setAttribute("class", "enable");
+	}
+	else {
+		//TODO: Disable user in database (deactivate acct)
+		delButton.innerHTML = "DISABLE";
+		delButton.setAttribute("class", "delete");
+	}
+	
 	
 }
 

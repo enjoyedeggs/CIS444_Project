@@ -21,7 +21,7 @@ function sendEmail(event) {
         Subject: "Cougar Rescue Password Reset", 
         Body: "If you did not request to reset your password, please ignore this email. " +
 		"Your temporary password for Cougar Rescue is: 'cougarrescuereset'. Please login and reset your password in your profile ASAP.", 
-      }) 
+      })
 		return true;
 	}
 	else {
