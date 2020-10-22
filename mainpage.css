@@ -1,0 +1,80 @@
+/*
+    This is the stylesheet for the mainpage.html
+*/
+body{
+    margin: 0 auto;
+}
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #8ec0e7;
+    margin-top: 0;
+}
+.nav-control{
+    /*font-weight: bold;*/
+    font-size: 1.3em;
+    line-height: 80px;
+    margin-right: 40px;
+}
+.nav-link{
+    text-decoration: none;
+    border: thin solid #045AA8;
+    border-radius: 20px;
+    background-color: #045AA8;
+    color: white;
+    padding:0 20px;
+}
+.nav-link:hover{
+    font-size: larger;
+}
+.search-bar, .forum-div{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding-top: 1em;
+}
+.search-button{
+    border: none;
+    /*border-style: none;*/
+    background-color: white;
+}
+.search-button:hover{
+    border: thin solid white;
+    border-radius: 50%;
+    background-color: lightgrey;
+}
+.forum-div{
+    width: 90%;
+}
+.table-format{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #8ec0e7;
+    font-weight: bold;
+    font-size: larger;
+    flex-wrap: wrap;
+}
+.item-forum{
+    flex-basis: 80%;
+}
+.item-topic{
+    flex-basis: 5%;
+}
+.item-post{
+    flex-basis: 5%;
+}
+.item-date{
+    flex-basis: 10%;
+}
+.item-forum.item-category{
+    display: flex;
+    flex-direction: row;
+    border-right: 2px solid #8ec0e7;
+}
+.test{
+    text-align: start;
+    padding-left: 1em;
+}
+

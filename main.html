@@ -5,11 +5,74 @@
 	<head>
 		<title>Cougar Rescue Forum</title>
 		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
 	</head>
 	
 	<body>
-		<h1> Main Page </h1>
+		<nav class="nav-bar">
+			<div class="nav-logo">
+				<a href="main.html"><img src="images/cr_logo.png" width="130" height="100"></a>
+			</div>
+			<div class="nav-control">
+				<a class="nav-link" href="main.html">Home</a>
+				<a class="nav-link" href="profile.html">Profile</a>
+				<a class="nav-link" href="logout.html">Log Out</a>
+			</div>
+		</nav>
+		<div class="search-bar">
+			<input id="search" name="search" placeholder="Search...."/>
+			<button class="search-button">
+				<i class="fa fa-search"></i>
+			</button>
+
+
+		</div>
+		<div class="forum-div">
+			<div class="table-format">
+				<div class="item-forum">Forum</div>
+				<div class="item-topic">Topics</div>
+				<div class="item-post">Posts</div>
+				<div class="item-date">Date</div>
+			</div>
+			<div class="table-format">
+				<div>CIS444</div>
+			</div>
+			<div class="table-format">
+				<div class="item-forum item-category">
+					<div>
+						<i class="fas fa-book-open"></i>
+					</div>
+					<div>
+						<h3 class="test">Homework</h3>
+						<div>Any Questions about the homework</div>
+
+					</div>
+
+				</div>
+				<div class="item-topic">0</div>
+				<div class="item-post">0</div>
+				<div class="item-date"></div>
+			</div>
+			<div class="table-format">
+				<div class="item-forum">Test</div>
+				<div class="item-topic">0</div>
+				<div class="item-post">0</div>
+				<div class="item-date"></div>
+			</div>
+			<div class="table-format">
+				<div class="item-forum">Quiz</div>
+				<div class="item-topic">0</div>
+				<div class="item-post">0</div>
+				<div class="item-date"></div>
+			</div>
+
+		</div>
+
+
+
 	</body>
 </html>
