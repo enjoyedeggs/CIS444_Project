@@ -102,8 +102,9 @@ body form {
 		
 	}
 	.navlist { 
+		height: auto;
 		width: 98%;
-		height: 10%;
+		
 	}
 	.inputstyle {
 		width: 17%;
@@ -135,14 +136,15 @@ h1, h2 {
 .navlist { 
 	/*border-radius:25px; */
 	background-color: #8EC0E7;
-	border-radius: 10px;	
+	border-radius: 10px;
+	height: auto;	
 	left: 6px;	
 	margin-left:1px;
 	position: absolute;
 	text-align: center;
 	top: 4px;
 	width: 99%;
-	height: 7%;
+	
 } 
  
 /* styling navlist anchor element */ 
@@ -189,18 +191,20 @@ h1, h2 {
 	cursor: pointer; 
 	float: right;
 	font-size: 12px; 
-	padding: 5px 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	
 	
 } 
 
 .logo {
 	float: left;
-	height: 36px;
+	height: 7%;
 	left: 5px;
 	margin-right: 10px;	
 	position:relative;
 	top:1px;
-	width: 36px;
+	width: 3%;
 	
 }
 
@@ -268,7 +272,6 @@ th, tr,  td {
 	float: right;
 	font-family: Georgia;
 	font-size: 12pt; 
-	height:7%;
 	padding: 11px; 
 	text-align: center; 
 	
