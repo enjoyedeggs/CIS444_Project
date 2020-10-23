@@ -3,15 +3,16 @@
 <html lang="en">
 
 	<head>
-		<title>Cougar Rescue Forum</title>
+		<title>View Profile</title>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
-		<script type="text/javascript" src="nav.js"></script>
-		<link rel="stylesheet" href="cougar_rescue.css"/>
+        <!--<script type="text/javascript" src="nav.js"></script>-->
+        <script type="text/javascript" src="view_profile.js"></script>
+        <link rel="stylesheet" href="cougar_rescue.css"/>
 	</head>
 	
 	<body id="view_profile" class="pagestyle" onload="retrieveInformation();">
@@ -38,8 +39,10 @@
             </div>
             <div class="table-format">
                 <div class="sub-title">
-                    <p>Profile Picture</p>
-                    <div class="sub-description">Need JS to get image</div>
+                    <div id="profile_picture"><!--class="sub-description">-->
+                        <p>Profile Picture</p>
+                        <!--JS-->
+                    </div>
 
                     <p>First Name</p>
                     <div class="sub-description">Need JS to get first name</div>
