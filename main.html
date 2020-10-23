@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
 		<script type="text/javascript" src="nav.js"></script>
 		<link rel="stylesheet" href="cougar_rescue.css"/>
@@ -19,36 +18,22 @@
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
-			<!-- seach bar left align -->
-	<!--		<div class="search">-->
-	<!--			<form action="admin.html" onsubmit="return searchForum(this)">-->
-	<!--				<input aria-label="search" type="text" placeholder=" Search forum topics" name="search" id="searchInput" required />-->
-	<!--				<button aria-label="search" type="submit"> <i class="fa fa-search" ></i> </button>-->
-	<!--			</form>-->
-	<!--		</div>-->
-			<!--Coming back to this-->
 			<button class="logoutNav" onclick="logout()">Logout</button>
-			<a href="main.html">Home</a>
+
 			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
 
 		</div>
-<!--		<div class="search-bar">-->
-<!--			<input id="search" name="search" placeholder="Search...."/>-->
-<!--			<button class="search-button">-->
-<!--				<i class="fa fa-search"></i>-->
-<!--			</button>-->
-
-
-<!--		</div>-->
 		<div class="forum-div">
 			<div class="table-format">
 				<div class="item-forum">Forum</div>
-				<div class="item-topic">Topics</div>
 				<div class="item-post">Posts</div>
 				<div class="item-date">Date</div>
 			</div>
 			<div class="table-format">
-				<div class="course-title">CIS444</div>
+				<div class="course-title">Course Name</div>
+				<!--it will dynamically display the course name that corresponding to student's information -->
 			</div>
 			<div class="table-format">
 				<div class="item-forum item-category">
@@ -56,44 +41,18 @@
 						<i class="fas fa-book-open"></i>
 					</div>
 					<div class="sub-title">
-						<a class="sub-heading" href="homework.html">Homework</a>
-						<div class="sub-description">Any questions about the homework</div>
+						<a class="sub-heading" href="homework.html">Sub-Forum</a>
+						<!--it will dynamically display as many as sub-forums and redirect to the view/post page
+						 that corresponding to each sub-forum-->
+						<div class="sub-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+						<!--it will dynamically display the description of each sub-forum -->
 					</div>
 
 				</div>
-				<div class="item-topic">0</div>
 				<div class="item-post">0</div>
+				<!--it will dynamically display the number of posts from database -->
 				<div class="item-date"></div>
-			</div>
-			<div class="table-format">
-				<div class="item-forum item-category">
-					<div class="sub-icon">
-						<i class="fas fa-book-open"></i>
-					</div>
-					<div class="sub-title">
-						<a class="sub-heading" href="homework.html">Test</a>
-						<div class="sub-description">Any questions about the testk</div>
-					</div>
-
-				</div>
-				<div class="item-topic">0</div>
-				<div class="item-post">0</div>
-				<div class="item-date"></div>
-			</div>
-			<div class="table-format">
-				<div class="item-forum item-category">
-					<div class="sub-icon">
-						<i class="fas fa-book-open"></i>
-					</div>
-					<div class="sub-title">
-						<a class="sub-heading" href="homework.html">Quiz</a>
-						<div class="sub-description">Any questions about quiz</div>
-					</div>
-
-				</div>
-				<div class="item-topic">0</div>
-				<div class="item-post">0</div>
-				<div class="item-date"></div>
+				<!--it will dynamically display the last date of post/update -->
 			</div>
 
 		</div>

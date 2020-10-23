@@ -109,7 +109,6 @@ body form {
 	.inputstyle {
 		width: 17%;
 	}
-
 }
 
 
@@ -294,3 +293,65 @@ button:hover {
 	top: 100px;
 	visibility: hidden;
 }
+/*
+    THIS IS A CSS FOR THE MAIN/HOME PAGE
+*/
+body{
+	margin: 0 auto;
+}
+
+.forum-div{
+	margin: auto;
+	width: 90%;
+	text-align: center;
+	padding-top: 1em;
+	margin-top: 4em;
+
+}
+.table-format{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 2px solid #8ec0e7;
+	font-size: larger;
+	background-color: white;
+
+}
+.item-forum, .item-post{
+	border-right: 2px solid #8ec0e7;
+}
+.item-forum{
+	flex-basis: 80%;
+
+}
+.item-post{
+	flex-basis: 10%;
+}
+.item-date{
+	flex-basis: 10%;
+}
+.item-forum.item-category{
+	display: flex;
+	flex-direction: row;
+	/*border-right: 2px solid #8ec0e7;*/
+}
+.sub-title{
+	text-align: start;
+	padding-left: 1em;
+	display:flex;
+	flex-direction: column;
+}
+.sub-heading{
+	text-decoration: none;
+}
+.sub-description{
+	font-size: 8px;
+	font-weight: normal;
+	color: slategrey;
+}
+.sub-icon{
+	font-size: larger;
+}
+
+
+
