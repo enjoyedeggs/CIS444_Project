@@ -308,6 +308,7 @@ body{
 	margin-top: 4em;
 
 }
+
 .table-format{
 	display: flex;
 	flex-direction: row;
@@ -351,6 +352,13 @@ body{
 }
 .sub-icon{
 	font-size: larger;
+}
+.course-title{
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	color: white;
+	background-color:#0259A8 ;
 }
 
 
