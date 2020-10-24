@@ -294,3 +294,146 @@ button:hover {
 	top: 100px;
 	visibility: hidden;
 }
+
+
+
+.nPost {
+	margin: auto;
+	width: 90%;
+	height: 600px;
+	padding-top: 1em;
+	background-color: white;
+	margin-top: 7em;
+	border: 2px solid #8ec0e7;	
+
+}
+
+.break {
+	border-width: 2px;
+	padding-left: 15px;
+	width:80%;	
+	text-align:left;
+	margin-left:0;
+	border-color: #8ec0e7;
+}
+
+/*.create {
+	padding-left: 15px;
+	font-size: 25px;
+	font-weight: bold;
+	color: black; 
+}
+*/
+
+.create {
+	padding-left: 15px;
+
+	
+}
+h1.postheader {
+font-size: 24px;
+color: black;
+text-align: left;
+font-weight: bold;
+}
+.username {
+	padding-left: 15px;
+	float: left;
+	padding-right: 15px;
+}
+
+.name {
+	border-left: 2px solid #8ec0e7;
+	float: left;
+	padding-left: 15px;
+}
+
+.name input {
+	font-size: 14px;
+}
+
+.class {
+	padding-left: 15px;
+	float: left;
+	padding-right: 52px;
+}
+
+.classes {
+	border-left: 2px solid #8ec0e7;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-right: 2px solid #8ec0e7;
+}
+.classes input {
+	font-size: 14px;
+}
+
+.topic {
+	padding-left: 15px;
+	float: left;
+	border-right: 2px solid #8ec0e7;
+	padding-right: 15px;
+}
+
+.topics {
+	float: left;
+	padding-left: 15px;
+}
+
+
+.container {
+	padding-right: 15px;
+}
+
+.title {
+	padding-right: 59px;
+	float: left;
+	padding-left: 15px;
+}
+
+.titleText {
+	border-left: 2px solid #8ec0e7;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-left: 2px solid #8ec0e7;
+}
+
+.titleText input {
+	
+	/*width: 50%;
+	display: inline-block; */
+	font-size: 14px;
+}
+
+.text {
+	padding-right: 60px;
+	float: left;
+	padding-left: 15px;
+}
+
+.userText {
+	border-left: 2px solid #8ec0e7;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-left: 2px solid #8ec0e7;
+}
+
+.userText input {
+	font-size: 14px;	
+
+}
+
+.submit {
+	position: absolute;
+	right: 200px;
+	bottom: 48px;
+}
+
+input[type=submit] {
+	width: 7em;
+	height: 3em;
+	color: #8ec0e7;
+}
