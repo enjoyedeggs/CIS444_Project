@@ -174,6 +174,7 @@ function searchForum(event) {
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
 			resultsDisplay.setAttribute("id", results[i][1]);
+			resultsDisplay.setAttribute("onclick", "viewPost(this.id)");
 			var user = document.createElement("p");
 			user.innerHTML = '<span class="bolded"> Student: </span>' + results[i][0] ;
 			resultsDisplay.appendChild(user);
@@ -274,6 +275,12 @@ function removeUser(userId) {
 	}
 	
 	
+}
+
+function viewPost(id) {
+	//TODO: redirect user to proper post for specified ID;
+	//console.log(id);
+	window.location.href = "view_post.html";
 }
 
 function logout() {

@@ -110,6 +110,7 @@ body form {
 		width: 17%;
 	}
 
+
 }
 
 
@@ -172,16 +173,17 @@ h1, h2 {
 .search input[type=text]{ 
 	border: none; 
 	border-radius:25px;
+	float: left;
 	font-family: Georgia;
 	height:25px;
-	width:300px; 
+	width:50%;
 } 
 	  
 .search{ 
 	float:left; 
 	position: relative;
 	top: 7px;
-	
+	width: 80%;
 } 
 	  
 .search button{ 
@@ -189,22 +191,26 @@ h1, h2 {
 	border: none; 
 	color: #ffffff;
 	cursor: pointer; 
-	float: right;
+	float: left;
 	font-size: 12px; 
-	padding-left: 10px;
 	padding-top: 5px;
 	
 	
 } 
 
+.adminpage {
+	
+	top: 30px;
+}
+
 .logo {
 	float: left;
-	height: 7%;
+	height: 35px;
 	left: 5px;
 	margin-right: 10px;	
 	position:relative;
 	top:1px;
-	width: 3%;
+	width: 35px;
 	
 }
 
@@ -213,12 +219,13 @@ h1, h2 {
 	left: 10px;
 	position: absolute;
 	top: 50px;
+	text-align: left;
 }
 .adminsubheadings {
-	
+	margin-left:10px;
 	position: relative;
 	text-align: left;
-	top: 100px;	
+	top: 80px;	
 }
 
 
@@ -228,9 +235,12 @@ h1, h2 {
 	border-radius: 4px; 
 	font-family:Georgia;
 	font-size: 11pt;
+	margin-left: 10px;
+	margin-right: 10px;
 	padding: 3px;
 	position: relative; 
-	top: 100px;
+	top: 80px;
+	width: 98%;
 	
 }
 
@@ -296,6 +306,9 @@ button:hover {
 }
 
 
+/* 
+This is for the new post
+*/
 
 .nPost {
 	margin: auto;
@@ -317,13 +330,6 @@ button:hover {
 	border-color: #8ec0e7;
 }
 
-/*.create {
-	padding-left: 15px;
-	font-size: 25px;
-	font-weight: bold;
-	color: black; 
-}
-*/
 
 .create {
 	padding-left: 15px;
@@ -437,3 +443,75 @@ input[type=submit] {
 	height: 3em;
 	color: #8ec0e7;
 }
+
+/*
+    THIS IS A CSS FOR THE MAIN/HOME PAGE
+*/
+body{
+	margin: 0 auto;
+}
+
+.forum-div{
+	margin: auto;
+	width: 90%;
+	text-align: center;
+	padding-top: 1em;
+	margin-top: 4em;
+
+}
+
+.table-format{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 2px solid #8ec0e7;
+	font-size: larger;
+	background-color: white;
+
+}
+.item-forum, .item-post{
+	border-right: 2px solid #8ec0e7;
+}
+.item-forum{
+	flex-basis: 80%;
+
+}
+.item-post{
+	flex-basis: 10%;
+}
+.item-date{
+	flex-basis: 10%;
+}
+.item-forum.item-category{
+	display: flex;
+	flex-direction: row;
+	/*border-right: 2px solid #8ec0e7;*/
+}
+.sub-title{
+	text-align: start;
+	padding-left: 1em;
+	display:flex;
+	flex-direction: column;
+}
+.sub-heading{
+	text-decoration: none;
+}
+.sub-description{
+	font-size: 8px;
+	font-weight: normal;
+	color: slategrey;
+}
+.sub-icon{
+	font-size: larger;
+}
+.course-title{
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	color: white;
+	background-color:#0259A8 ;
+}
+
+
+
+
