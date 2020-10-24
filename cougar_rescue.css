@@ -513,5 +513,68 @@ body{
 }
 
 
+/*
+    Subforum CSS
+*/
+.table-sub-format {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 4px solid #8ec0e7;
+	border-left: 2px solid #8ec0e7;
+	border-right: 2px solid #8ec0e7;
+	background-color: white;
+}
+.item-subforum {
+	flex-basis: 70%;
+	text-align: left;
+}
 
+.item-post-title {
+	display: flex;
+	flex-basis: 70%;
+	flex-direction: row;
+}
+
+.item-subforum--author {
+	display: flex;
+	flex-basis: 70%;
+	flex-direction: row;
+}
+
+.item-replies, .item-views, .item-last-post {
+	flex-basis: 10%;
+}
+
+
+.new-post-button button{
+	background-color: #8ec0e7;
+	font-size: 15px;
+	float: right;
+	color: black;
+	font-family: Georgia;
+	
+}
+
+.item-subforum, .item-replies, .item-views {
+	border-right: 2px solid #8ec0e7;
+}
+
+#subforum-div {
+	font-family: Georgia;
+	margin: auto;
+	width: 90%;
+	text-align: center;
+	padding-top: 1em;
+	margin-top: 4em;
+
+}
+
+.subforum-sub-description {
+	display: flex;
+	flex-basis: 70%;
+	font-size: 12px;
+	font-weight: normal;
+	color: slategrey;
+}
 
