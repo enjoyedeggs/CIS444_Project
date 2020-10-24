@@ -438,7 +438,7 @@ font-weight: bold;
 	bottom: 48px;
 }
 
-input[type=submit] {
+input.subButton {
 	width: 7em;
 	height: 3em;
 	color: #8ec0e7;
