@@ -30,9 +30,9 @@ function getPosts() {
         var divElem4 = document.createElement("div");
         divElem4.setAttribute("class", "item-replies");
         divElem4.innerHTML = "0";
-        var divElem5 = document.createElement("div");
-        divElem5.setAttribute("class", "item-views");
-        divElem5.innerHTML = "0";
+        //var divElem5 = document.createElement("div");
+        //divElem5.setAttribute("class", "item-views");
+        //divElem5.innerHTML = "0";
         var divElem6 = document.createElement("div");
         divElem6.setAttribute("class", "item-last-post");
         divElem6.innerHTML = "0";
@@ -42,7 +42,7 @@ function getPosts() {
         divElem2.appendChild(divElemA);
         divElem2.appendChild(divElem3);
         divElem0.appendChild(divElem4);
-        divElem0.appendChild(divElem5);
+        //divElem0.appendChild(divElem5);
         divElem0.appendChild(divElem6);
 
         document.getElementById("subforum-div").appendChild(divElem0);
@@ -66,19 +66,20 @@ function getPosts() {
             var divElem4 = document.createElement("div");
             divElem4.setAttribute("class", "item-replies");
             divElem4.innerHTML = posts[i][2];
-            var divElem5 = document.createElement("div");
-            divElem5.setAttribute("class", "item-views");
-            divElem5.innerHTML = posts[i][3];
+            //var divElem5 = document.createElement("div");
+            //divElem5.setAttribute("class", "item-views");
+            //divElem5.innerHTML = posts[i][3];
             var divElem6 = document.createElement("div");
             divElem6.setAttribute("class", "item-last-post");
-            divElem6.innerHTML = posts[i][4];
+			var date = new Date(posts[i][4]);
+            divElem6.innerHTML = (date.getMonth()+1).toString() + "/" + date.getDay() + "/" + date.getFullYear();
 
             divElem0.appendChild(divElem)
             divElem.appendChild(divElem2);
             divElem2.appendChild(divElemA);
             divElem2.appendChild(divElem3);
             divElem0.appendChild(divElem4);
-            divElem0.appendChild(divElem5);
+            //divElem0.appendChild(divElem5);
             divElem0.appendChild(divElem6);
     
             document.getElementById("subforum-div").appendChild(divElem0);

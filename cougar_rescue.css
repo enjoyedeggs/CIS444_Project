@@ -442,8 +442,8 @@ font-weight: bold;
 }
 .submit {
 	position: relative;
-	left: 10%;
-	top:35%;
+	
+	top: 40%;
 }
 
 .submitbutton  {
@@ -572,11 +572,9 @@ body{
 
 
 .new-post-button button{
-	background-color: #8ec0e7;
-	font-size: 15px;
-	float: right;
-	color: black;
-	font-family: Georgia;
+	border-radius: 0px;
+	margin:5px;
+	
 	
 }
 
