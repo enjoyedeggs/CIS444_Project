@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Cougar Rescue Forum: New Post/Reply</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="mainpage.css" />
+    <link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+    <script type="text/javascript" src="nav.js"></script>
+    <link rel="stylesheet" href="cougar_rescue.css" />
+</head>
+
+<body id="admin" class="pagestyle" onload="retrieveInformation();">
+    <div id="navlist" class="navlist">
+        <div>
+            <img class="logo" src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo" />
+        </div>
+
+        <button class="logoutNav" onclick="logout()">Logout</button>
+        <a href="main.html">Home</a>
+        <a href="search.html">Search</a>
+
+    </div>
+
+    <div id="nPost" class="nPost">
+        <div class="create"><h1 class="postheader">Create new post</h1></div>
+
+        <hr class="break">
+
+        <div class="table">
+            <div class="username">Username:</div>
+            <div class="name">
+                <label for="Username"></label>
+                <input type="text" name="Username" placeholder="Name" id="Username" />
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="table">
+            <div class="class">Class:</div>
+            <div class="classes">
+                <label for="userclass"></label>
+                <input type="text" name="userclass" placeholder="Class" id="userclass" />
+
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="topic">Topic: </div>
+            <div class="topics">
+
+                <input type="checkbox" checked="checked" name="homeworkcheckmark" id="homeworkcheckmark" />
+                <label for="homeworkcheckmark" class="container">Homework</label>
+                <span class="checkmark"></span>
+
+                <input type="checkbox" name="testcheckmark" id="testcheckmark" />
+                <label for="testcheckmark" class="container">Test</label>
+                <span class="checkmark"></span>
+
+                <input type="checkbox" name="quizcheckmark" id="quizcheckmark" />
+                <label for="quizcheckmark" class="container">Quiz</label>
+                <span class="checkmark"></span>
+
+                <input type="checkbox" name="othercheckmark" id="othercheckmark" />
+                <label for="othercheckmark" class="container">Other/Miscellaneous</label>
+                <span class="checkmark"></span>
+
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <div class="table">
+            <div class="title">Title:</div>
+            <div class="titleText">
+                <label for="TextTitle"></label>
+                <input type="text" name="TextTitle" placeholder="Title" id="TextTitle" style="display:block;width:910px;" />
+
+            </div>
+
+        </div>
+
+        <br />
+        <br />
+        <div class="table">
+            <div class="text">Text:</div>
+            <div class="userText">
+                <label for="UsersText"></label>
+                <input type="text" name="UsersText" placeholder="Text" id="UsersText" style="display:block;width:910px;height:280px;" />
+
+            </div>
+
+        </div>
+
+        <div class="table">
+            <br />
+            <div class="submit">
+                <br />
+                <input class="subButton" type="submit" name="sbutton" value="Submit" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
