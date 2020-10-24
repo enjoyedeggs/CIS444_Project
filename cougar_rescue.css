@@ -504,13 +504,20 @@ body{
 .sub-icon{
 	font-size: larger;
 }
-.course-title{
+.course-title, .no-class{
 	margin: 0 auto;
 	width: 100%;
 	text-align: center;
 	color: white;
 	background-color:#0259A8 ;
 }
+.no-class{
+	color: black;
+	background-color: white;
+	font-weight: bold;
+	font-size: x-large;
+}
+
 
 
 /*
