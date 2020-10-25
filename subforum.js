@@ -13,8 +13,6 @@ function retrieveInformation() {
 		subforum = forumName.substring(subforumPos+9);
 		forumName = course + " " + subforum;
 		
-		//forumName = forumName.substring(pos+1);
-		//forumName = forumName.replace('-', ' ');
 		getPosts(forumName);
 		
 	}

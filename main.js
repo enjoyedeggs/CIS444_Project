@@ -56,6 +56,7 @@ function writeTable(){
                 table_format_subForum.appendChild(subForum_node);
                 var sub_icon_node = document.createElement("div");
                 sub_icon_node.setAttribute("class", "floatleft");
+				sub_icon_node.setAttribute("style", "margin-left: 10px");
                 subForum_node.appendChild(sub_icon_node);
                 var icon = document.createElement("i");
                 icon.setAttribute("class", "fas fa-book-open");

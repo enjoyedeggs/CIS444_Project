@@ -69,9 +69,9 @@ function getFlagged() {
 
 function getUsers() {
 	var users = new Array(); //placeholder for PHP function
-	//users = [["Bob the Builder", ["CIS444", "CS351", "CS441"], "4th Year", "build001@cougars.csusm.edu", "12"], 
-	//["Jane Doe", ["CIS444", "CS351", "CS443"],  "4th Year","doe001@cougars.csusm.edu", "4"],
-	//["John Appleseed", ["CS443", "CS351", "CS441"], "3rd Year","apple001@cougars.csusm.edu", "1"]];
+	users = [["Bob the Builder", ["CIS444", "CS351", "CS441"], "4th Year", "build001@cougars.csusm.edu", "12"], 
+	["Jane Doe", ["CIS444", "CS351", "CS443"],  "4th Year","doe001@cougars.csusm.edu", "4"],
+	["John Appleseed", ["CS443", "CS351", "CS441"], "3rd Year","apple001@cougars.csusm.edu", "1"]];
 	
 	if (users.length == 0) {
 		var divElem = document.createElement("div");
@@ -83,6 +83,88 @@ function getUsers() {
 		//console.log("done");
 	}
 	else {
+		var rowH = document.createElement("div");
+		rowH.setAttribute("id", "heading");
+		var outerDiv = document.createElement("div");
+		outerDiv.setAttribute("class", "admin-table-format");
+		outerDiv.setAttribute("id", "users-table");
+		
+		//Create Student Col
+		var studentH = document.createElement("div");
+        studentH.setAttribute("class","item-student bolded");
+        studentH.innerHTML = "Student Name";
+        outerDiv.appendChild(studentH);
+		
+        //Create Courses column
+        var courseH = document.createElement("div");
+        courseH.setAttribute("class","item-courses bolded");
+        courseH.innerHTML = "Courses";
+        outerDiv.appendChild(courseH);
+		
+        //Create CSUSM email Column
+		var emailH = document.createElement("div");
+		emailH.setAttribute("class", "item-email bolded");
+		emailH.innerHTML = "CSUSM Email";
+		outerDiv.appendChild(emailH);
+		
+		//Create Posts column
+		var postH = document.createElement("div");
+		postH.setAttribute("class", "item-postnum bolded");
+		postH.innerHTML = "# of Posts";
+		outerDiv.appendChild(postH);
+		
+		//Create Disable Col
+		var acctH = document.createElement("div");
+		acctH.setAttribute("class", "item-disable bolded");
+		acctH.innerHTML = "Account Status";
+		outerDiv.appendChild(acctH);
+		rowH.appendChild(outerDiv);
+		document.getElementById("usersList").appendChild(rowH);
+		for (var i = 0; i < users.length; i++) {
+			var row = document.createElement("div");
+			row.setAttribute("id", users[i][3]);
+			row.setAttribute("class", "admin-row-format");
+			var name = document.createElement("div");
+			name.setAttribute("class", "item-student");
+			name.innerHTML = users[i][0];
+			var coursesList = document.createElement("div");
+			coursesList.setAttribute("class", "item-courses");
+			var courses = document.createElement("div");
+			courses.innerHTML = users[i][1].join(', ');
+			coursesList.appendChild(courses);
+			var email = document.createElement("div");
+			email.setAttribute("class", "item-email");
+			email.innerHTML = users[i][3];
+			var numPosts = document.createElement("div");
+			numPosts.setAttribute("class", "item-postnum");
+			numPosts.innerHTML = users[i][4];
+			var deleteUser = document.createElement("div");
+			deleteUser.setAttribute("class", "item-disable delete");
+			deleteUser.setAttribute("id", users[i][3]+"b");
+			deleteUser.setAttribute("onclick", "removeUser(this.id)");
+			deleteUser.innerHTML = "DISABLE";
+			//var delButton = document.createElement("button");
+			//delButton.setAttribute("class", "delete");
+			//delButton.setAttribute("id", users[i][3]+"b");
+			//delButton.setAttribute("onclick", "removeUser(this.id)");
+			//delButton.innerHTML = "DISABLE";
+			row.appendChild(name);
+			row.appendChild(coursesList);
+			row.appendChild(email);
+			row.appendChild(numPosts);
+			//deleteUser.appendChild(delButton);
+			row.appendChild(deleteUser);
+			document.getElementById("usersList").append(row);
+			//row.append(outerDiv);
+			//row.appendChild(name);
+			//row.appendChild(courses);
+			//row.appendChild(email);
+			//row.appendChild(numPosts);
+			//deleteUser.appendChild(delButton);
+			//row.appendChild(deleteUser);
+			//outerDiv.appendChild(row);
+		}
+		/*
 		var tabElem = document.createElement("table");
 		tabElem.setAttribute("class", "searchresults");
 		tabElem.setAttribute("id", "usersTable");
@@ -137,6 +219,9 @@ function getUsers() {
 			
 		}
 		document.getElementById("usersList").appendChild(tabElem);
+		*/
+		
+		
 	}
 	
 	
