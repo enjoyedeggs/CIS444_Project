@@ -19,11 +19,15 @@ input.addEventListener("keyup", function(event) {
 }
 */
 var forumName;
+var course;
+var subforum;
 function redirect()
 {
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
-	forumName = forumName.substring(pos+1);
-	forumName = forumName.replace('%20', '-');
-	window.location.href = "subforum.html?" + forumName;
+	var coursePos = forumName.search(/course=/);
+	var subforumPos = forumName.search(/subforum=/);
+	course = forumName.substring(coursePos+7, subforumPos);
+	subforum = forumName.substring(subforumPos+9);
+	window.location.href = "subforum.html?course=" + course + "subforum=" + subforum;
 }

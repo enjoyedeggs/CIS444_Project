@@ -1,12 +1,20 @@
 var forumName;
+var course;
+var subforum;
 function retrieveInformation() {
 	//Get list of "flagged" posts for admin to review.
 	
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
 	if (pos > 0){
-		forumName = forumName.substring(pos+1);
-		forumName = forumName.replace('-', ' ');
+		var coursePos = forumName.search(/course=/);
+		var subforumPos = forumName.search(/subforum=/);
+		course = forumName.substring(coursePos+7, subforumPos);
+		subforum = forumName.substring(subforumPos+9);
+		forumName = course + " " + subforum;
+		
+		//forumName = forumName.substring(pos+1);
+		//forumName = forumName.replace('-', ' ');
 		getPosts(forumName);
 		
 	}
@@ -123,9 +131,9 @@ function logout() {
 
 function viewPost(id) {
 	//TODO: view post 
-	window.location.href = "view_post.html?"+forumName+id;
+	window.location.href = "view_post.html?course=" + course + "post-id=" +id;
 }
 
 function newPost(id) {
-	window.location.href = "new_post.html?"+forumName;
+	window.location.href = "new_post.html?course=" + course + "subforum=" +subforum;
 }
