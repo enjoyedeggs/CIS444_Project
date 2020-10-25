@@ -297,7 +297,7 @@ function removeUser(userId) {
 function viewPost(id) {
 	//TODO: redirect user to proper post for specified ID;
 	//console.log(id);
-	window.location.href = "view_post.html";
+	window.location.href = "view_post.html?postid="+id;
 }
 
 function logout() {

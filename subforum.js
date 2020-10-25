@@ -12,13 +12,14 @@ function retrieveInformation() {
 		course = forumName.substring(coursePos+7, subforumPos);
 		subforum = forumName.substring(subforumPos+9);
 		forumName = course + " " + subforum;
-		
+		var doc = document.getElementsByTagName("html")[0];
+		doc.style.visibility="visible";
 		getPosts(forumName);
 		
 	}
 	else {
 		//document.write("404: Page not found", "<br />", "Cannot access this page. You will be redirected to the main page.");
-		alert("Cannot access this page. You will be redirected to the main page.");
+		alert("Cannot access this page without selecting a forum on the main page. You will be redirected to the main page.");
 		window.location.href = "main.html";
 	}
 	

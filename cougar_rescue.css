@@ -366,7 +366,7 @@ This is for the new post
 
 	background-color: white;
 	border-radius: 10px;
-	height: 500px;
+	height: 550px;
 	margin: 7% 10% 5% 12%;	
 	
 	width:75%;
@@ -477,14 +477,15 @@ This is for the new post
 
 .userText {
 	border-left: 2px solid #0259A8;
-	
 	padding-left: 15px;
 	padding-right: 15px;
 	
 }
 
 .userText input {
+	color: black;
 	font-family: Georgia;
+	
 	
 
 }
@@ -497,9 +498,9 @@ This is for the new post
 	
 }
 .submit {
-	position: relative;
-	
-	top: 40%;
+	left: 65%;
+	position: absolute;
+	top: 80%;
 }
 
 .submitbutton  {
@@ -670,6 +671,10 @@ body{
 	font-size: 12px;
 	font-weight: normal;
 	
+}
+
+.hidden-subforum {
+	visibility: hidden;
 }
 
 /*FONT CSS*/

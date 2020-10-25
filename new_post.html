@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="hidden-subforum">
 
 <head>
     <title>Cougar Rescue Forum: New Post/Reply</title>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="new_post.js"></script>
 </head>
 
-<body id="new-post" class="pagestyle" >
+<body id="new-post" class="pagestyle" onload="checkForum();" >
     
     <div id="navlist" class="navlist">
         <div>
@@ -30,72 +30,75 @@
     </div>
         
     <div id="nPost" class="nPost">
-        <div class="create"><h1 class="postheader">Create New Post/Reply</h1></div>
-        <hr class="break">
-        <div class="table">
-            <div class="username floatleft">Name:</div>
-            <div class="name floatleft">
-                <input aria-label="user enters their username" type="text" name="Username" placeholder="Name" id="Username" />
-            </div>
-        </div>
-            
-        <br />
-        <br />
-        
-        <div class="table">
-            <div class="class floatleft">Class:</div>
-            <div class="classes floatleft">
-                <input aria-label="user enters their class" type="text" name="userclass" placeholder="Class" id="userclass" />
-            </div>
-        </div>
-        
-        <div class="table">
+		<form id="new-post-form" onsubmit="return submission(this);">
+			<div class="create"><h1 class="postheader">Create New Post/Reply</h1></div>
+			<hr class="break">
+			<div class="table">
+				<div class="username floatleft">Name:</div>
+				<div class="name floatleft">
+					<input aria-label="user enters their username" type="text" name="Username" placeholder="Name" id="Username" required />
+				</div>
+			</div>
+				
+			<br />
+			<br />
+			
+			<div class="table">
+				<div  class="class floatleft">Class:</div>
+				<div id="course-name"  class="classes floatleft">
+					
+				</div>
+			</div>
+			
+			<div class="table">
 
-            <div class="topic floatleft">Topic: </div>
-            <div class="topics floatleft">
+				<div  class="topic floatleft">Topic: </div>
+				<div id="course-forum" class="topics floatleft">
+					<!--
+					<label aria-label="homework" for="homeworkcheckmark" class="container">
+					<input aria-label="homework" type="radio" name="homeworkcheckmark" id="homeworkcheckmark"  required />
+					Homework</label>
+					<span class="checkmark"></span>
 
-				<label aria-label="homework" for="homeworkcheckmark" class="container">
-                <input aria-label="homework" type="radio" name="homeworkcheckmark" id="homeworkcheckmark" />
-                Homework</label>
-                <span class="checkmark"></span>
+					<label aria-label="test" for="testcheckmark" class="container">
+					<input aria-label="test" type="radio" name="testcheckmark" id="testcheckmark"  />
+					Test</label>
+					<span class="checkmark"></span>
 
-				<label aria-label="test" for="testcheckmark" class="container">
-                <input aria-label="test" type="radio" name="testcheckmark" id="testcheckmark" />
-                Test</label>
-                <span class="checkmark"></span>
+					<label aria-label="quiz" for="quizcheckmark" class="container">
+					<input aria-label="quiz" type="radio" name="quizcheckmark" id="quizcheckmark"  />
+					Quiz</label>
+					<span class="checkmark"></span>
 
-				<label aria-label="quiz" for="quizcheckmark" class="container">
-                <input aria-label="quiz" type="radio" name="quizcheckmark" id="quizcheckmark" />
-                Quiz</label>
-                <span class="checkmark"></span>
-
-				<label aria-label="other/miscellaneous" for="othercheckmark" class="container">
-                <input aria-label="other/miscellaneous" type="radio" name="othercheckmark" id="othercheckmark" />
-                Other/Miscellaneous</label>
-                <span class="checkmark"></span>
-
-            </div>
-        </div>
-            
-        <br />
-        <br />
-        <div class="table">
-            <div class="title floatleft">Title:</div>
-            <div class="titleText floatleft">
-                <input aria-label="user enters their title" type="text" name="TextTitle" placeholder="Title" id="TextTitle" />
-            </div>
-        </div>
-        <br />
-        <br />
-     
-        <div class="table">
-            <div class="text floatleft">Description:</div>
-            <div class="userText floatleft">
-                <textarea  aria-label="user types their post/reply here" rows="10" cols="50" name="UsersText" placeholder="Type your post/reply here..." id="UsersText" class="postdescription"  >
-				</textarea>
-            </div>
-        </div>
-        <button aria-label="submit button" class="submit submitstyle" type="button" name="sbutton" id="subButton" onclick="redirect()">Submit</button>
-    </div>
+					<label aria-label="other/miscellaneous" for="othercheckmark" class="container">
+					<input aria-label="other/miscellaneous" type="radio" name="othercheckmark" id="othercheckmark"  />
+					Other/Miscellaneous</label>
+					<span class="checkmark"></span>
+					-->
+				</div>
+			</div>
+				
+			<br />
+			<br />
+			<div class="table">
+				<div class="title floatleft">Title:</div>
+				<div class="titleText floatleft">
+					<input aria-label="user enters their title" type="text" name="TextTitle" placeholder="Title" id="TextTitle" required />
+				</div>
+			</div>
+			<br />
+			<br />
+		 
+			<div class="table">
+				<div class="text floatleft">Description:</div>
+				<div class="userText floatleft">
+					<textarea  aria-label="user types their post/reply here" rows="10" cols="50" name="UsersText" 
+					placeholder="Type your post or reply here..." id="UsersText" class="postdescription"  required ></textarea>
+				</div>
+			</div>
+			<input aria-label="submit button" value="Submit" class="submit submitstyle" type="submit" name="sbutton" 
+			id="subButton"/>
+		</form>
+	</div>
 </body>
 </html>
