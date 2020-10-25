@@ -1,7 +1,8 @@
 /*THIS JS IS USED FOR DYNAMICALLY GENERATE THE CONTENTS OF EACH COURSE*/
 //TODO: Get the number of courses from database for particular student
 
-var courseName = ["CIS 444", "CS 446", "CS 441", "CS 446"];
+var courseName = new Array();
+//courseName = ["CIS 444", "CS 446", "CS 441", "CS 446"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
