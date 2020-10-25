@@ -5,6 +5,7 @@ function retrieveInformation() {
     displayInfo("last_name", getLastName());
     displayInfo("email_address", getEmailAddress());
     displayInfo("signature", getSignature());
+    displayInfo("courses", getCourses());
 	return false;
 }
 
@@ -40,4 +41,20 @@ function getEmailAddress(){
 function getSignature(){
     var sig = "Gooo cougars!!!";
     return sig;
+}
+
+function getCourses(){
+    var course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
+    var count_courses = course_list.length;
+    var courses = "";
+    var i;
+
+    for (i = 0; i < count_courses; i++){
+        courses += course_list[i];
+        if (i < count_courses-1){
+            courses += "<br>";
+        }
+    }
+
+    return courses;
 }
