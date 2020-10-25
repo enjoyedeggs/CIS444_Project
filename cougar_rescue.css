@@ -477,14 +477,15 @@ This is for the new post
 
 .userText {
 	border-left: 2px solid #0259A8;
-	
 	padding-left: 15px;
 	padding-right: 15px;
 	
 }
 
 .userText input {
+	color: black;
 	font-family: Georgia;
+	
 	
 
 }
