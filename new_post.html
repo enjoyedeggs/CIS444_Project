@@ -23,31 +23,19 @@
             <img class="logo" src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo" />
         </div>
 
-        <button class="logoutNav" onclick="logout()">Logout</button>
+        <button class="logoutNav" onclick="logout();">Logout</button>
         <a href="main.html">Home</a>
         <a href="search.html">Search</a>
 
     </div>
         
     <div id="nPost" class="nPost">
-
-        
         <div class="create"><h1 class="postheader">Create New Post/Reply</h1></div>
-            
-
         <hr class="break">
-        
         <div class="table">
-
             <div class="username floatleft">Name:</div>
             <div class="name floatleft">
-
-
-                <label aria-label="user enters their username" for="Username"></label>
                 <input aria-label="user enters their username" type="text" name="Username" placeholder="Name" id="Username" />
-    
-
-
             </div>
         </div>
             
@@ -55,15 +43,9 @@
         <br />
         
         <div class="table">
-
             <div class="class floatleft">Class:</div>
             <div class="classes floatleft">
-
-
-                <label aria-label="user enters their classes" for="userclass"></label>
-                <input aria-label="user enters their classes" type="text" name="userclass" placeholder="Class" id="userclass" />
-
-
+                <input aria-label="user enters their class" type="text" name="userclass" placeholder="Class" id="userclass" />
             </div>
         </div>
         
@@ -72,21 +54,24 @@
             <div class="topic floatleft">Topic: </div>
             <div class="topics floatleft">
 
-
-                <input aria-label="click button for homework" type="radio" name="homeworkcheckmark" id="homeworkcheckmark" />
-                <label aria-label="click button for homework" for="homeworkcheckmark" class="container">Homework</label>
+				<label aria-label="homework" for="homeworkcheckmark" class="container">
+                <input aria-label="homework" type="radio" name="homeworkcheckmark" id="homeworkcheckmark" />
+                Homework</label>
                 <span class="checkmark"></span>
 
-                <input aria-label="click button for test" type="radio" name="testcheckmark" id="testcheckmark" />
-                <label aria-label="click button for test" for="testcheckmark" class="container">Test</label>
+				<label aria-label="test" for="testcheckmark" class="container">
+                <input aria-label="test" type="radio" name="testcheckmark" id="testcheckmark" />
+                Test</label>
                 <span class="checkmark"></span>
 
-                <input aria-label="click button for quiz" type="radio" name="quizcheckmark" id="quizcheckmark" />
-                <label aria-label="click button for quiz" for="quizcheckmark" class="container">Quiz</label>
+				<label aria-label="quiz" for="quizcheckmark" class="container">
+                <input aria-label="quiz" type="radio" name="quizcheckmark" id="quizcheckmark" />
+                Quiz</label>
                 <span class="checkmark"></span>
 
-                <input aria-label="click button for other" type="radio" name="othercheckmark" id="othercheckmark" />
-                <label aria-label="click button for other" for="othercheckmark" class="container">Other/Miscellaneous</label>
+				<label aria-label="other/miscellaneous" for="othercheckmark" class="container">
+                <input aria-label="other/miscellaneous" type="radio" name="othercheckmark" id="othercheckmark" />
+                Other/Miscellaneous</label>
                 <span class="checkmark"></span>
 
             </div>
@@ -95,46 +80,22 @@
         <br />
         <br />
         <div class="table">
-
             <div class="title floatleft">Title:</div>
             <div class="titleText floatleft">
-
-
-                <label aria-label="user enters their title" for="TextTitle"></label>
                 <input aria-label="user enters their title" type="text" name="TextTitle" placeholder="Title" id="TextTitle" />
-
-
             </div>
-
         </div>
-
         <br />
         <br />
-        
+     
         <div class="table">
-
             <div class="text floatleft">Description:</div>
             <div class="userText floatleft">
-
-
-                <label for="UsersText"></label>
-                <textarea  rows="10" cols="50" name="UsersText" placeholder="Type your post/reply here..." id="UsersText" class="postdescription"  >
-
+                <textarea  aria-label="user types their post/reply here" rows="10" cols="50" name="UsersText" placeholder="Type your post/reply here..." id="UsersText" class="postdescription"  >
 				</textarea>
-
             </div>
-
         </div>
-            
-        <!--
-    <div class="table">
-        <br />
-        <div class="submit">
-            <br />
-            <input class="submitstyle" type="submit" name="sbutton" value="Submit" />
-        </div>
-    </div>-->
-        <button class="submit submitstyle" type="button" name="sbutton" id="subButton" onclick="redirect()"> Submit </button>
+        <button aria-label="submit button" class="submit submitstyle" type="button" name="sbutton" id="subButton" onclick="redirect()">Submit</button>
     </div>
 </body>
 </html>

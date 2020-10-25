@@ -2,7 +2,7 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-courseName = ["CIS 444", "CS 446", "CS 441", "CS 446"];
+courseName = ["CIS 444", "CS 446",];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
@@ -64,7 +64,7 @@ function writeTable(){
                 subForum_node.appendChild(sub_title_node);
                 var sub_heading_node = document.createElement("a");
                 sub_heading_node.setAttribute("class", "sub-heading");
-                sub_heading_node.setAttribute("href", "homework.html");
+                sub_heading_node.setAttribute("href", "subforum.html");
                 sub_heading_node.innerHTML = subForumName[j];
                 sub_title_node.appendChild(sub_heading_node);
                 var sub_description_node = document.createElement("div");
