@@ -21,5 +21,5 @@ input.addEventListener("keyup", function(event) {
 
 function redirect()
 {
-window.location.href = "subforum.html";
+	window.location.href = "subforum.html";
 }
