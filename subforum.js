@@ -69,7 +69,7 @@ function getPosts(forumname) {
             //divElemA.setAttribute("href", "main.html");
             divElemA.innerHTML = posts[i][1];
             var divElem3 = document.createElement("div");
-            divElem3.setAttribute("class", "subforum-author authorFont");
+            divElem3.setAttribute("class", "subforum-author");
             divElem3.innerHTML = posts[i][0];
             var divElem4 = document.createElement("div");
             divElem4.setAttribute("class", "item-replies");

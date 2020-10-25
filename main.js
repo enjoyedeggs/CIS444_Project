@@ -2,7 +2,7 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-//courseName = ["CIS 444", "CS 446", "CS 441", "CS 446"];
+courseName = ["CIS 444", "CS 446", "CS 441", "CS 446"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
@@ -54,7 +54,7 @@ function writeTable(){
                 subForum_node.setAttribute("class","item-forum item-category")
                 table_format_subForum.appendChild(subForum_node);
                 var sub_icon_node = document.createElement("div");
-                sub_icon_node.setAttribute("class", "sub-icon");
+                //sub_icon_node.setAttribute("class", "sub-icon");
                 subForum_node.appendChild(sub_icon_node);
                 var icon = document.createElement("i");
                 icon.setAttribute("class", "fas fa-book-open");
@@ -68,7 +68,7 @@ function writeTable(){
                 sub_heading_node.innerHTML = subForumName[j];
                 sub_title_node.appendChild(sub_heading_node);
                 var sub_description_node = document.createElement("div");
-                sub_description_node.setAttribute("class", "sub-description");
+                sub_description_node.setAttribute("class", "sub-description small-font");
                 sub_description_node.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 sub_title_node.appendChild(sub_description_node);
                 var post_col_node = document.createElement("div");
