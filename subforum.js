@@ -1,6 +1,6 @@
-function retrieveInformation() {
+function retrieveInformation(forumName) {
 	//Get list of "flagged" posts for admin to review.
-	getPosts();
+	getPosts(forumName);
 
 		
 	return false;
@@ -8,12 +8,15 @@ function retrieveInformation() {
 
 
 
-function getPosts() {
+function getPosts(forumname) {
+
     var posts = new Array(); //placeholder for PHP function
-	posts = [["User1", "Post Title", "4", "6", "12/25/10"],["User2", "Post Title",  "4","5", "10/1/20"],
-    ["User3", "Post Title", "3","4", "1/4/98"]];
-	
+	//posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
+    //["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
+	var forum = document.getElementById("forum-name");
+	forum.innerHTML = "Course Forum";
 	if (posts.length == 0) {
+		
         var divElem0 = document.createElement("div");
 		divElem0.setAttribute("class", "table-sub-format");
 		var divElem = document.createElement("div");
@@ -50,28 +53,33 @@ function getPosts() {
 	}
 	else {
 		for (var i = 0; i < posts.length; i++) {
+
+			
             var divElem0 = document.createElement("div");
 		    divElem0.setAttribute("class", "table-sub-format");
+			divElem0.setAttribute("id", posts[i][2]);
+			divElem0.setAttribute("onclick", "viewPost(this.id);");
+			
 			var divElem = document.createElement("div");
             divElem.setAttribute("class", "item-subforum");
             var divElem2 = document.createElement("div");
             divElem2.setAttribute("class", "item-subforum-author");
-            var divElemA = document.createElement("a");
+            var divElemA = document.createElement("div");//document.createElement("a");
             divElemA.setAttribute("class", "item-post-title");
-            divElemA.setAttribute("href", "main.html");
+            //divElemA.setAttribute("href", "main.html");
             divElemA.innerHTML = posts[i][1];
             var divElem3 = document.createElement("div");
-            divElem3.setAttribute("class", "subforum-author");
+            divElem3.setAttribute("class", "subforum-author authorFont");
             divElem3.innerHTML = posts[i][0];
             var divElem4 = document.createElement("div");
             divElem4.setAttribute("class", "item-replies");
-            divElem4.innerHTML = posts[i][2];
+            divElem4.innerHTML = posts[i][3];
             //var divElem5 = document.createElement("div");
             //divElem5.setAttribute("class", "item-views");
             //divElem5.innerHTML = posts[i][3];
             var divElem6 = document.createElement("div");
             divElem6.setAttribute("class", "item-last-post");
-			var date = new Date(posts[i][4]);
+			var date = new Date(posts[i][5]);
             divElem6.innerHTML = (date.getMonth()+1).toString() + "/" + date.getDay() + "/" + date.getFullYear();
 
             divElem0.appendChild(divElem)
@@ -93,4 +101,13 @@ function getPosts() {
 function logout() {
 	//TODO: log user out.
 	window.location.href = "admin_index.html";
+}
+
+function viewPost(id) {
+	//TODO: view post 
+	window.location.href = "view_post.html";
+}
+
+function newPost() {
+	window.location.href = "new_post.html";
 }
