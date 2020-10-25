@@ -1,5 +1,11 @@
-function retrieveInformation(forumName) {
+var forumName;
+function retrieveInformation() {
 	//Get list of "flagged" posts for admin to review.
+	
+	forumName = (window.location).toString();
+	var pos = forumName.search(/\?/);
+	forumName = forumName.substring(pos+1);
+	forumName = forumName.replace('-', ' ');
 	getPosts(forumName);
 
 		
@@ -11,10 +17,10 @@ function retrieveInformation(forumName) {
 function getPosts(forumname) {
 
     var posts = new Array(); //placeholder for PHP function
-	// posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
-    // ["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
+	posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
+    ["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
 	var forum = document.getElementById("forum-name");
-	forum.innerHTML = "Course Forum";
+	forum.innerHTML = forumname;
 	if (posts.length == 0) {
         var divElem0 = document.createElement("div");
         divElem0.setAttribute("class", "table-sub-format");
@@ -108,9 +114,9 @@ function logout() {
 
 function viewPost(id) {
 	//TODO: view post 
-	window.location.href = "view_post.html";
+	window.location.href = "view_post.html?"+forumName+id;
 }
 
-function newPost() {
-	window.location.href = "new_post.html";
+function newPost(id) {
+	window.location.href = "new_post.html?"+forumName;
 }

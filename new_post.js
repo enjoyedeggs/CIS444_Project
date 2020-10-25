@@ -18,8 +18,12 @@ input.addEventListener("keyup", function(event) {
 	window.location.href = "subforum.html";
 }
 */
-
+var forumName;
 function redirect()
 {
-	window.location.href = "subforum.html";
+	forumName = (window.location).toString();
+	var pos = forumName.search(/\?/);
+	forumName = forumName.substring(pos+1);
+	forumName = forumName.replace('%20', '-');
+	window.location.href = "subforum.html?" + forumName;
 }

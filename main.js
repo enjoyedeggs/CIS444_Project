@@ -2,7 +2,7 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-courseName = ["CIS 444"];
+courseName = ["CIS444"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
@@ -49,6 +49,7 @@ function writeTable(){
             for(let j = 0; j<subForumName.length;j++){
                 var table_format_subForum = document.createElement("div");
                 table_format_subForum.setAttribute("class", "table-format");
+				table_format_subForum.setAttribute("id", courseName[i]+"-" + subForumName[j]);
                 document.getElementById("forum-div").appendChild(table_format_subForum);
                 var subForum_node = document.createElement("div");
                 subForum_node.setAttribute("class","item-forum item-category")
@@ -62,9 +63,10 @@ function writeTable(){
                 var sub_title_node = document.createElement("div");
                 sub_title_node.setAttribute("class", "sub-title");
                 subForum_node.appendChild(sub_title_node);
-                var sub_heading_node = document.createElement("a");
+                var sub_heading_node = document.createElement("div");
                 sub_heading_node.setAttribute("class", "sub-heading");
-                sub_heading_node.setAttribute("href", "subforum.html");
+				var param = document.getElementById(courseName[i]+"-" + subForumName[j]);
+                sub_heading_node.setAttribute("onclick", "goToSubforum('"+param.id+"');");
                 sub_heading_node.innerHTML = subForumName[j];
                 sub_title_node.appendChild(sub_heading_node);
                 var sub_description_node = document.createElement("div");
@@ -86,5 +88,9 @@ function writeTable(){
 
 
 
+}
+
+function goToSubforum(forum) {
+	window.location.href = "subforum.html?"+forum;
 }
 writeTable();
