@@ -16,7 +16,7 @@
     <script type="text/javascript" src="new_post.js"></script>
 </head>
 
-<body id="new-post" class="pagestyle" >
+<body id="new-post" class="pagestyle" onload="checkForum();" >
     
     <div id="navlist" class="navlist">
         <div>
@@ -44,17 +44,17 @@
 			<br />
 			
 			<div class="table">
-				<div class="class floatleft">Class:</div>
-				<div class="classes floatleft">
-					<input aria-label="user enters their class" type="text" name="userclass" placeholder="Class" id="userclass"  required />
+				<div  class="class floatleft">Class:</div>
+				<div id="course-name"  class="classes floatleft">
+					
 				</div>
 			</div>
 			
 			<div class="table">
 
-				<div class="topic floatleft">Topic: </div>
-				<div class="topics floatleft">
-
+				<div  class="topic floatleft">Topic: </div>
+				<div id="course-forum" class="topics floatleft">
+					<!--
 					<label aria-label="homework" for="homeworkcheckmark" class="container">
 					<input aria-label="homework" type="radio" name="homeworkcheckmark" id="homeworkcheckmark"  required />
 					Homework</label>
@@ -74,7 +74,7 @@
 					<input aria-label="other/miscellaneous" type="radio" name="othercheckmark" id="othercheckmark"  />
 					Other/Miscellaneous</label>
 					<span class="checkmark"></span>
-
+					-->
 				</div>
 			</div>
 				
