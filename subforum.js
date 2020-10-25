@@ -4,9 +4,18 @@ function retrieveInformation() {
 	
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
-	forumName = forumName.substring(pos+1);
-	forumName = forumName.replace('-', ' ');
-	getPosts(forumName);
+	if (pos > 0){
+		forumName = forumName.substring(pos+1);
+		forumName = forumName.replace('-', ' ');
+		getPosts(forumName);
+		
+	}
+	else {
+		//document.write("404: Page not found", "<br />", "Cannot access this page. You will be redirected to the main page.");
+		alert("Cannot access this page. You will be redirected to the main page.");
+		window.location.href = "main.html";
+	}
+	
 
 		
 	return false;
@@ -17,8 +26,8 @@ function retrieveInformation() {
 function getPosts(forumname) {
 
     var posts = new Array(); //placeholder for PHP function
-	posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
-    ["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
+	//posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
+    //["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
 	var forum = document.getElementById("forum-name");
 	forum.innerHTML = forumname;
 	if (posts.length == 0) {
