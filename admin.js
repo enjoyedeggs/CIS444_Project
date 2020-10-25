@@ -143,11 +143,6 @@ function getUsers() {
 			deleteUser.setAttribute("id", users[i][3]+"b");
 			deleteUser.setAttribute("onclick", "removeUser(this.id)");
 			deleteUser.innerHTML = "DISABLE";
-			//var delButton = document.createElement("button");
-			//delButton.setAttribute("class", "delete");
-			//delButton.setAttribute("id", users[i][3]+"b");
-			//delButton.setAttribute("onclick", "removeUser(this.id)");
-			//delButton.innerHTML = "DISABLE";
 			row.appendChild(name);
 			row.appendChild(coursesList);
 			row.appendChild(email);
@@ -155,71 +150,8 @@ function getUsers() {
 			//deleteUser.appendChild(delButton);
 			row.appendChild(deleteUser);
 			document.getElementById("usersList").append(row);
-			//row.append(outerDiv);
-			//row.appendChild(name);
-			//row.appendChild(courses);
-			//row.appendChild(email);
-			//row.appendChild(numPosts);
-			//deleteUser.appendChild(delButton);
-			//row.appendChild(deleteUser);
-			//outerDiv.appendChild(row);
 		}
-		/*
-		var tabElem = document.createElement("table");
-		tabElem.setAttribute("class", "searchresults");
-		tabElem.setAttribute("id", "usersTable");
-		var rowH = document.createElement("tr");
-		var nameH = document.createElement("th");
-		nameH.innerHTML = "Student Name";
-		var coursesH = document.createElement("th");
-		coursesH.innerHTML = "Courses";
-		var yearH = document.createElement("th");
-		yearH.innerHTML = "Year";
-		var emailH = document.createElement("th");
-		emailH.innerHTML = "CSUSM Email";
-		var numPostsH = document.createElement("th");
-		numPostsH.innerHTML = "# of Posts";
-		var deleteUserH = document.createElement("th");
-		deleteUserH.innerHTML = "Account Status";
-		rowH.appendChild(nameH);
-		rowH.appendChild(coursesH);
-		rowH.appendChild(yearH);
-		rowH.appendChild(emailH);
-		rowH.appendChild(numPostsH);
-		rowH.appendChild(deleteUserH);
-		tabElem.appendChild(rowH);
-		for (var i = 0; i < users.length; i++) {
-			var row = document.createElement("tr");
-			row.setAttribute("id", users[i][3]);
-			var name = document.createElement("td");
-			name.innerHTML = users[i][0];
-			var courses = document.createElement("td");
-			courses.innerHTML = users[i][1].join(', ');
-			var year = document.createElement("td");
-			year.innerHTML = users[i][2];
-			var email = document.createElement("td");
-			email.innerHTML = users[i][3];
-			var numPosts = document.createElement("td");
-			numPosts.innerHTML = users[i][4];
-			var deleteUser = document.createElement("td");
-			var delButton = document.createElement("button");
-			delButton.setAttribute("class", "delete");
-			delButton.setAttribute("id", users[i][3]+"b");
-			delButton.setAttribute("onclick", "removeUser(this.id)");
-			delButton.innerHTML = "DISABLE";
-			row.appendChild(name);
-			row.appendChild(courses);
-			row.appendChild(year);
-			row.appendChild(email);
-			row.appendChild(numPosts);
-			deleteUser.appendChild(delButton);
-			row.appendChild(deleteUser);
-			tabElem.appendChild(row);
-			
-			
-		}
-		document.getElementById("usersList").appendChild(tabElem);
-		*/
+
 		
 		
 	}
@@ -351,12 +283,12 @@ function removeUser(userId) {
 	if (delButton.innerHTML === "DISABLE") {
 		//TODO: Enable user in database (like reactivating acct)
 		delButton.innerHTML = "ENABLE";
-		delButton.setAttribute("class", "enable");
+		delButton.setAttribute("class", "item-disable enable");
 	}
 	else {
 		//TODO: Disable user in database (deactivate acct)
 		delButton.innerHTML = "DISABLE";
-		delButton.setAttribute("class", "delete");
+		delButton.setAttribute("class", "item-disable delete");
 	}
 	
 	
