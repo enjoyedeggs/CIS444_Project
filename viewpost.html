@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <title>Cougar Rescue: View Subforum Post</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="cougar_rescue.css"/>
+		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="pagestyle" onload="getInfo()">
+	<div id="navlist" class="navlist">
+			<div>
+				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
+			</div>
+			
+			<button class="logoutNav" onclick="logout()">Logout</button>
+			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
+        </div>
+        <div class="vpcontainer" id="post">
+            <div class="headerbox"  id="head">
+                <h1 class="postheader"id="post-header">View Post</h1>
+				
+				
+            </div>
+            <div class="profileandbody" id="profileandbody">
+                <div id="author-section" class="profilebox">
+					<div id="profile-pic"></div>
+                    <div class="indent" id="username"></div>
+                </div>
+                <div class="bodybox">
+                    <div id="post-content"></div>
+                </div>
+            </div>
+            <div id="user-controls" class="viewprofilebuttons hidden-subforum ">
+			<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post
+                <input  type="checkbox" id="flag" onchange="Flagfunc(this, 'post-header')"/></label>
+                <button  id="rplybutton" onclick="newReply()">Reply to Post</button>
+            </div>
+        </div>
+		<div id="admin-section" class="hidden-subforum post-admin-controls">
+			<button  onclick="deletePost()">Delete Post</button>
+			<label for="lockpost"><input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost()" value="true"/>Lock Post</label>
+		</div>
+		<div id="replies">
+		
+		</div>
+        <script type="text/javascript" src="viewpost.js"> </script>
+    </body>
+</html>

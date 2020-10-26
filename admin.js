@@ -170,8 +170,8 @@ function searchForum(event) {
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
 	var results = new Array(); //replace with PHP function call to get results
-	//results = [["Bob the Builder", "012345", "CIS444", "Homework", "This is an example of the search functionality."], 
-	//["Jane Doe", "09876", "CIS444", "Exam", "The midterm was easy!"]];
+	results = [["Bob the Builder", "012345", "CIS444", "HW", "This is an example of the search functionality."], 
+	["Jane Doe", "09876", "CIS444", "Test", "The midterm was easy!"]];
 	
 	
 	if (results.length == 0)
@@ -190,7 +190,7 @@ function searchForum(event) {
 			
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
-			resultsDisplay.setAttribute("id", results[i][1]);
+			resultsDisplay.setAttribute("id", results[i][2]+"-"+results[i][3]+"-"+results[i][1]);
 			resultsDisplay.setAttribute("onclick", "viewPost(this.id)");
 			var user = document.createElement("p");
 			user.innerHTML = '<span class="bolded"> Student: </span>' + results[i][0] ;
@@ -295,9 +295,14 @@ function removeUser(userId) {
 }
 
 function viewPost(id) {
+	var info = id.split("-");
+	var course = info[0];
+	var subforum = info[1];
+	id = info[2];
+	//console.log(course + " " + subforum + " " + id);
 	//TODO: redirect user to proper post for specified ID;
 	//console.log(id);
-	window.location.href = "view_post.html?postid="+id;
+	window.location.href = "viewpost.html?course=" + course+ "subforum=" + subforum + "postid="+id+"admin=true";
 }
 
 function logout() {
