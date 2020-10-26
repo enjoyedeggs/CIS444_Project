@@ -785,41 +785,40 @@ and open the template in the editor.
 
 .vpcontainer{
     background-color:#e6eaf0;
-	border: 2px solid #0259A8;
 	border-radius: 15px;
-    margin:100px;
-    display:flex;
-    flex-direction:column;
-    margin-right:auto;
+	display:flex;
+	flex-direction:column;
     margin-left:auto;
-    width:60%;
+	margin-right:auto;
+	margin-top:80px;
     padding-bottom:10px;
+	width:60%;
 }
 .headerbox{
+	align-content:center;
     background-color:#e6eaf0;
 	border-radius: 15px;
-	
     display:flex;
-    width:100%;
     justify-content:center;
-    align-content:center;
+	width:100%;
 }
 .headerbox > div{
     color:#f2f2f2;
-    position:relative;
-    font-size:20px;
-    padding:5px;
+    font-size:20px; 
     min-width:50px;
-    white-space:nowrap;
     overflow:hidden;
+	padding:5px;
+	position:relative;
+	white-space:nowrap;
 }
 .headerbox > input{
+	margin-bottom:auto;
     margin-top:auto;
-    margin-bottom:auto;
+   
 }
 .headerbox > label{
+	margin-bottom:auto;
     margin-top:auto;
-    margin-bottom:auto;
     padding:5px;
 }
 .profileandbody{
@@ -831,20 +830,21 @@ and open the template in the editor.
     
 }
 .profilebox{
-	border-right: 1px solid #0259A8;
+	align-content:center;
     display:flex;
+	flex-direction:column;
+	height:auto;
+	justify-content:center;
 	margin-left: 10px;
 	margin-right: 10px;
-    width:30%;
-    height:auto;
-    flex-direction:column;
-    align-content:center;
-    justify-content:center;
     overflow:hidden;
+	width:30%;
 }
+
 .profilebox > div{
+	flex-wrap:wrap;
     text-align:center;
-    flex-wrap:wrap;
+    
     
 }
 /*
@@ -855,23 +855,27 @@ and open the template in the editor.
 }*/
 .profilebox > button{
     background-color:red;
+	border:1px solid black;
     color:white;
-    border:1px solid black;
-    outline:none;
 }
 .bodybox{
+	border-left: 1px solid #0259A8;
+	
 	margin-top: 10px;
-    width:70%;
+	padding-left: 10px;
+    /*width:70%;*/
     
 }
 .bodybox > div{
+	overflow-wrap:break-word;
     padding:5px;
-    overflow-wrap:break-word;
+   
 }
 .bodybox > img{
-    padding:5px;
+	height:auto;
+    /*padding:5px;*/
     width:30%;
-    height:auto;
+    
 }
 .viewprofilebuttons{
     display:flex;
@@ -890,8 +894,8 @@ and open the template in the editor.
 }
 .post-admin-controls {
 	left: 47%;
-	margin-top: 10px;
 	margin-right: 30px;
+	margin-top: 10px;
 	overflow-wrap: break-word;
 	position: absolute;
 	top: 50%;
@@ -912,8 +916,8 @@ and open the template in the editor.
 
 .admin-controls {
 	left: 45%;
-	margin-top: 10px;
 	margin-right: 30px;
+	margin-top: 10px;
 	overflow-wrap: break-word;
 	position: relative;
 	top: 60%;
@@ -937,16 +941,16 @@ and open the template in the editor.
 	border-radius: 50%;
 	height: auto;
 	margin-bottom: 10px;
-	width: 80%;
 	position: relative;
 	top: 10px;
+	width: 80%;
 	z-index: 10;
 	
 }
 
 .flag-post {
-	position: relative;
 	margin-right: 10px;
+	position: relative;
 	top: 6px;
 }
 
@@ -960,13 +964,16 @@ and open the template in the editor.
 }
 
 .reply-msg {
-	background-color:#f2f2f2;
+	align-content:center;
+	background-color:#e6eaf0;
 	border: 2px solid #0259A8;
 	border-radius: 15px;
 	color: #0259A8;
-	padding: 10px;
-	position: relative;
+	justify-content:center;
 	left: 20%;
+	margin-right: 40%;
+	margin-top: 10px;
+	padding: 5px;
+	position: relative;
 	top: 40%;
-	width: 58%;
 }

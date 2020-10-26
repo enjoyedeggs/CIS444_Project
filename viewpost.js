@@ -49,6 +49,13 @@ function getInfo() {
 		
 		//TODO: Get replies
 		getReplies(post);
+		
+		var doc = document.getElementsByTagName("html")[0];
+		doc.style.visibility="visible";
+	}
+	else {
+		alert("Cannot access this page without selecting a forum on the main page. You will be redirected to the main page.");
+		window.location.href = "main.html";
 	}
 }
 function checkAdmin(adminsec, usersec, admin) {
@@ -72,8 +79,8 @@ function getPostContent(postid) {
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	replies = [["Reply Title", "Post Author", "postid123", "Post Content goes here"], 
-	["Reply Title", "Post Author", "postid234", "Post Content goes here"]];
+	//replies = [["Reply Title", "Post Author", "postid123", "Post Content goes here"], 
+	//["Reply Title", "Post Author", "postid234", "Post Content goes here"]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -237,12 +244,12 @@ function newPostReply(id) {
         // .forEach(node => 
             // to.setAttributeNode(node.cloneNode(true)));
 
-// function Flagfunc(element, header)
-// {
-    // var head = document.getElementById(header);
-	// head.innerHTML += " -- FLAGGED";
-	// element.disabled = true;
-// }
+function Flagfunc(element, header)
+{
+    var head = document.getElementById(header);
+	head.innerHTML += " -- FLAGGED";
+	element.disabled = true;
+}
 // function toggleLock(element){
     // var rplybtn=document.getElementById("rplybutton");
     // if(element.checked){

@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="en">
+<html lang="en" class="hidden-subforum">
     <head>
         <title>Cougar Rescue: View Subforum Post</title>
         <meta charset="UTF-8">
@@ -39,18 +39,20 @@ and open the template in the editor.
                 </div>
             </div>
             <div id="user-controls" class="viewprofilebuttons hidden-subforum ">
-			<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post
-                <input  type="checkbox" id="flag" onchange="Flagfunc(this, 'post-header')"/></label>
+			
+                <input  type="checkbox" id="flag" onchange="Flagfunc(this, 'post-header')"/>
+				<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post</label>
                 <button  id="rplybutton" onclick="newReply()">Reply to Post</button>
             </div>
         </div>
 		<div id="admin-section" class="hidden-subforum post-admin-controls">
 			<button  onclick="deletePost()">Delete Post</button>
-			<label for="lockpost"><input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost()" value="true"/>Lock Post</label>
+			<input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost()" value="true"/><label for="lockpost">Lock Post</label>
 		</div>
 		<div id="replies">
 		
 		</div>
         <script type="text/javascript" src="viewpost.js"> </script>
+		<noscript>Your browser does not support JavaScript</noscript>
     </body>
 </html>
