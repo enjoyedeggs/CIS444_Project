@@ -2,6 +2,7 @@ function retrieveInformation() {
     document.getElementById("fname").value = "server-value";
     document.getElementById("lname").value = "server-value";
     document.getElementById("email").value = "server-value";
+	document.getElementById("courses-list").value = "server-value";
     document.getElementById("signature").value = "server-value";
 }
 
@@ -27,9 +28,9 @@ function getLastName(){
 }
 
 function getEmailAddress(){
-	 if(csusmEmail(document.getElementById("email").value)){
+	 //if(csusmEmail(document.getElementById("email").value)){
 	 	return document.getElementById("email").value;
-	 }
+	 //}
 }
 
 function getSignature(){
@@ -37,18 +38,19 @@ function getSignature(){
 }
 
 function changePicture(){
-	alert(document.getElementById("pictureInput").value);
+	//alert(document.getElementById("pictureInput").value);
 	document.getElementById("picture").src = URL.createObjectURL(document.getElementById("pictureInput").files[0]);
 }
 
   
 function saveChanges(){                   
-	alert("saving changes")
+	//alert("saving changes")
 	getProfilePicture();
 	getFirstName();
 	getLastName();
 	getEmailAddress();
 	getSignature();
+	window.location.href="view_profile.html";
 	// use PUT requests to save data when database is made
 }
 

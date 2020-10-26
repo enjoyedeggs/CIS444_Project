@@ -1,17 +1,8 @@
 function retrieveInformation() {
 	displayProfilePicture();
-	//displayInfo("profile-picture-div", getProfilePicture());
 	displayUserInfo();
-	//displayInfo("user-info", getUserInfo());
 	displayInfo("signature", getSignature());
     displayInfo("courses", getCourses());
-    //Get list of users to display on admin homepage
-    /*displayInfo("profile_picture", getProfilePicture());
-    displayInfo("first_name", getFirstName());
-    displayInfo("last_name", getLastName());
-    displayInfo("email_address", getEmailAddress());
-    displayInfo("signature", getSignature());
-    displayInfo("courses", getCourses());*/
 	return false;
 }
 
@@ -40,11 +31,9 @@ function displayUserInfo() {
 	
 	var fnameElem = document.createElement("div");
 	fnameElem.innerHTML = "Name: " + fname + " " + lname;
-	//fnameElem.setAttribute("class", "small-font");
 	
 	var emailElem = document.createElement("div");
 	emailElem.innerHTML = "Email: " + email;
-	//emailElem.setAttribute("class", "small-font");
 	
 	dom.appendChild(fnameElem);
 	dom.appendChild(emailElem);
@@ -57,31 +46,35 @@ function getProfilePicture(){
 }
 
 function getFirstName(){
-    var first_name = "Crash";
+    var first_name = "Student's full name";
     return first_name;
 }
 
 function getLastName(){
-    var last_name = "Cougar";
+    var last_name = "will populate";
     return last_name;
 }
 
 function getEmailAddress(){
-    var email_address = "couga001@cougars.csusm.edu";
+    var email_address = "Student's email address will populate";//"couga001@cougars.csusm.edu";
     return email_address;
 }
 
 function getSignature(){
-    var sig = "Gooo cougars!!!";
+    var sig = "Student's signature will populate";
     return sig;
 }
 
 function getCourses(){
-    var course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
+    var course_list = new Array();
+	//course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
     var count_courses = course_list.length;
     var courses = "";
     var i;
 
+	if (course_list.length == 0 ){
+		courses = "You are not enrolled in any courses. Edit profile to add courses.";
+	}
     for (i = 0; i < count_courses; i++){
         courses += course_list[i];
         if (i < count_courses-1){

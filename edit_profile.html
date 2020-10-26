@@ -5,80 +5,78 @@
 	<head>
 		<title>Cougar Rescue Forum | My Profile</title>
 		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
         <!--<script type="text/javascript" src="nav.js"></script>-->
         <script type="text/javascript" src="edit_profile.js"></script>
         <link rel="stylesheet" href="cougar_rescue.css"/>
 	</head>
 	
-	<body id="view_profile" class="pagestyle" onload="retrieveInformation();">
+<body id="view_profile" class="pagestyle" onload="retrieveInformation();">
 		<div id="navlist" class="navlist">
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
+			</div>
+			
 			<button class="logoutNav" onclick="logout()">Logout</button>
-			<a href="main.html">Home</a>
 			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
         </div>
-      </div>
 
-        <div id="profile_info_div" class="forum-div">
-            <div class="table-format">
-                <div class="course-title">My Profile</div>
-            </div>
-            <div class="table-format">
-                <div class="sub-title">
-                    <div id="profile_picture"><!--class="sub-description">-->
-                        <p>Profile Picture</p>
-                        <img id="picture" height="100" width="100"><br>
-                        <input type="file" id="pictureInput" name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
+        <div id="profile_info_div" class="forum-div profile-size">
+			<h1>Edit My Profile</h1>
+
+            <div class="profile-picture">
+				<div id="profile-picture-div" >
+				</div>
+			</div>
+            <div class="profile-format">
+                <div class="sub-title floatleft">
+                    <div id="user-info">
+                        <p class="profile-text border-bottom-div">Personal Information </p>
+						<img class="profile-picture floatleft" id="picture"/><br />
+						<input class="input-picture" type="file" id="pictureInput" name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
+						
+						<label for="fname">First Name:
+						<input class="edit-input" id="fname" type="text" /></label><br /><br />
+						
+						<label for="lname">Last Name:
+						<input class="edit-input" id="lname" type="text" /></label><br /><br />
+						
+						<label for="email">CSUSM Email: 
+						<input class="edit-input" id="email" type="text" disabled /></label>
+						
                         <!--JS-->
                     </div>
 
-                    <div id="first_name">
-                        <p>First Name</p>
-                         <input type="text" id="fname" name="fname"><br><br>
+					<div id="courses">
+                        <p class="profile-text border-bottom-div">My Courses</p>
+						<textarea aria-label="courses" class="edit-input" rows="5" cols="30" id="courses-list"></textarea><br />
                         <!--JS-->
                     </div>
-
-                    <div id="last_name">
-                        <p>Last Name</p>
-                        <input type="text" id="lname" name="lname"><br><br>
-                        <!--JS-->
-                    </div>
-
-                    <div id="email_address">
-                        <p>Email Address</p>
-                        <input type="text" id="email" name="email"><br><br>
-                        <!--JS-->
-                    </div>
-
-                    <div id="signature">
-                        <p>Signature</p>
-                        <input type="text" id="signature" name="signature" ><br><br>
-                        <!--JS-->
-                    </div>
+					<div id="signature-div">
+                        <p class="profile-text border-bottom-div">Signature</p>
+						<textarea aria-label="signature" id="signature" class="edit-input" rows="5" cols="30" ></textarea><br />
+					</div>
+					
                 </div>
             </div>
-            <div class="table-format">
-            
-                <input id="saveButton"
-                    class="submitstyle"
+
+        </div>
+		<div class="edit-buttons">
+						                <input id="saveButton"
+                    class="edit-buttons-button"
                     type="button"
                     value="Save Profile"
                     onclick="saveChanges();"
                     />
                     
                 <input id="cancelButton"
-                    class="submitstyle"
+                    class="adminlogin"
                     type="button"
                     value="Cancel"
                     onclick="location.href='view_profile.html'"
                     />
-            </div>
-        </div>
-    </body>
+			</div>
+		</body>
     </html>
