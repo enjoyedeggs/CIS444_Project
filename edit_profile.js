@@ -1,3 +1,14 @@
+function makeVisible() {
+	var dom = document.getElementById("change-pass");
+	var divNode = document.getElementById("change-pass-div");
+	if (dom.checked) {
+		divNode.style.visibility = "visible";
+	}
+	else {
+		divNode.style.visibility = "hidden";
+	}
+}
+
 function retrieveInformation() {
 	getPicture();
     document.getElementById("fname").value = "server-value";
@@ -52,7 +63,27 @@ function changePicture(){
 }
 
   
-function saveChanges(){                   
+function saveChanges(){ 
+
+	var dom = document.getElementById("change-pass");
+	var opass = document.getElementById("oldpass");
+	var npass = document.getElementById("newpass");
+	var cpass = document.getElementById("confpass");
+	if (dom.checked) {
+		//TODO: verify encrypted old password against database
+		var ciphertext = CryptoJS.AES.encrypt(opass.value, 'secretkey128');
+		
+		var oldMatch = true; //placeholder for PHP
+		
+		if (matchingPasswords(npass.value, cpass.value) == false) {
+		
+			return false;
+		}
+		else {
+			alert("Password has been reset!");
+		}
+	}
+	
 	//alert("saving changes")
 	getProfilePicture();
 	getFirstName();
@@ -61,5 +92,22 @@ function saveChanges(){
 	getSignature();
 	window.location.href="view_profile.html";
 	// use PUT requests to save data when database is made
+}
+
+function matchingPasswords(pass1, pass2) {
+	
+	if (pass1 === pass2) {
+		if (pass1.length < 8) {
+			alert("Password must be at least 8 characters long.");
+			return false;
+		}
+		else
+			return true;
+	}
+	else {
+		alert("Passwords must match!");
+		return false;
+	}
+	
 }
 
