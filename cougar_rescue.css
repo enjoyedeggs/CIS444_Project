@@ -897,12 +897,13 @@ and open the template in the editor.
 	margin-right: 30px;
 	margin-top: 10px;
 	overflow-wrap: break-word;
-	position: absolute;
+	position: relative;
 	top: 50%;
+	width: 20%;
 }
 
 .post-admin-controls label{
-	color: black;
+	color: white;
 }
 
 .post-admin-controls button {
@@ -915,12 +916,13 @@ and open the template in the editor.
 }
 
 .admin-controls {
-	left: 45%;
+	left: 40%;
 	margin-right: 30px;
 	margin-top: 10px;
 	overflow-wrap: break-word;
 	position: relative;
 	top: 60%;
+	width: 25%;
 }
 
 .admin-controls label{

@@ -26,7 +26,7 @@ function getInfo() {
 		subforum = forumName.substring(subforumPos+9, postPos);
 		admin = forumName.substring(adminPos+6);
 		forumName = course + " " + subforum;
-		console.log('"'+ admin + '"');
+		//console.log('"'+ admin + '"');
 		checkAdmin("admin-section", "user-controls" , admin);
 		var posth = document.getElementById("post-header");
 		posth.innerHTML = "Post Title from Database for PostID"; //Placeholder for PHP
@@ -59,7 +59,7 @@ function getInfo() {
 	}
 }
 function checkAdmin(adminsec, usersec, admin) {
-	console.log(adminsec + " " + usersec);
+	//console.log(adminsec + " " + usersec);
 		if (admin === "true"){
 			var adminsec = document.getElementById(adminsec);
 			adminsec.style.visibility="visible";
@@ -79,8 +79,8 @@ function getPostContent(postid) {
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	//replies = [["Reply Title", "Post Author", "postid123", "Post Content goes here"], 
-	//["Reply Title", "Post Author", "postid234", "Post Content goes here"]];
+	replies = [["Reply Title", "Post Author", "postid123", "Post Content goes here"], 
+	["Reply Title", "Post Author", "postid234", "Post Content goes here"]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -148,6 +148,7 @@ function getReplies(postid) {
 			lockLbl.innerHTML = "Lock Reply";
 			var lockInput = document.createElement("input");
 			lockInput.setAttribute("type" , "checkbox");
+			lockInput.setAttribute("onchange", "lockPost(this.id)");
 			lockLbl.appendChild(lockInput);
 			adminControls.appendChild(lockLbl);
 			
@@ -171,7 +172,7 @@ function newReply() {
 function newPostReply(id) {
 	id = id.substring(0, id.length - 1);
 	window.location.href = "new_post.html?course=" + course + "subforum=" + subforum + "postid=" + id + "admin=" + admin;
-	console.log(course + " " + subforum + " " + id + " " + admin);
+	//console.log(course + " " + subforum + " " + id + " " + admin);
 }
 
 // function reply(){
@@ -293,15 +294,24 @@ function Flagfunc(element, header)
     // }
 // }
 
-function deletePost() {
+function deletePost(id) {
 	var postID = post;
-	var subs = postID.substring(0, postID.length - 2);
-	var dom = document.getElementById(subs);
-	var head = document.getElementById("post-header");
-	head.innerHTML += " -- DELETED";
+	var btn = document.getElementById(id);
+	if (btn.disabled == false) {
+		var subs = postID.substring(0, postID.length - 2);
+		var dom = document.getElementById(subs);
+		var head = document.getElementById("post-header");
+		head.innerHTML += " -- DELETED";
+		//Disable Lock Checkbox
+		document.getElementById("lockpost").disabled = true;
+		btn.disabled = true;
+		btn.style.visibility = "hidden";
+		
+		
+	}
 	
-	//Disable Lock Checkbox
-	document.getElementById("lockpost").disabled = true;
+	
+	
 	
 	//TODO: delete post from database
 	
@@ -310,10 +320,26 @@ function deletePost() {
 	
 }
 
-function lockPost() {
+function lockPost(id) {
 	var postID = post;
 	var head = document.getElementById("post-header");
-	head.innerHTML = title + " -- LOCKED";
+	
+	var dom = document.getElementById(id);
+	if (dom.checked) {
+		head.innerHTML = title + " -- LOCKED";
+	}
+	else {
+		head.innerHTML = title;
+	}
 	//TODO: lock post
 	
+}
+
+function logout() {
+	if (admin === "true") {
+		window.location.href = "admin_index.html";
+	}
+	else {
+		window.location.href="index.html";
+	}
 }

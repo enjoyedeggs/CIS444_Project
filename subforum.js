@@ -91,7 +91,7 @@ function getPosts(forumname) {
 
 function logout() {
 	//TODO: log user out.
-	window.location.href = "admin_index.html";
+	window.location.href = "index.html";
 }
 
 function viewPost(id) {

@@ -46,8 +46,8 @@ and open the template in the editor.
             </div>
         </div>
 		<div id="admin-section" class="hidden-subforum post-admin-controls">
-			<button  onclick="deletePost()">Delete Post</button>
-			<input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost()" value="true"/><label for="lockpost">Lock Post</label>
+			<button  id="disablebtn" onclick="deletePost(this.id)">Delete Post</button>
+			<input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost(this.id)" value="true"/><label for="lockpost">Lock Post</label>
 		</div>
 		<div id="replies">
 		
