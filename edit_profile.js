@@ -1,4 +1,5 @@
 function retrieveInformation() {
+	getPicture();
     document.getElementById("fname").value = "server-value";
     document.getElementById("lname").value = "server-value";
     document.getElementById("email").value = "server-value";
@@ -6,6 +7,14 @@ function retrieveInformation() {
     document.getElementById("signature").value = "server-value";
 }
 
+function getPicture() {
+	var imgElem = document.createElement("img");
+	var dom = document.getElementById("personal-info");
+	//<img class="profile-picture floatleft" id="picture" alt="Your Profile Picture Here"/>
+	imgElem.setAttribute("class", "profile-picture floatleft");
+	imgElem.setAttribute("id", "picture");
+	dom.appendChild(imgElem);
+}
 function csusmEmail(email) {
 	var pos = email.search(/^[A-Za-z]{5}\d{3}@cougars\.csusm\.edu$/);
 	if (pos != 0) {

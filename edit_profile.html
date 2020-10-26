@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="cougar_rescue.css"/>
 	</head>
 	
-<body id="view_profile" class="pagestyle" onload="retrieveInformation();">
+	<body id="edit_profile" class="pagestyle" onload="retrieveInformation();">
 		<div id="navlist" class="navlist">
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
@@ -33,9 +33,10 @@
             <div class="profile-format">
                 <div class="sub-title floatleft">
                     <div id="user-info">
-                        <p class="profile-text border-bottom-div">Personal Information </p>
-						<img class="profile-picture floatleft" id="picture"/><br />
-						<input class="input-picture" type="file" id="pictureInput" name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
+                        <p  class="profile-text border-bottom-div">Personal Information </p>
+						<div id="personal-info"></div><br />
+						<input aria-label="profile-picture" class="input-picture" type="file" id="pictureInput" 
+						name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
 						
 						<label for="fname">First Name:
 						<input class="edit-input" id="fname" type="text" /></label><br /><br />
