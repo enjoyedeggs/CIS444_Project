@@ -5,10 +5,6 @@
 	<head>
 		<title>Cougar Rescue Forum | My Profile</title>
 		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-		<link rel="stylesheet" href="mainpage.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
         <script type="text/javascript" src="nav.js"></script>
         <script type="text/javascript" src="view_profile.js"></script>
@@ -20,87 +16,38 @@
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
-			<!-- seach bar left align -->
-	<!--		<div class="search">-->
-	<!--			<form action="admin.html" onsubmit="return searchForum(this)">-->
-	<!--				<input aria-label="search" type="text" placeholder=" Search forum topics" name="search" id="searchInput" required />-->
-	<!--				<button aria-label="search" type="submit"> <i class="fa fa-search" ></i> </button>-->
-	<!--			</form>-->
-	<!--		</div>-->
-			<!--Coming back to this-->
+			
 			<button class="logoutNav" onclick="logout()">Logout</button>
-			<a href="main.html">Home</a>
 			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
         </div>
 
-        <div id="profile_info_div" class="forum-div">
-            <div class="table-format">
-                <div class="course-title">My Profile</div>
-            </div>
-            <div class="table-format">
-                <table class="table-no-border">
-                <div class="sub-title">
-                    <tr>
-                    <td rowspan="4">
-                    <div id="profile_picture"><!--class="sub-description">-->
-                        <p>Profile Picture</p>
-                        <!--JS-->
-                    </div>
-                    </td>
-                    </tr>
+        <div id="profile_info_div" class="forum-div profile-size">
+			<h1>My Profile</h1>
 
-                    <tr>
-                    <td>
-                    <div id="first_name">
-                        <p>First Name</p>
+            <div class="profile-picture">
+				<div id="profile-picture-div" >
+				</div>
+			</div>
+            <div class="profile-format">
+                <div class="sub-title floatright">
+                    <div id="user-info">
+                        <p class="profile-text border-bottom-div">Personal Information <a href="edit_profile.html" >
+				<img src="images/edit.png" alt="Edit Profile" class="edit-icon "></a></p>
                         <!--JS-->
                     </div>
-                    </td>
-                    </tr>
-                    
-                    <tr>
-                    <td>
-                    <div id="last_name">
-                        <p>Last Name</p>
-                        <!--JS-->
-                    </div>
-                    </td>
-                    </tr>
 
-                    <tr>
-                    <td>
-                    <div id="email_address">
-                        <p>Email Address</p>
+					<div id="courses">
+                        <p class="profile-text border-bottom-div">My Courses</p>
                         <!--JS-->
                     </div>
-                    </td>
-                    </tr>
-                </div>
-                </table>
-            </div>
-            <div class="table-format">
-                <div class="sub-title">
-                    <div id="signature">
-                        <p>Signature</p>
-                        <!--JS-->
-                    </div>
+					<div id="signature">
+                        <p class="profile-text border-bottom-div">Signature</p>
+					</div>
                 </div>
             </div>
-            <div class="table-format">
-                <div class="sub-title">
-                    <div id="courses">
-                        <p>My Courses</p>
-                        <!--JS-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-format">
-                <input id="edit-profile-button"
-                    class="submitstyle"
-                    type="button"
-                    value="Edit Profile"/>
-            </div>
+            
         </div>
     </body>
     </html>
