@@ -13,6 +13,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="pagestyle" onload="getInfo()">
+	<div id="whole-post">
 	<div id="navlist" class="navlist">
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
@@ -40,7 +41,7 @@ and open the template in the editor.
             </div>
             <div id="user-controls" class="viewprofilebuttons hidden-subforum ">
 			
-                <input  type="checkbox" id="flag" onchange="Flagfunc(this, 'post-header')"/>
+                <input  type="checkbox" id="flag"/>
 				<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post</label>
                 <button  id="rplybutton" onclick="newReply()">Reply to Post</button>
             </div>
@@ -54,5 +55,6 @@ and open the template in the editor.
 		</div>
         <script type="text/javascript" src="viewpost.js"> </script>
 		<noscript>Your browser does not support JavaScript</noscript>
+	</div>
     </body>
 </html>

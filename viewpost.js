@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var banbutton;
-var replybtn;
+var url =(window.location).toString();
 var forumname;
 var admin;
 var course;
@@ -28,7 +27,14 @@ function getInfo() {
 		forumName = course + " " + subforum;
 		//console.log('"'+ admin + '"');
 		checkAdmin("admin-section", "user-controls" , admin);
+		var disbtn = document.getElementById("disablebtn");
+		disbtn.setAttribute("id", post+"admin");
+		var flagbtn = document.getElementById("flag");
+		flagbtn.setAttribute("onchange", "Flagfunc(this,'"+post+"post-header');");
+		var lockbtn = document.getElementById("lockpost");
+		lockbtn.setAttribute("id", "lock"+post);
 		var posth = document.getElementById("post-header");
+		posth.setAttribute("id", post+"post-header");
 		posth.innerHTML = "Post Title from Database for PostID"; //Placeholder for PHP
 		var profilebox = document.getElementById("profile-pic");
 		var profilepic = document.createElement("img");
@@ -90,6 +96,7 @@ function getReplies(postid) {
 		for (var i = 0; i < replies.length; i++) {
 			var postDiv = document.createElement("div");
 			postDiv.setAttribute("class", "vpcontainer");
+			postDiv.setAttribute("id", replies[i][2]);
 			var head = document.createElement("div");
 			head.setAttribute("class", "headerbox");
 			var postTitle = document.createElement("h2");
@@ -147,6 +154,7 @@ function getReplies(postid) {
 			lockLbl.setAttribute("for", "lock"+replies[i][2]);
 			lockLbl.innerHTML = "Lock Reply";
 			var lockInput = document.createElement("input");
+			lockInput.setAttribute("id", "lock"+replies[i][2]);
 			lockInput.setAttribute("type" , "checkbox");
 			lockInput.setAttribute("onchange", "lockPost(this.id)");
 			lockLbl.appendChild(lockInput);
@@ -172,157 +180,56 @@ function newReply() {
 function newPostReply(id) {
 	id = id.substring(0, id.length - 1);
 	window.location.href = "new_post.html?course=" + course + "subforum=" + subforum + "postid=" + id + "admin=" + admin;
-	//console.log(course + " " + subforum + " " + id + " " + admin);
+	
 }
 
-// function reply(){
-    // document.getElementById("rplybutton").disabled=true;
-    // /* container for post */
-    // var post = document.createElement("div");
-    // post.className='vpcontainer';
-    // /***********************/
-    // /* container for header */ 
-    // var header = document.createElement("div"); 
-    // header.className='headerbox';
-    // var flagbutton = document.createElement("input");
-    // copyAttrs(document.getElementById("flag"),flagbutton);
-    // var flabel = document.createElement("LABEL");
-    // flabel.innerHTML='Flag';
-    // header.appendChild(flagbutton);
-    // header.appendChild(flabel);
-    // /**********************/
-    
-    // /* container for body */
-    // var postbody = document.createElement("div");
-    // postbody.className='profileandbody';
-    // /********************************/
-    // /* container for body */ 
-    // var profilesection = document.createElement("div");
-    // profilesection.className='profilebox';
-    // var profpic = document.createElement("img"); 
-    // profpic.src='images/profilepicture.png';
-    // profpic.className='profilebox > img';
-    // var user = document.createElement("div"); 
-    // user.innerHTML='CoolDude';
-    // var rptbutton = document.createElement("button");
-    // rptbutton.innerHTML="report";
-    // rptbutton.setAttribute('onclick','reportuser();');
-    // //banbutton = document.createElement("button");
-    // //banbutton.innerHTML="ban";
-    // //copyAttrs(document.getElementById("banbtn"),banbutton);
-    // profilesection.appendChild(profpic);
-    // profilesection.appendChild(user);
-    // profilesection.appendChild(rptbutton);
-    // //profilesection.appendChild(banbutton);
-    // postbody.appendChild(profilesection);
-    // /***********************************/
-    // var bodysection = document.createElement("div");
-    // bodysection.className='bodybox';
-    // var replytext = document.createElement("div");
-    // replytext.innerHTML="Have you tried looking at PEMDAS?";
-    // bodysection.appendChild(replytext);
-    // postbody.appendChild(bodysection);
-    // /*******************************************/
-    // /* container for footer buttons */
-    // var footer = document.createElement("div"); 
-    // footer.className='viewprofilebuttons';
-    // replybtn = document.createElement("button"); 
-    // replybtn.innerHTML="reply";
-    
-    // footer.appendChild(replybtn);
-    // postbody.appendChild(footer);
-    // /***********************/ 
-    
-    // post.appendChild(header);
-    // post.appendChild(postbody);
-    // post.append(footer);
-    // document.body.appendChild(post);
-    
-    
-// }
-// const copyAttrs = (from, to) =>
-    // Array.from(from.attributes)
-        // .forEach(node => 
-            // to.setAttributeNode(node.cloneNode(true)));
 
 function Flagfunc(element, header)
 {
+	//console.log(header);
     var head = document.getElementById(header);
 	head.innerHTML += " -- FLAGGED";
 	element.disabled = true;
 }
-// function toggleLock(element){
-    // var rplybtn=document.getElementById("rplybutton");
-    // if(element.checked){
-        // alert("Post is Locked");
-        // rplybtn.style.display='none';
-	// if(rplybtn.disabled){
-	// replybtn.style.display='none';
-	// }
-	
-    // }
-    // else{
-        // alert("Post is unlocked");
-        // rplybtn.style.display='block';
-	// if(rplybtn.disabled==true)
-	// {
-		// replybtn.style.display='block';
-	// }
-	
-    // }
-    
-// }
-// function reportuser(){
-    // alert("user has been reported");
-// }
-// function adminenabled(){
-    // //document.getElementById("lock").style.display="block";
-    // //document.getElementById("locklabel").style.display="block";
-    // //document.getElementById("banbtn").style.display="block";
-    // if(document.getElementById("rplybutton").disabled)
-    // {
-        // banbutton.style.display="block";
-    // }
-// }
-// function admindisabled(){
-    // document.getElementById("lock").style.display="none";
-    // document.getElementById("locklabel").style.display="none";
-    // //document.getElementById("banbtn").style.display="none";
-    // if(document.getElementById("rplybutton").disabled==true)
-    // {
-        // banbutton.style.display="none";
-    // }
-// }
+
 
 function deletePost(id) {
+	var newid = id.replace("admin", "");
 	var postID = post;
-	var btn = document.getElementById(id);
-	if (btn.disabled == false) {
-		var subs = postID.substring(0, postID.length - 2);
-		var dom = document.getElementById(subs);
-		var head = document.getElementById("post-header");
-		head.innerHTML += " -- DELETED";
-		//Disable Lock Checkbox
-		document.getElementById("lockpost").disabled = true;
-		btn.disabled = true;
-		btn.style.visibility = "hidden";
-		
+	//console.log(postID);
+	//console.log(id);
+	//console.log(newid);
+
+	if (postID === newid) {
+		document.getElementById("whole-post").innerHTML = "This post has been deleted";
+		if (admin === "true") {
+			window.location.href = "admin.html";
+		}
 		
 	}
-	
-	
-	
-	
+	else {
+		var reply = document.getElementById(newid);
+		var replies_dom = document.getElementById("replies");
+		replies_dom.removeChild(reply);
+		//console.log(replies_dom.hasChildNodes());
+		//console.log(replies_dom.childNodes.length);
+		if (replies_dom.childNodes.length === 1) {
+			
+			replies_dom.innerHTML = 'This post does not have any replies yet.';
+			replies_dom.setAttribute("class", "reply-msg");
+		
+		}
+	}
 	//TODO: delete post from database
-	
-
 	
 	
 }
 
 function lockPost(id) {
-	var postID = post;
-	var head = document.getElementById("post-header");
+	var newid = id.replace("lock", "");
+	//console.log(newid);
+	//console.log(id);
+	var head = document.getElementById(newid+"post-header");
 	
 	var dom = document.getElementById(id);
 	if (dom.checked) {
