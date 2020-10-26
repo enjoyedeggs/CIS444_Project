@@ -564,9 +564,8 @@ This is for the new post
 	
 }
 .submit {
-	left: 65%;
-	position: absolute;
-	top: 80%;
+	position: relative;
+	top: 220px;
 }
 
 .submitbutton  {
