@@ -2,7 +2,7 @@
 <!--
 Project Name: Cougar Rescue Forum
 Course: CIS444
-Description: This file is the html for the student view of a post.
+Description: This file is the html for the admin view of a post.
 			 The file contains the post and it's replies. The corresponding
 			 javascript file dynamically fills the page information.
 -->
@@ -22,9 +22,7 @@ Description: This file is the html for the student view of a post.
 			</div>
 			
 			<button class="logoutNav" onclick="logout()">Logout</button>
-			<a href="search.html">Search</a>
-			<a href="view_profile.html">Profile</a>
-			<a href="main.html">Home</a>
+			<a href="admin.html">Home</a>
         </div>
         <div class="vpcontainer" id="post">
             <div class="headerbox"  id="head">
@@ -41,17 +39,15 @@ Description: This file is the html for the student view of a post.
                     <div id="post-content"></div>
                 </div>
             </div>
-            <div id="user-controls" class="viewprofilebuttons">
-			
-                <input  type="checkbox" id="flag"/>
-				<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post</label>
-                <button  id="rplybutton" onclick="newReply()">Reply to Post</button>
-            </div>
         </div>
+		<div id="admin-section" class="post-admin-controls">
+			<button  id="disablebtn" onclick="deletePost(this.id)">Delete Post</button>
+			<input type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost(this.id)" value="true"/><label for="lockpost">Lock Post</label>
+		</div>
 		<div id="replies">
 		
 		</div>
-        <script type="text/javascript" src="viewpost.js"> </script>
+        <script type="text/javascript" src="admin_viewpost.js"> </script>
 		<noscript>Your browser does not support JavaScript</noscript>
 	</div>
     </body>

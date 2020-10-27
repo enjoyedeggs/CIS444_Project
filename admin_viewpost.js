@@ -22,16 +22,15 @@ function getInfo() {
 		post = forumName.substring(postPos);
 		subforum = forumName.substring(subforumPos+9, postPos);
 		forumName = course + " " + subforum;
-		//console.log('"'+ admin + '"');
-		var flagbtn = document.getElementById("flag");
-		flagbtn.setAttribute("onchange", "Flagfunc(this,'"+post+"post-header');");
-
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
 		posth.innerHTML = "HTML Help"; //Placeholder for PHP
 		var profilebox = document.getElementById("profile-pic");
 		var profilepic = document.createElement("img");
-		
+		var disbtn = document.getElementById("disablebtn");
+		disbtn.setAttribute("id", post+"admin");
+		var lockbtn = document.getElementById("lockpost");
+		lockbtn.setAttribute("id", "lock"+post);
 		//TODO: get user's profile picture
 		var profile_src = "images/profilepicture.png";//Placeholder
 		profilepic.setAttribute("src", profile_src);
@@ -53,8 +52,8 @@ function getInfo() {
 		doc.style.visibility="visible";
 	}
 	else {
-		alert("Cannot access this page without selecting a forum on the main page. You will be redirected to the main page.");
-		window.location.href = "main.html";
+		alert("Cannot access this page without selecting a post from the admin home page via search. You will be redirected to the admin home page.");
+		window.location.href = "admin.html";
 	}
 }
 function getUserName(postid) {
@@ -103,63 +102,88 @@ function getReplies(postid) {
 			profile_sec.appendChild(authorsec);
 			profile_sec.appendChild(bodycont);
 			
-			var userControls = document.createElement("div");
-			userControls.setAttribute("id", replies[i][2]+"user-controls");
-			userControls.setAttribute("class", "viewprofilebuttons");
-			
-			var flagLbl = document.createElement("label");
-			flagLbl.setAttribute("class", "flag-post floatright");
-			flagLbl.setAttribute("for", "flag"+replies[i][2]);
-			var flaginput = document.createElement("input");
-			flaginput.setAttribute("type", "checkbox");
-			flaginput.setAttribute("id", "flag"+replies[i][2]);
-			flaginput.setAttribute("onchange", "Flagfunc(this,'" + replies[i][2]+"post-header');");
-			flagLbl.innerHTML = "Flag Post" ;
-			flagLbl.appendChild(flaginput);
-			var replyBtn = document.createElement("button");
-			replyBtn.setAttribute("id", replies[i][2]+"b");
-			replyBtn.setAttribute("onclick", "newPostReply(this.id)");
-			replyBtn.innerHTML = "Reply";
-			userControls.appendChild(flagLbl);
-			userControls.append(replyBtn);
-			
 
+			
+			var adminControls = document.createElement("div");
+			adminControls.setAttribute("id", replies[i][2]+"admin-controls");
+			adminControls.setAttribute("class", "admin-controls");
+			var adminDel = document.createElement("button");
+			adminDel.setAttribute("id", replies[i][2]+"admin");
+			adminDel.setAttribute("onclick", "deletePost(this.id)");
+			adminDel.innerHTML = "Delete Post";
+			adminControls.appendChild(adminDel);
+			var lockLbl = document.createElement("label");
+			lockLbl.setAttribute("for", "lock"+replies[i][2]);
+			lockLbl.innerHTML = "Lock Reply";
+			var lockInput = document.createElement("input");
+			lockInput.setAttribute("id", "lock"+replies[i][2]);
+			lockInput.setAttribute("type" , "checkbox");
+			lockInput.setAttribute("onchange", "lockPost(this.id)");
+			lockLbl.appendChild(lockInput);
+			adminControls.appendChild(lockLbl);
 			
 			
 			
 			
 			postDiv.appendChild(profile_sec);
-			postDiv.appendChild(userControls);
+			postDiv.appendChild(adminControls);
 			replies_dom.appendChild(postDiv);
 		}
 		
 	}
 }
 
-function newReply() {
-	window.location.href = "new_post.html?"+ (window.location).toString().substring(queryPos+1);
-}
 
-function newPostReply(id) {
-	id = id.substring(0, id.length - 1);
-	window.location.href = "new_post.html?course=" + course + "subforum=" + subforum + "postid=" + id;
+
+function deletePost(id) {
+	var newid = id.replace("admin", "");
+	var postID = post;
+	//console.log(postID);
+	//console.log(id);
+	//console.log(newid);
+
+	if (postID === newid) {
+		alert("This post has been deleted. You will be redirected back to the admin home page.");
+		window.location.href = "admin.html";
+		
+		
+	}
+	else {
+		var reply = document.getElementById(newid);
+		var replies_dom = document.getElementById("replies");
+		replies_dom.removeChild(reply);
+		//console.log(replies_dom.hasChildNodes());
+		//console.log(replies_dom.childNodes.length);
+		if (replies_dom.children.length === 0) {
+			
+			replies_dom.innerHTML = 'This post does not have any replies yet.';
+			replies_dom.setAttribute("class", "reply-msg");
+		
+		}
+	}
+	//TODO: delete post from database
+	
 	
 }
 
-
-function Flagfunc(element, header)
-{
-	//console.log(header);
-    var head = document.getElementById(header);
-	head.innerHTML += " -- FLAGGED";
-	element.disabled = true;
+function lockPost(id) {
+	var newid = id.replace("lock", "");
+	//console.log(newid);
+	//console.log(id);
+	var head = document.getElementById(newid+"post-header");
+	
+	var dom = document.getElementById(id);
+	if (dom.checked) {
+		head.innerHTML = title + " -- LOCKED";
+	}
+	else {
+		head.innerHTML = title;
+	}
+	//TODO: lock post
+	
 }
-
-
 
 function logout() {
 	
-	
-	window.location.href="index.html";
-	
+	window.location.href = "admin_index.html";
 }

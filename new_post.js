@@ -56,7 +56,6 @@ function redirect()
 	var pos = forumName.search(/\?/);
 	var coursePos = forumName.search(/course=/);
 	var subforumPos = forumName.search(/subforum=/);
-	var adminPos = forumName.search(/admin=/);
 	if (postPos == -1) {
 
 		course = forumName.substring(coursePos+7, subforumPos);
@@ -68,8 +67,7 @@ function redirect()
 	else {
 		course = forumName.substring(coursePos+7, subforumPos);
 		subforum = forumName.substring(subforumPos+9, postPos);
-		var post = forumName.substring(postPos+7, adminPos);
-		var admin = forumName.substring(adminPos+6);
-		window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum + "postid=" + post + "admin=" + admin;
+		var post = forumName.substring(postPos+7);
+		window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum + "postid=" + post;
 	}
 }

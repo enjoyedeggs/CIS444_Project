@@ -95,7 +95,7 @@ function logout() {
 
 function viewPost(id) {
 	//TODO: view post 
-	window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum+ "postid=" +id+"admin=false";
+	window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum+ "postid=" +id;
 }
 
 function newPost(id) {
