@@ -10,7 +10,7 @@ var course;
 var subforum;
 var post;
 var queryPos;
-var title= "Post Title from Database for PostID";
+var title= "HTML Help"; //dummy data
 function getInfo() {
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
@@ -35,7 +35,7 @@ function getInfo() {
 		lockbtn.setAttribute("id", "lock"+post);
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
-		posth.innerHTML = "Post Title from Database for PostID"; //Placeholder for PHP
+		posth.innerHTML = "HTML Help"; //Placeholder for PHP
 		var profilebox = document.getElementById("profile-pic");
 		var profilepic = document.createElement("img");
 		
@@ -76,17 +76,16 @@ function checkAdmin(adminsec, usersec, admin) {
 		}
 }
 function getUserName(postid) {
-	return "Post Author";
+	return "Bob the Builder"; //Dummy Data
 }
 
 function getPostContent(postid) {
-	return "Post content that will be retrieved from database will appear here. This is a placeholder.";
+	return "I'm having trouble formatting my pages and don't understand how to create a table. Can someone walk me through it?";
 }
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	replies = [["Reply Title", "Post Author", "postid123", "Post Content goes here"], 
-	["Reply Title", "Post Author", "postid234", "Post Content goes here"]];
+	replies = [["Reply: HTML Help", "Jane Doe", "postid123", "You should try looking at w3 schools! They're so helpful."]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -113,11 +112,11 @@ function getReplies(postid) {
 			var user = document.createElement("div");
 			user.setAttribute("class", "indent");
 			user.setAttribute("id", replies[i][1]);
-			user.innerHTML = getUserName(replies[i][2]);
+			user.innerHTML = replies[i][1];
 			authorsec.appendChild(user);
 			var bodycont = document.createElement("div");
 			bodycont.setAttribute("class", "bodybox");
-			bodycont.innerHTML = getPostContent(replies[i][2]);
+			bodycont.innerHTML = replies[i][3];
 			
 			profile_sec.appendChild(authorsec);
 			profile_sec.appendChild(bodycont);

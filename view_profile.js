@@ -46,28 +46,28 @@ function getProfilePicture(){
 }
 
 function getFirstName(){
-    var first_name = "Student's full name";
+    var first_name = "Mary"; //PHP placeholder
     return first_name;
 }
 
 function getLastName(){
-    var last_name = "will populate";
+    var last_name = "Poppins"; //PHP placeholder
     return last_name;
 }
 
 function getEmailAddress(){
-    var email_address = "Student's email address will populate";//"couga001@cougars.csusm.edu";
+    var email_address = "poppi005@cougars.csusm.edu";//"couga001@cougars.csusm.edu";
     return email_address;
 }
 
 function getSignature(){
-    var sig = "Student's signature will populate";
+    var sig = "Where's my umbrella?";
     return sig;
 }
 
 function getCourses(){
     var course_list = new Array();
-	//course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
+	course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
     var count_courses = course_list.length;
     var courses = "";
     var i;

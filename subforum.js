@@ -33,8 +33,7 @@ function retrieveInformation() {
 function getPosts(forumname) {
 
     var posts = new Array(); //placeholder for PHP function
-	posts = [["User1", "Post Title", "postid1", "4", "6", "12/25/10"],["User2", "Post Title", "postid2",  "4","5", "10/1/20"],
-    ["User3", "Post Title","postid3",  "3","4", "1/4/98"]];
+	posts = [["Bob the Builder", "HTML Help", "123456", "4", "6", "10/25/20"]];
 	var forum = document.getElementById("forum-name");
 	forum.innerHTML = forumname;
 	if (posts.length == 0) {

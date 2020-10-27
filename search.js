@@ -3,15 +3,15 @@ function searchForum(event) {
 	
 	//Change "Admin Page" heading to Search Results"
 	var heading = document.getElementById("searchheading");
-	heading.innerHTML= "Search Results";
+	heading.innerHTML= "Search Results: Click to View";
 	
 	//Clear results before showing new ones
 	removeAllChildNodes(document.getElementById("searchResults"));
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
 	var results = new Array(); //replace with PHP function call to get results
-	//results = [["Bob the Builder", "012345", "CIS444", "Homework", "This is an example of the search functionality."], 
-	//["Jane Doe", "09876", "CIS444", "Exam", "The midterm was easy!"]];
+	results = [["Bob the Builder", "012345", "CIS444", "HW", "This is an example of the search functionality."], 
+	["Jane Doe", "09876", "CIS444", "HW", "I keep going in circles with HW6. Can someone help me???"]];
 	
 	
 	if (results.length == 0)
@@ -34,7 +34,7 @@ function searchForum(event) {
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("onclick", "goToPost(this.id)");
 			resultsDisplay.setAttribute("class", "searchresults");
-			resultsDisplay.setAttribute("id", results[i][1]);
+			resultsDisplay.setAttribute("id", results[i][2]+"-" + results[i][3]+ "-"+results[i][1]);
 			var user = document.createElement("p");
 			resultsDisplay.innerHTML = '<span class="bolded"> Student: </span>' + results[i][0] ;
 			resultsDisplay.appendChild(user);
@@ -66,7 +66,13 @@ function removeAllChildNodes(parent) {
 
 function goToPost(id) {
 	//TODO: redirect user to post
-	//console.log("going to postID: " + id); 
+	var courseEnd = id.search(/-/);
+	var course = id.substring(0, courseEnd);
+	id = id.replace(course+"-", "");
+	var subforumEnd = id.search(/-/);
+	var subforum = id.substring(0, subforumEnd);
+	var postID = id.substring(subforumEnd+1);
+	window.location.href="viewpost.html?course="+course+"subforum="+subforum+ "postid="+postID;
 }
 
 
