@@ -10,7 +10,7 @@ function retrieveInformation() {
 
 function getFlagged() {
 	var flagged = new Array(); //placeholder for flagged results
-	//flagged = [["Bob the Builder", "456322", "CIS444", "Exam", "The answer to the question was C"]];
+	flagged = [["Bob the Builder", "456322", "CIS444", "Exam", "The answer to the question was C"]];
 
 	if (flagged.length == 0)
 	{
@@ -170,8 +170,8 @@ function searchForum(event) {
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
 	var results = new Array(); //replace with PHP function call to get results
-	results = [["Bob the Builder", "012345", "CIS444", "HW", "This is an example of the search functionality."], 
-	["Jane Doe", "09876", "CIS444", "Test", "The midterm was easy!"]];
+	results = [["Bob the Builder", "012345", "CIS444", "HW", "I am confused with the DOM and DOM2 models. Can anyone explain this to me?"], 
+	["Jane Doe", "09876", "CIS444", "HW", "Should I study the homework for the midterm?"]];
 	
 	
 	if (results.length == 0)
@@ -252,6 +252,15 @@ function deletePost(from, postID) {
 	}
 	else if (from === "flagged") {
 		document.getElementById("flaggedPosts").removeChild(dom);
+		console.log(document.getElementById("adminheading").children);
+		if (document.getElementById("adminheading").children.length === 0) {
+			var resultsDisplay = document.createElement("div");
+			resultsDisplay.setAttribute("class", "searchresults");
+			var innerP = document.createElement("p");
+			innerP.innerHTML = "No flagged posts to review.";
+			resultsDisplay.appendChild(innerP);
+			document.getElementById("flaggedPosts").appendChild(resultsDisplay);
+		}
 		//retrieveInformation(); 
 	}
 	

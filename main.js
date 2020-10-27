@@ -2,7 +2,7 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-courseName = ["CIS444"];
+//courseName = ["CIS444"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
@@ -13,8 +13,11 @@ var today = mm + "-" + dd + "-" + yyyy;
 function writeTable(){
     //Case of not having any class
     if(courseName.length === 0){
-        document.write("<div class='no-class'>You are not enrolled in any course forums. Please add your current courses to your profile to view your courses' forums.</div>")
-    }
+		var noclass = document.createElement("div");
+		noclass.setAttribute("class", "no-class");
+		noclass.innerHTML = "You are not enrolled in any course forums. Please add your current courses to your profile to view your courses' forums.";
+    	document.getElementById("forum-div").appendChild(noclass);
+	}
     //Case of having class
     else{
         // Create table-format div
