@@ -33,7 +33,7 @@ function retrieveInformation() {
 function getPosts(forumname) {
 
     var posts = new Array(); //placeholder for PHP function
-	posts = [["Bob the Builder", "HTML Help", "123456", "4", "6", "10/25/20"]];
+	posts = [["Bob the Builder", "HTML Help", "123456", "4", "6", "10-25-2020"]];
 	var forum = document.getElementById("forum-name");
 	forum.innerHTML = forumname;
 	if (posts.length == 0) {
@@ -70,8 +70,7 @@ function getPosts(forumname) {
             divElem4.innerHTML = posts[i][3];
             var divElem6 = document.createElement("div");
             divElem6.setAttribute("class", "item-last-post");
-			var date = new Date(posts[i][5]);
-            divElem6.innerHTML = (date.getMonth()+1).toString() + "/" + date.getDay() + "/" + date.getFullYear();
+            divElem6.innerHTML = posts[i][5]
 
             divElem0.appendChild(divElem)
             divElem.appendChild(divElem2);
