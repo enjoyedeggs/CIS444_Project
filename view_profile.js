@@ -67,7 +67,7 @@ function getSignature(){
 
 function getCourses(){
     var course_list = new Array();
-	course_list = ["CIS 444", "CS 421", "CS 446", "CS 351"];
+	course_list = ["CIS 444"];
     var count_courses = course_list.length;
     var courses = "";
     var i;
