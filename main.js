@@ -2,7 +2,7 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-//courseName = ["CIS444"];
+courseName = ["CIS444"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
