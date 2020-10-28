@@ -54,7 +54,7 @@ function matchingPasswords(pass1, pass2) {
 }
 
 function csusmEmail(email) {
-	var pos = email.search(/^[A-Za-z]{5}\d{3}@cougars\.csusm\.edu$/);
+	var pos = email.search(/^[A-Za-z]{1,5}\d{3}@cougars\.csusm\.edu$/);
 	if (pos != 0) {
 		alert("You must use a CSUSM issued student email to create an account!");
 		return false;
