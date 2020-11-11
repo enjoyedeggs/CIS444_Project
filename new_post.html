@@ -36,15 +36,7 @@ Description: This file is the html for the new post/reply page.
 		<form id="new-post-form" onsubmit="return submission(this);">
 			<div class="create"><h1 class="postheader">Create New Post/Reply</h1></div>
 			<hr class="break">
-			<div class="table">
-				<div class="username floatleft">Name:</div>
-				<div class="name floatleft">
-					<input aria-label="user enters their username" type="text" name="Username" placeholder="Name" id="Username" required />
-				</div>
-			</div>
-				
-			<br />
-			<br />
+
 			
 			<div class="table">
 				<div  class="class floatleft">Class:</div>
@@ -75,11 +67,11 @@ Description: This file is the html for the new post/reply page.
 			<div class="table">
 				<div class="text floatleft">Description:</div>
 				<div class="userText floatleft">
-					<textarea  aria-label="user types their post/reply here" rows="10" cols="50" name="UsersText" 
+					<textarea  aria-label="user types their post/reply here" rows="8" cols="80" name="UsersText" 
 					placeholder="Type your post or reply here..." id="UsersText" class="postdescription"  required ></textarea>
 				</div>
 			</div>
-			<input aria-label="submit button" value="Submit" class="submit submitstyle" type="submit" name="sbutton" 
+			<input aria-label="submit button" value="Submit" class="submit adminlogin" type="submit" name="sbutton" 
 			id="subButton"/>
 		</form>
 	</div>

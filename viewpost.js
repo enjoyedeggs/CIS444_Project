@@ -116,12 +116,12 @@ function getReplies(postid) {
 			flaginput.setAttribute("onchange", "Flagfunc(this,'" + replies[i][2]+"post-header');");
 			flagLbl.innerHTML = "Flag Post" ;
 			flagLbl.appendChild(flaginput);
-			var replyBtn = document.createElement("button");
-			replyBtn.setAttribute("id", replies[i][2]+"b");
-			replyBtn.setAttribute("onclick", "newPostReply(this.id)");
-			replyBtn.innerHTML = "Reply";
+			//var replyBtn = document.createElement("button");
+			//replyBtn.setAttribute("id", replies[i][2]+"b");
+			//replyBtn.setAttribute("onclick", "newPostReply(this.id)");
+			//replyBtn.innerHTML = "Reply";
 			userControls.appendChild(flagLbl);
-			userControls.append(replyBtn);
+			//userControls.append(replyBtn);
 			
 
 			

@@ -435,10 +435,9 @@ This is for the new post
 
 	background-color: white;
 	border-radius: 10px;
-	height: 550px;
-	margin: 7% 10% 5% 12%;	
-	
-	width:75%;
+	height: 375px;
+	margin: 7% 10% 5% 15%;	
+	width:70%;
 
 }
 
@@ -567,8 +566,10 @@ This is for the new post
 	
 }
 .submit {
-	position: relative;
-	top: 220px;
+	left: 47%;
+	position: absolute;
+	top: 80%;
+	
 }
 
 .submitbutton  {
