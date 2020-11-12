@@ -5,10 +5,8 @@ function login(event) {
 	var email = document.getElementById("emailField");
 	var pass = document.getElementById("passField");
 	// Encrypt Password
-	var ciphertext = CryptoJS.AES.encrypt(pass.value, 'secretkey128');
-
-
-	
+	var encrypted = CryptoJS.SHA256(pass.value);
+	//console.log(encrypted.toString());
 	//TODO: validate credentials with database
 	//placeholder for PHP function
 	
