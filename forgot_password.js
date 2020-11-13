@@ -25,6 +25,7 @@ function sendEmail(event) {
 		return true;
 	}
 	else {
+		alert("This email is not associated with any account. Please register to create an account!");
 		return false;
 	}
 }

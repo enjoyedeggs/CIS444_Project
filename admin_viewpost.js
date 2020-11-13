@@ -9,7 +9,8 @@ var course;
 var subforum;
 var post;
 var queryPos;
-var title= "HTML Help"; //dummy data
+var title= "Database Connection with PHP"; //dummy data
+var postStatus = "locked";
 function getInfo() {
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
@@ -24,13 +25,30 @@ function getInfo() {
 		forumName = course + " " + subforum;
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
-		posth.innerHTML = "HTML Help"; //Placeholder for PHP
+		//console.log(postStatus);
+		//console.log(postStatus === "flagged");
+		var inner;
+		if (postStatus === "NULL")
+			inner = title; //Placeholder for PHP
+		else if (postStatus === "flagged")
+			inner = title + " -- FLAGGED"; //Placeholder for PHP
+		else if (postStatus === "locked") 
+			inner = title + " -- LOCKED";
+			
+		posth.innerHTML = inner;	
+		
+		//posth.innerHTML = "Database Connection with PHP"; //Placeholder for PHP
 		var profilebox = document.getElementById("profile-pic");
 		var profilepic = document.createElement("img");
 		var disbtn = document.getElementById("disablebtn");
 		disbtn.setAttribute("id", post+"admin");
+		
 		var lockbtn = document.getElementById("lockpost");
 		lockbtn.setAttribute("id", "lock"+post);
+		if (postStatus === "locked") {
+			lockbtn.checked = true;
+			lockbtn.disabled = true;
+		}
 		//TODO: get user's profile picture
 		var profile_src = "images/profilepicture.png";//Placeholder
 		profilepic.setAttribute("src", profile_src);
@@ -57,16 +75,16 @@ function getInfo() {
 	}
 }
 function getUserName(postid) {
-	return "Bob the Builder"; //Dummy Data
+	return "Suchi Kapur"; //Dummy Data
 }
 
 function getPostContent(postid) {
-	return "I'm having trouble formatting my pages and don't understand how to create a table. Can someone walk me through it?";
+	return "How can I connect my database to my website?";
 }
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	replies = [["Reply: HTML Help", "Jane Doe", "postid123", "You should try looking at w3 schools! They're so helpful."]];
+	replies = [["RE: Database Connection with PHP", "Jason Luu", "100", "Watch the last lecture video recording.", "NULL"]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -110,17 +128,17 @@ function getReplies(postid) {
 			var adminDel = document.createElement("button");
 			adminDel.setAttribute("id", replies[i][2]+"admin");
 			adminDel.setAttribute("onclick", "deletePost(this.id)");
-			adminDel.innerHTML = "Delete Post";
+			adminDel.innerHTML = "Delete Reply";
 			adminControls.appendChild(adminDel);
-			var lockLbl = document.createElement("label");
-			lockLbl.setAttribute("for", "lock"+replies[i][2]);
-			lockLbl.innerHTML = "Lock Reply";
-			var lockInput = document.createElement("input");
-			lockInput.setAttribute("id", "lock"+replies[i][2]);
-			lockInput.setAttribute("type" , "checkbox");
-			lockInput.setAttribute("onchange", "lockPost(this.id)");
-			lockLbl.appendChild(lockInput);
-			adminControls.appendChild(lockLbl);
+			// var lockLbl = document.createElement("label");
+			// lockLbl.setAttribute("for", "lock"+replies[i][2]);
+			// lockLbl.innerHTML = "Lock Reply";
+			// var lockInput = document.createElement("input");
+			// lockInput.setAttribute("id", "lock"+replies[i][2]);
+			// lockInput.setAttribute("type" , "checkbox");
+			// lockInput.setAttribute("onchange", "lockPost(this.id)");
+			// lockLbl.appendChild(lockInput);
+			// adminControls.appendChild(lockLbl);
 			
 			
 			
@@ -175,6 +193,7 @@ function lockPost(id) {
 	var dom = document.getElementById(id);
 	if (dom.checked) {
 		head.innerHTML = title + " -- LOCKED";
+		document.getElementById(id).disabled = true;
 	}
 	else {
 		head.innerHTML = title;

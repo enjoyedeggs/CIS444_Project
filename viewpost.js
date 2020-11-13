@@ -9,7 +9,8 @@ var course;
 var subforum;
 var post;
 var queryPos;
-var title= "HTML Help"; //dummy data
+var title= "Database Connection with PHP"; //dummy data
+var postStatus = "flagged";
 function getInfo() {
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
@@ -28,7 +29,23 @@ function getInfo() {
 
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
-		posth.innerHTML = "HTML Help"; //Placeholder for PHP
+		var inner;
+		if (postStatus === "NULL")
+			inner = title; //Placeholder for PHP
+		else if (postStatus === "flagged") {
+			inner = title + " -- FLAGGED"; //Placeholder for PHP
+			document.getElementById("flag").checked = true;
+			document.getElementById("flag").disabled = true;
+		}
+		else if (postStatus === "locked") {
+			inner = title + " -- LOCKED";
+			document.getElementById("flaglabel").style.visibility = "hidden";
+			document.getElementById("flag").style.visibility = "hidden";
+			document.getElementById("rplybutton").style.visibility = "hidden";
+			
+		}
+		posth.innerHTML = inner;	
+		
 		var profilebox = document.getElementById("profile-pic");
 		var profilepic = document.createElement("img");
 		
@@ -58,16 +75,16 @@ function getInfo() {
 	}
 }
 function getUserName(postid) {
-	return "Bob the Builder"; //Dummy Data
+	return "Suchi Kapur"; //Dummy Data
 }
 
 function getPostContent(postid) {
-	return "I'm having trouble formatting my pages and don't understand how to create a table. Can someone walk me through it?";
+	return "How can I connect my database to my website?";
 }
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	replies = [["Reply: HTML Help", "Jane Doe", "postid123", "You should try looking at w3 schools! They're so helpful."]];
+	replies = [["RE: Database Connection with PHP", "Jason Luu", "100", "Watch the last lecture video recording.", "NULL"]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -107,21 +124,21 @@ function getReplies(postid) {
 			userControls.setAttribute("id", replies[i][2]+"user-controls");
 			userControls.setAttribute("class", "viewprofilebuttons");
 			
-			var flagLbl = document.createElement("label");
-			flagLbl.setAttribute("class", "flag-post floatright");
-			flagLbl.setAttribute("for", "flag"+replies[i][2]);
-			var flaginput = document.createElement("input");
-			flaginput.setAttribute("type", "checkbox");
-			flaginput.setAttribute("id", "flag"+replies[i][2]);
-			flaginput.setAttribute("onchange", "Flagfunc(this,'" + replies[i][2]+"post-header');");
-			flagLbl.innerHTML = "Flag Post" ;
-			flagLbl.appendChild(flaginput);
-			//var replyBtn = document.createElement("button");
-			//replyBtn.setAttribute("id", replies[i][2]+"b");
-			//replyBtn.setAttribute("onclick", "newPostReply(this.id)");
-			//replyBtn.innerHTML = "Reply";
-			userControls.appendChild(flagLbl);
-			//userControls.append(replyBtn);
+			// var flagLbl = document.createElement("label");
+			// flagLbl.setAttribute("class", "flag-post floatright");
+			// flagLbl.setAttribute("for", "flag"+replies[i][2]);
+			// var flaginput = document.createElement("input");
+			// flaginput.setAttribute("type", "checkbox");
+			// flaginput.setAttribute("id", "flag"+replies[i][2]);
+			// flaginput.setAttribute("onchange", "Flagfunc(this,'" + replies[i][2]+"post-header');");
+			// flagLbl.innerHTML = "Flag Post" ;
+			// flagLbl.appendChild(flaginput);
+			// //var replyBtn = document.createElement("button");
+			// //replyBtn.setAttribute("id", replies[i][2]+"b");
+			// //replyBtn.setAttribute("onclick", "newPostReply(this.id)");
+			// //replyBtn.innerHTML = "Reply";
+			// userControls.appendChild(flagLbl);
+			// //userControls.append(replyBtn);
 			
 
 			

@@ -16,11 +16,12 @@ function displayInfo(piece, info) {
 }
 function displayProfilePicture() {
 	var filename = getProfilePicture(); //placeholder
+	if (filename !== "NULL") {
     var innerP = document.createElement("img");
     innerP.setAttribute("src", filename);
 	innerP.setAttribute("alt", "Profile Picture");
 	innerP.setAttribute("class", "profile-picture floatleft");
-    document.getElementById("profile-picture-div").appendChild(innerP);
+    document.getElementById("profile-picture-div").appendChild(innerP);}
 }
 
 function displayUserInfo() {
@@ -41,33 +42,34 @@ function displayUserInfo() {
 	
 }
 function getProfilePicture(){
-    var profile_picture = "images/cr_logo.png";//placeholder for PHP function 
+    var profile_picture = "images/linkedin.jpg";//placeholder for PHP function 
+	
     return profile_picture;
 }
 
 function getFirstName(){
-    var first_name = "Mary"; //PHP placeholder
+    var first_name = "Suchi"; //PHP placeholder
     return first_name;
 }
 
 function getLastName(){
-    var last_name = "Poppins"; //PHP placeholder
+    var last_name = "Kapur"; //PHP placeholder
     return last_name;
 }
 
 function getEmailAddress(){
-    var email_address = "poppi005@cougars.csusm.edu";//"couga001@cougars.csusm.edu";
+    var email_address = "kapur005@cougars.csusm.edu";//"couga001@cougars.csusm.edu";
     return email_address;
 }
 
 function getSignature(){
-    var sig = "Where's my umbrella?";
+    var sig = "I love being a CIS major!";
     return sig;
 }
 
 function getCourses(){
     var course_list = new Array();
-	course_list = ["CIS 444"];
+	course_list = ["CIS444", "CS433", "MKTG302"];
     var count_courses = course_list.length;
     var courses = "";
     var i;

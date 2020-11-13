@@ -20,7 +20,7 @@ function login(event) {
 	else {
 		var dom = document.getElementById("invalidMessage");
 		dom.style.visibility = "visible";
-		email.value = '';
+		
 		pass.value = '';
 		email.focus();
 		return false;

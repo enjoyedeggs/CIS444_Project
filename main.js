@@ -2,12 +2,12 @@
 //TODO: Get the number of courses from database for particular student
 
 var courseName = new Array();
-courseName = ["CIS444"];
+courseName = ["CIS444", "CS351"];
 var subForumName = ["HW", "TEST", "QUIZ", "MISC"];
 var numPost = 0;
 var date = new Date();
-var dd = date.getDate();
-var mm = date.getMonth();
+var dd = date.getDate() -1;
+var mm = date.getMonth() + 1;
 var yyyy = date.getFullYear();
 var today = mm + "-" + dd + "-" + yyyy;
 function writeTable(){

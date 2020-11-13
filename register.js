@@ -31,7 +31,7 @@ function validateFields(event) {
 		return true;
 	}
 	else {
-		
+		alert('This email address is already in use. Please log in or navigate to the "Forgot Password" page.');
 		return false;
 	}
 }

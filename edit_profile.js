@@ -11,11 +11,11 @@ function makeVisible() {
 
 function retrieveInformation() {
 	getPicture();
-    document.getElementById("fname").value = "server-value";
-    document.getElementById("lname").value = "server-value";
-    document.getElementById("email").value = "server-value";
-	document.getElementById("courses-list").value = "server-value";
-    document.getElementById("signature").value = "server-value";
+    document.getElementById("fname").value = "Suchi";
+    document.getElementById("lname").value = "Kapur";
+    document.getElementById("email").value = "kapur005@cougars.csusm.edu";
+	document.getElementById("courses-list").value = "CIS444\nCS433\nMKTG302";
+    document.getElementById("signature").value = "I love being a CIS major!";
 }
 
 function getPicture() {
@@ -24,16 +24,10 @@ function getPicture() {
 	//<img class="profile-picture floatleft" id="picture" alt="Your Profile Picture Here"/>
 	imgElem.setAttribute("class", "profile-picture floatleft");
 	imgElem.setAttribute("id", "picture");
+	imgElem.setAttribute("src", "images/linkedin.jpg");//placeholder for PHP
 	dom.appendChild(imgElem);
 }
-function csusmEmail(email) {
-	var pos = email.search(/^[A-Za-z]{5}\d{3}@cougars\.csusm\.edu$/);
-	if (pos != 0) {
-		alert("You must use a CSUSM issued student email to create an account!");
-		return false;
-	}
-	return true;
-}
+
 
 function getProfilePicture(){
     return document.getElementById("picture");
@@ -57,6 +51,13 @@ function getSignature(){
     return document.getElementById("signature").value;
 }
 
+function getCourses(){
+    var crs = document.getElementById("courses-list").value;
+	crs = crs.replace('/ */', '');
+	crs = crs.toUpperCase();
+	alert(crs);
+}
+
 function changePicture(){
 	//alert(document.getElementById("pictureInput").value);
 	document.getElementById("picture").src = URL.createObjectURL(document.getElementById("pictureInput").files[0]);
@@ -76,7 +77,7 @@ function saveChanges(){
 		var oldMatch = true; //placeholder for PHP
 		
 		if (matchingPasswords(npass.value, cpass.value) == false) {
-		
+			alert("The password you have entered in the \"Old Password\" field is incorrect");
 			return false;
 		}
 		else {
@@ -90,6 +91,7 @@ function saveChanges(){
 	getLastName();
 	getEmailAddress();
 	getSignature();
+	getCourses();
 	window.location.href="view_profile.html";
 	// use PUT requests to save data when database is made
 }

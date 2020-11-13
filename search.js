@@ -10,8 +10,8 @@ function searchForum(event) {
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
 	var results = new Array(); //replace with PHP function call to get results
-	results = [["Bob the Builder", "012345", "CIS444", "HW", "This is an example of the search functionality."], 
-	["Jane Doe", "09876", "CIS444", "HW", "I keep going in circles with HW6. Can someone help me???"]];
+	results = [["Jason Luu", "101", "CIS444", "TEST", "JavaScript Characteristics"], 
+	["Bartholomew Falzarano", "105", "CIS444", "HW", "PHP with JavaScript"]];
 	
 	
 	if (results.length == 0)
@@ -45,7 +45,7 @@ function searchForum(event) {
 			topic.innerHTML = '<span class="bolded">Subforum: </span>' + results[i][3];
 			resultsDisplay.appendChild(topic);
 			var description = document.createElement("p");
-			description.innerHTML = '<span class="bolded">Description: </span>' + results[i][4];
+			description.innerHTML = '<span class="bolded">Title: </span>' + results[i][4];
 			resultsDisplay.appendChild(description);
 			
 		

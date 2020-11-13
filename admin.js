@@ -10,7 +10,8 @@ function retrieveInformation() {
 
 function getFlagged() {
 	var flagged = new Array(); //placeholder for flagged results
-	flagged = [["Bob the Builder", "456322", "CIS444", "Exam", "The answer to the question was C"]];
+	flagged = [["Bartholomew Falzarano", "105", "CIS444", "HW", "Is it possible to call a PHP function within JavaScript?"],
+				["Bradley Stukas", "106", "CS441", "TEST", "What topics should I study the most for the midterm?"]];
 
 	if (flagged.length == 0)
 	{
@@ -69,9 +70,14 @@ function getFlagged() {
 
 function getUsers() {
 	var users = new Array(); //placeholder for PHP function
-	users = [["Bob the Builder", ["CIS444", "CS351", "CS441"], "4th Year", "build001@cougars.csusm.edu", "12"], 
-	["Jane Doe", ["CIS444", "CS351", "CS443"],  "4th Year","doe001@cougars.csusm.edu", "4"],
-	["John Appleseed", ["CS443", "CS351", "CS441"], "3rd Year","apple001@cougars.csusm.edu", "1"]];
+	users = [
+	["Mhealyssah Bustria", "CS441, CIS444" , "bustr003@cougars.csusm.edu", "2", "disabled"], 
+	["Bartholomew Falzarano", "CS351, CIS444" , "falza001@cougars.csusm.edu", "2", "enabled"],
+	["Shane Ghuste", "CS433, CIS444" , "ghust001@cougars.csusm.edu", "2", "enabled"],
+	["Jayson Hanlon", "CIS444, CS441" , "hanlo007@cougars.csusm.edu", "2", "enabled"],
+	["Suchi Kapur", "CIS444, CS433" , "kapur005@cougars.csusm.edu", "2", "enabled"],
+	["Jason Luu", "CS351, CIS444" , "luu001@cougars.csusm.edu", "2", "enabled"],
+	["Bradley Stukas", "CS441, CIS444" , "stuka003@cougars.csusm.edu", "2", "disabled"]];
 	
 	if (users.length == 0) {
 		var divElem = document.createElement("div");
@@ -130,19 +136,23 @@ function getUsers() {
 			var coursesList = document.createElement("div");
 			coursesList.setAttribute("class", "item-courses");
 			var courses = document.createElement("div");
-			courses.innerHTML = users[i][1].join(', ');
+			courses.innerHTML = users[i][1];
 			coursesList.appendChild(courses);
 			var email = document.createElement("div");
 			email.setAttribute("class", "item-email");
-			email.innerHTML = users[i][3];
+			email.innerHTML = users[i][2];
 			var numPosts = document.createElement("div");
 			numPosts.setAttribute("class", "item-postnum");
-			numPosts.innerHTML = users[i][4];
+			numPosts.innerHTML = users[i][3];
 			var deleteUser = document.createElement("div");
-			deleteUser.setAttribute("class", "item-disable delete");
-			deleteUser.setAttribute("id", users[i][3]+"b");
+			
+			deleteUser.setAttribute("id", users[i][2]+"b");
 			deleteUser.setAttribute("onclick", "removeUser(this.id)");
-			deleteUser.innerHTML = "DISABLE";
+			if (users[i][4] == "disabled")
+				deleteUser.setAttribute("class", "item-disable delete");
+			else 
+				deleteUser.setAttribute("class", "item-disable enable");
+			deleteUser.innerHTML = users[i][4];
 			row.appendChild(name);
 			row.appendChild(coursesList);
 			row.appendChild(email);
@@ -170,8 +180,7 @@ function searchForum(event) {
 	var searchtext = document.getElementById("searchInput");
 	searchtext.value = '';
 	var results = new Array(); //replace with PHP function call to get results
-	results = [["Bob the Builder", "012345", "CIS444", "HW", "I am confused with the DOM and DOM2 models. Can anyone explain this to me?"], 
-	["Jane Doe", "09876", "CIS444", "HW", "Should I study the homework for the midterm?"]];
+	results = [["Suchi Kapur", "100", "CIS444", "HW", "Database Connection with PHP"],["Bartholomew Falzarano", "105", "CIS444", "HW", "PHP with JavaScript"]];
 	
 	
 	if (results.length == 0)
@@ -202,7 +211,7 @@ function searchForum(event) {
 			topic.innerHTML = '<span class="bolded">Subforum: </span>' + results[i][3];
 			resultsDisplay.appendChild(topic);
 			var description = document.createElement("p");
-			description.innerHTML = '<span class="bolded">Description: </span>' + results[i][4];
+			description.innerHTML = '<span class="bolded">Title: </span>' + results[i][4];
 			resultsDisplay.appendChild(description);
 			
 		
@@ -271,14 +280,14 @@ function removeUser(userId) {
 
 	//Change between "DISABLE" and "ENABLE"
 	var delButton = document.getElementById(userId);
-	if (delButton.innerHTML === "DISABLE") {
+	if (delButton.innerHTML === "disabled") {
 		//TODO: Enable user in database (like reactivating acct)
-		delButton.innerHTML = "ENABLE";
+		delButton.innerHTML = "enabled";
 		delButton.setAttribute("class", "item-disable enable");
 	}
 	else {
 		//TODO: Disable user in database (deactivate acct)
-		delButton.innerHTML = "DISABLE";
+		delButton.innerHTML = "disabled";
 		delButton.setAttribute("class", "item-disable delete");
 	}
 	
