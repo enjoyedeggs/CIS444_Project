@@ -9,13 +9,16 @@ function login(event) {
 	//console.log(encrypted.toString());
 	//TODO: validate credentials with database
 	//placeholder for PHP function
-	
+	var acctStatus = 'disabled';
 	var isValid = true; 
-	if (isValid == true) {
+	if (isValid == true && acctStatus === 'enabled') {
 		//Redirects the user to the main page upon successful login.
 		email.value = '';
 		pass.value = '';
 		return true;
+	}
+	else if (acctStatus === 'disabled') {
+		alert("Your account is disabled. Please contact cougarrescue.noreply@gmail.com to resolve.");
 	}
 	else {
 		var dom = document.getElementById("invalidMessage");
