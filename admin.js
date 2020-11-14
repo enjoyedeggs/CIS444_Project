@@ -72,7 +72,7 @@ function getUsers() {
 	var users = new Array(); //placeholder for PHP function
 	users = [
 	["Mhealyssah Bustria", "CS441, CIS444" , "bustr003@cougars.csusm.edu", "2", "disabled"], 
-	["Bartholomew Falzarano", "CS351, CIS444" , "falza001@cougars.csusm.edu", "2", "enabled"],
+	["Bartholomew Falzarano", "CS351, CIS444" , "falza001@cougars.csusm.edu", "2", "disabled"],
 	["Shane Ghuste", "CS433, CIS444" , "ghust001@cougars.csusm.edu", "2", "enabled"],
 	["Jayson Hanlon", "CIS444, CS441" , "hanlo007@cougars.csusm.edu", "2", "enabled"],
 	["Suchi Kapur", "CIS444, CS433" , "kapur005@cougars.csusm.edu", "2", "enabled"],
@@ -264,9 +264,7 @@ function lockPost(from, postID) {
 	var check = document.getElementById(postID);
 	if (check.checked) {
 		//TODO: lock post
-	}
-	else {
-		//TODO: unlock post
+		check.disabled = true;
 	}
 	
 }
