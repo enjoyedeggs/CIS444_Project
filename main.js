@@ -72,7 +72,7 @@ function writeTable(){
                 sub_title_node.appendChild(sub_heading_node);
                 var sub_description_node = document.createElement("div");
                 sub_description_node.setAttribute("class", "sub-description small-font");
-                sub_description_node.innerHTML = "Click to view " + courseName[i][0] + " " + courseName[i][j][0] + "'s posts.";
+                sub_description_node.innerHTML = "Click to view the posts in the " + courseName[i][j][0] + " subforum for " + courseName[i][0] + ".";
                 sub_title_node.appendChild(sub_description_node);
                 var post_col_node = document.createElement("div");
                 post_col_node.setAttribute("class", "item-post");
