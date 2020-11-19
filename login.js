@@ -9,7 +9,7 @@ function login(event) {
 	//console.log(encrypted.toString());
 	//TODO: validate credentials with database
 	//placeholder for PHP function
-	var acctStatus = 'disabled';
+	var acctStatus = 'enabled';
 	var isValid = true; 
 	if (isValid == true && acctStatus === 'enabled') {
 		//Redirects the user to the main page upon successful login.

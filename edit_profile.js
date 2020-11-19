@@ -75,9 +75,11 @@ function saveChanges(){
 		var ciphertext = CryptoJS.AES.encrypt(opass.value, 'secretkey128');
 		
 		var oldMatch = true; //placeholder for PHP
-		
+		if (oldMatch == false) {
+			alert('The password you have entered in the \"Old Password\" field is incorrect');
+		}
 		if (matchingPasswords(npass.value, cpass.value) == false) {
-			alert("The password you have entered in the \"Old Password\" field is incorrect");
+			alert("Passwords do not match.");
 			return false;
 		}
 		else {

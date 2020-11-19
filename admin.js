@@ -244,7 +244,7 @@ function deletePost(from, postID) {
 	else if (from === "flagged") {
 		document.getElementById("flaggedPosts").removeChild(dom);
 		//console.log(document.getElementById("adminheading").children);
-		if (document.getElementById("adminheading").children.length === 0) {
+		if (document.getElementById("flaggedPosts").children.length === 1) {
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("class", "searchresults");
 			var innerP = document.createElement("p");
