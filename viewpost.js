@@ -9,7 +9,7 @@ var course;
 var subforum;
 var post;
 var queryPos;
-var title= "Database Connection with PHP"; //dummy data
+var title= "Homework 6"; //dummy data
 var postStatus = "flagged";
 function getInfo() {
 	forumName = (window.location).toString();
@@ -75,16 +75,16 @@ function getInfo() {
 	}
 }
 function getUserName(postid) {
-	return "Suchi Kapur"; //Dummy Data
+	return "Mhealyssah Bustria"; //Dummy Data
 }
 
 function getPostContent(postid) {
-	return "How can I connect my database to my website?";
+	return "Where do I store my mySQL scripts?";
 }
 
 function getReplies(postid) {
 	var replies = new Array(); //Placeholder for PHP function
-	replies = [["RE: Database Connection with PHP", "Jason Luu", "100", "Watch the last lecture video recording.", "NULL"]];
+	replies = [["RE: Homework 6", "Bartholomew Falzarano", "104", "You can store them in your home directory on the server.", "NULL"]];
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
