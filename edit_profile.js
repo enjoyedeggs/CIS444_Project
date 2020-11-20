@@ -55,7 +55,7 @@ function getCourses(){
     var crs = document.getElementById("courses-list").value;
 	crs = crs.replace('/ */', '');
 	crs = crs.toUpperCase();
-	alert(crs);
+	//alert(crs);
 }
 
 function changePicture(){
