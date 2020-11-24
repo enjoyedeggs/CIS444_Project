@@ -71,6 +71,11 @@ function saveChanges(){
 	var npass = document.getElementById("newpass");
 	var cpass = document.getElementById("confpass");
 	if (dom.checked) {
+		if (opass.value === "") {
+			alert("You must enter your old password");
+			return false;
+		}
+		
 		//TODO: verify encrypted old password against database
 		var ciphertext = CryptoJS.AES.encrypt(opass.value, 'secretkey128');
 		
@@ -79,7 +84,6 @@ function saveChanges(){
 			alert('The password you have entered in the \"Old Password\" field is incorrect');
 		}
 		if (matchingPasswords(npass.value, cpass.value) == false) {
-			alert("Passwords do not match.");
 			return false;
 		}
 		else {
