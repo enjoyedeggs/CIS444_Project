@@ -159,7 +159,7 @@ function getUsers() {
 			row.appendChild(numPosts);
 			//deleteUser.appendChild(delButton);
 			row.appendChild(deleteUser);
-			document.getElementById("usersList").append(row);
+			document.getElementById("usersList").appendChild(row);
 		}
 
 		
