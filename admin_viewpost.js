@@ -17,11 +17,11 @@ function getInfo() {
 	queryPos = pos;
 	if (pos > 0){
 		var coursePos = forumName.search(/course=/);
-		var subforumPos = forumName.search(/subforum=/);
-		var postPos = forumName.search(/postid=/);
+		var subforumPos = forumName.search(/&subforum=/);
+		var postPos = forumName.search(/&postid=/);
 		course = forumName.substring(coursePos+7, subforumPos);
 		post = forumName.substring(postPos);
-		subforum = forumName.substring(subforumPos+9, postPos);
+		subforum = forumName.substring(subforumPos+10, postPos);
 		forumName = course + " " + subforum;
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");

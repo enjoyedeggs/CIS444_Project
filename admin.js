@@ -300,7 +300,7 @@ function viewPost(id) {
 	//console.log(course + " " + subforum + " " + id);
 	//TODO: redirect user to proper post for specified ID;
 	//console.log(id);
-	window.location.href = "admin_viewpost.html?course=" + course+ "subforum=" + subforum + "postid="+id;
+	window.location.href = "admin_viewpost.html?course=" + course+ "&subforum=" + subforum + "&postid="+id;
 }
 
 function logout() {

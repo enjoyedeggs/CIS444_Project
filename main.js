@@ -94,5 +94,5 @@ function goToSubforum(forum) {
 	var pos = forum.search(/-/);
 	var course = forum.substring(0, pos);
 	var subforum = forum.substring(pos+1);
-	window.location.href = "subforum.html?course="+course+"subforum="+subforum;
+	window.location.href = "subforum.html?course="+course+"&subforum="+subforum;
 }

@@ -8,9 +8,9 @@ function retrieveInformation() {
 	var pos = forumName.search(/\?/);
 	if (pos > 0){
 		var coursePos = forumName.search(/course=/);
-		var subforumPos = forumName.search(/subforum=/);
+		var subforumPos = forumName.search(/&subforum=/);
 		course = forumName.substring(coursePos+7, subforumPos);
-		subforum = forumName.substring(subforumPos+9);
+		subforum = forumName.substring(subforumPos+10);
 		forumName = course + " " + subforum;
 		var doc = document.getElementsByTagName("html")[0];
 		doc.style.visibility="visible";
@@ -95,9 +95,9 @@ function logout() {
 
 function viewPost(id) {
 	//TODO: view post 
-	window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum+ "postid=" +id;
+	window.location.href = "viewpost.html?course=" + course + "&subforum=" + subforum+ "&postid=" +id;
 }
 
 function newPost(id) {
-	window.location.href = "new_post.html?course=" + course + "subforum=" +subforum;
+	window.location.href = "new_post.html?course=" + course + "&subforum=" +subforum;
 }

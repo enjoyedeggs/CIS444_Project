@@ -3,11 +3,11 @@ function checkForum() {
 	var pos = forumName.search(/\?/);
 	if (pos > 0){
 		var coursePos = forumName.search(/course=/);
-		var subforumPos = forumName.search(/subforum=/);
-		var postPos = forumName.search(/postid=/);
+		var subforumPos = forumName.search(/&subforum=/);
+		var postPos = forumName.search(/&postid=/);
 		if (postPos == -1 ){
 			course = forumName.substring(coursePos+7, subforumPos);
-			subforum = forumName.substring(subforumPos+9);
+			subforum = forumName.substring(subforumPos+10);
 			forumName = course + " " + subforum;
 			var courseElem = document.getElementById("course-name");
 			courseElem.innerHTML= course;
@@ -19,7 +19,7 @@ function checkForum() {
 		}
 		else {
 			course = forumName.substring(coursePos+7, subforumPos);
-			subforum = forumName.substring(subforumPos+9, postPos);
+			subforum = forumName.substring(subforumPos+10, postPos);
 			var courseElem = document.getElementById("course-name");
 			courseElem.innerHTML= course;
 			
@@ -51,23 +51,23 @@ var subforum;
 function redirect()
 {
 	forumName = (window.location).toString();
-	var postPos = forumName.search(/postid=/);
+	var postPos = forumName.search(/&postid=/);
 	console.log(postPos);
 	var pos = forumName.search(/\?/);
 	var coursePos = forumName.search(/course=/);
-	var subforumPos = forumName.search(/subforum=/);
+	var subforumPos = forumName.search(/&subforum=/);
 	if (postPos == -1) {
 
 		course = forumName.substring(coursePos+7, subforumPos);
-		subforum = forumName.substring(subforumPos+9);
+		subforum = forumName.substring(subforumPos+10);
 		console.log(course + " " + subforum);
 		//window.location.back().back();
-		window.location.href = "subforum.html?course=" + course + "subforum=" + subforum;
+		window.location.href = "subforum.html?course=" + course + "&subforum=" + subforum;
 	}
 	else {
 		course = forumName.substring(coursePos+7, subforumPos);
-		subforum = forumName.substring(subforumPos+9, postPos);
-		var post = forumName.substring(postPos+7);
-		window.location.href = "viewpost.html?course=" + course + "subforum=" + subforum + "postid=" + post;
+		subforum = forumName.substring(subforumPos+10, postPos);
+		var post = forumName.substring(postPos+8);
+		window.location.href = "viewpost.html?course=" + course + "&subforum=" + subforum + "postid=" + post;
 	}
 }
