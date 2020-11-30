@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+Project Name: Cougar Rescue Forum
+Course: CIS444
+Description: This file is the html for the update/edit profile page.
+			 The file contains the layout for the edit profile page, and the
+			 corresponding javascript pre-fills the user's information dynamically
+			 once the database is implemented.
+-->
+<html lang="en">
+
+	<head>
+		<title>Cougar Rescue Forum</title>
+		<meta charset="utf-8"/>
+		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+        <script type="text/javascript" src="nav.js"></script>
+        <script type="text/javascript" src="edit_profile.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        <link rel="stylesheet" href="cougar_rescue.css"/>
+	</head>
+	
+	<body id="edit_profile" class="pagestyle" onload="retrieveInformation();">
+		<div id="navlist" class="navlist">
+			<div>
+				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
+			</div>
+			
+			<button class="logoutNav" onclick="logout()">Logout</button>
+			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
+        </div>
+
+        <div id="profile_info_div" class="forum-div profile-size">
+			<h1>Edit My Profile</h1>
+
+            <div class="profile-picture">
+				<div id="profile-picture-div" >
+				</div>
+			</div>
+            <div class="profile-format">
+                <div class="sub-title floatleft">
+                    <div id="user-info">
+                        <p  class="profile-text border-bottom-div">Personal Information </p>
+						<div id="personal-info"></div><br />
+						<input aria-label="profile-picture" class="input-picture" type="file" id="pictureInput" 
+						name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
+						
+						<label for="fname">First Name:
+						<input class="edit-input" id="fname" type="text" /></label><br /><br />
+						
+						<label for="lname">Last Name:
+						<input class="edit-input" id="lname" type="text" /></label><br /><br />
+						
+						<label for="email">CSUSM Email: 
+						<input class="edit-input" id="email" type="text" disabled /></label>
+						
+                        <!--JS-->
+                    </div>
+
+					<div id="courses">
+                        <p class="profile-text border-bottom-div">My Courses</p>
+						<textarea aria-label="courses" class="edit-input" rows="5" cols="30" id="courses-list"></textarea><br />
+                        <!--JS-->
+                    </div>
+					<div id="signature-div">
+                        <p class="profile-text border-bottom-div">Signature</p>
+						<textarea aria-label="signature" id="signature" class="edit-input" rows="5" cols="30" ></textarea><br />
+					</div>
+					
+					<div id="password-div">
+                        <p class="profile-text border-bottom-div">Change Password? </p>
+						<label for="change-pass"><input onchange="makeVisible();" type="checkbox" id="change-pass" name="changepass" value="Yes"/>Yes</label>
+						<div id="change-pass-div" class="hidden-subforum">
+							<label for="oldpass"> Old Password:
+							<input type="password" id="oldpass" class="edit-input"  /></label><br /><br />
+							
+							<label for="newpass"> New Password:
+							<input type="password" id="newpass" class="edit-input"  /></label><br /><br />
+							
+							<label for="confpass"> Confirm Password:
+							<input type="password" id="confpass" class="edit-input"  /></label><br /><br />
+						</div>
+					</div>
+					
+	
+					
+                </div>
+            </div>
+
+        </div>
+		<div class="edit-buttons">
+						                <input id="saveButton"
+                    class="edit-buttons-button"
+                    type="button"
+                    value="Save Profile"
+                    onclick="saveChanges();"
+                    />
+                    
+                <input id="cancelButton"
+                    class="adminlogin"
+                    type="button"
+                    value="Cancel"
+                    onclick="location.href='view_profile.html'"
+                    />
+			</div>
+		</body>
+    </html>

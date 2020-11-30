@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Project Name: Cougar Rescue Forum
+Course: CIS444
+Description: This file is the html for a student's profile page.
+			 The file contains the profile layout and the corresponding
+			 javascript dynamically fills the information from the database
+			 which will be implemented later.
+-->
+<html lang="en">
+
+	<head>
+		<title>Cougar Rescue Forum</title>
+		<meta charset="utf-8"/>
+		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+        <script type="text/javascript" src="nav.js"></script>
+        <script type="text/javascript" src="view_profile.js"></script>
+        <link rel="stylesheet" href="cougar_rescue.css"/>
+	</head>
+	
+	<body id="view_profile" class="pagestyle" onload="retrieveInformation();">
+		<div id="navlist" class="navlist">
+			<div>
+				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
+			</div>
+			
+			<button class="logoutNav" onclick="logout()">Logout</button>
+			<a href="search.html">Search</a>
+			<a href="view_profile.html">Profile</a>
+			<a href="main.html">Home</a>
+        </div>
+
+        <div id="profile_info_div" class="forum-div profile-size">
+			<h1>My Profile</h1>
+
+            <div class="profile-picture">
+				<div id="profile-picture-div" >
+				</div>
+			</div>
+            <div class="profile-format">
+                <div class="sub-title floatright">
+                    <div id="user-info">
+                        <p class="profile-text border-bottom-div">Personal Information <a href="edit_profile.html" class="nolink small-font floatright" >
+				Edit Profile<!--<img src="images/edit.png" alt="Edit Profile" class="edit-icon ">--></a></p>
+                        <!--JS-->
+                    </div>
+
+					<div id="courses">
+                        <p class="profile-text border-bottom-div">My Courses</p>
+                        <!--JS-->
+                    </div>
+					<div id="signature">
+                        <p class="profile-text border-bottom-div">Signature</p>
+					</div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    </html>

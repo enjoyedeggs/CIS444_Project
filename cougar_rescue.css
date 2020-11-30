@@ -1,0 +1,994 @@
+/*--
+Project Name: Cougar Rescue Forum
+Course: CIS444
+Description: This file is the stylesheet for the all Cougar Rescue Forum pages.
+Last Validated: 10/27
+*/
+
+img {
+	height: 50%;
+	text-align:center;
+	width: 50%;
+}
+
+body form {
+	font-family: Georgia;
+	margin: auto;
+	text-align:center;
+
+}
+
+.description {
+	background-color: #e6eaf0;
+	border: solid 1px #e6eaf0;
+	border-radius: 4px;
+	font-family: Georgia;
+	margin: auto;
+	margin-bottom: 3px;
+	text-align: center;
+	
+}
+.pagestyle {
+	background-image: url('images/csusm.png');
+	
+}
+.inputstyle  {
+	background-color: #e6eaf0;
+	border: solid 1px black;
+	border-radius: 8px;
+	font-family: Georgia;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: center;
+
+	
+}
+
+.submitstyle {
+	background-color: #0259A8;
+	border: none;
+	border-radius: 15px;
+	color: #e6eaf0;
+	font-family:Georgia;
+	margin-top: 10px;
+	padding: 8px;
+	text-align: center;	
+}
+.adminlogin {
+	background-color: #e6eaf0;
+	border: none;
+	border-radius: 15px;
+	color: #0259A8;
+	font-family:Georgia;
+	margin-top: 10px;
+	padding: 8px;
+	text-align: center;	
+}
+.inputcontainer {
+	border: solid 1px #e6eaf0;
+	border-radius: 4px;
+	font-family: Georgia;
+	margin: auto;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: center;
+
+}
+
+
+.formstyle {
+	background-color: #8ec0e7;
+	border: solid 1px black;
+	border-radius: 4px;
+	font-family: Georgia;
+	margin: 20px 350px 10px 350px;
+	padding: 10px;	
+	text-align: center;
+
+	
+}
+
+
+/*Responsive*/
+@media screen and (max-width:800px) {
+	img {
+		height: 50%;
+		width: 50%;
+		
+	}
+	.formstyle {
+		margin: 20px 50px 10px 50px;
+		
+	}
+	.navlist { 
+		height: auto;
+		width: 98%;
+		
+	}
+	.inputstyle {
+		width: 17%;
+	}
+	
+
+
+}
+
+.profile-picture {
+	border-radius: 50%;
+	height: auto;
+	left: 32%;
+	margin-left: 20%;
+	max-width:40%;
+	position: relative;
+	top: 5px;
+	
+	z-index: 10;
+	
+}
+.profile-size {
+	height: auto;
+	margin: auto;
+	margin-right: 25%;
+	max-width: 50%;
+	position: relative;
+	
+
+	
+}
+.border-bottom-div {
+	border-bottom: 1px solid #0259A8;
+}
+
+.profile-format{
+	background-color: #e6eaf0;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	left: 5%;
+	position: absolute;
+	width: 90%;
+	
+}
+
+.edit-icon {
+	background-color: transparent;
+	height: auto;
+	margin-right: 5%;
+	position: relative;
+	top: 5px;
+	width:8%;
+	
+}
+
+
+
+.profile-text{
+	color: #0259A8;
+	font-family: Georgia;
+
+	
+}
+
+.invalid {
+	background-color: #ff7a8c;
+	border: solid 1px #d62f45;
+	border-radius: 4px;
+	font-family: Georgia;
+	margin: auto;
+	margin-bottom: 10px;
+	text-align: center;
+	visibility: hidden;
+}
+
+h1, h2 {
+	color: #f2f2f2;
+	font-family: Georgia;
+	font-size: 12pt;
+	text-align: center;
+}
+
+ 
+
+.navlist { 
+	/*border-radius:25px; */
+	background-color: #8EC0E7;
+	border-radius: 10px;
+	height: auto;	
+	left: 6px;	
+	margin-left:1px;
+	position: absolute;
+	text-align: center;
+	top: 4px;
+	width: 99%;
+	
+} 
+ 
+/* styling navlist anchor element */ 
+.navlist a { 
+	color: #f2f2f2; 
+	display: block; 
+	float:right; 
+	font-family: Georgia;
+	font-size: 12pt; 
+	padding: 11px; 
+	text-align: center; 
+	text-decoration: none; 
+} 
+  
+.navlist-right{ 
+	float:right; 
+} 
+
+/* hover effect of navlist anchor element */ 
+.navlist a:hover { 
+	cursor: pointer;
+} 
+	  
+/* styling search bar */ 
+.search input[type=text]{ 
+	border: none; 
+	border-radius:25px;
+	float: left;
+	font-family: Georgia;
+	height:25px;
+	width:40%;
+} 
+	  
+.search{ 
+	float:left; 
+	position: relative;
+	top: 7px;
+	width: 52%;
+} 
+	  
+.search button{ 
+	background-color: transparent; 
+	border: none; 
+	color: #ffffff;
+	cursor: pointer; 
+	float: left;
+	font-size: 12px; 
+	padding-top: 5px;
+	
+	
+} 
+
+.adminpage {
+	
+	top: 30px;
+}
+
+.logo {
+	float: left;
+	height: 35px;
+	left: 5px;
+	margin-right: 10px;	
+	position:relative;
+	top:1px;
+	width: 35px;
+	
+}
+
+.admin {
+	font-style: italic;
+	left: 10px;
+	position: absolute;
+	text-align: left;
+	top: 50px;
+	
+}
+.adminsubheadings {
+	margin-left:10px;
+	position: relative;
+	text-align: left;
+	top: 80px;	
+}
+
+
+.searchresults {
+	background-color: #e6eaf0;
+	border: solid 1px #0259A8;
+	border-radius: 4px; 
+	font-family:Georgia;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 3px;
+	position: relative; 
+	top: 80px;
+	
+}
+.nolink {
+	background-color: #e6eaf0;
+	border-radius: 15px;
+	color: #0259A8;
+	left: 70%;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	padding: 3px;
+	position: absolute;
+	text-decoration: none;
+	top: -32px;
+	
+}
+
+.bolded {
+	font-weight: bold;
+}
+
+.admin-table-format{
+	background-color: #e6eaf0;
+	border: 2px solid #0259A8;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: initial;
+	margin-left: 10px;
+	margin-right: 10px;
+	min-width: 98%;
+	position: relative;
+	top: 80px;
+	
+	
+	
+}
+
+.admin-row-format{
+	background-color: #e6eaf0;
+	border: 1px solid #0259A8;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: initial;
+	margin-left: 10px;
+	margin-right: 10px;
+	min-width: 98%;
+	position: relative;
+	top: 80px;
+	
+	
+}
+.item-student, .item-courses, .item-email, .item-postnum{
+	border-right: 1px solid #0259A8;
+	flex-basis: 10%;
+	max-width: 20%;
+	min-width: 16%;
+	overflow-wrap: break-word;
+	padding: 5px 5px 5px 15px;
+	text-align: left;
+	
+	
+}
+
+.item-disable {
+	flex-basis: 10%;
+	max-width: 20%;
+	min-width: 16%;
+	overflow-wrap: break-word;
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+}
+
+/*
+table {
+	width: 98%;
+}
+
+th, tr,  td {
+	border: solid 1px #0259A8;
+	font-family:Georgia;
+	padding: 3px;
+	position: relative; 
+	text-align:center;
+}
+*/
+
+.delete {
+	color: red;
+	min-width: 5%;
+	overflow-wrap: break-word;
+}
+
+.enable {
+	
+	color: green;
+	min-width: 5%;
+	overflow-wrap: break-word;
+}
+.logoutNav {
+	background-color: transparent;
+	border: none;
+	border-radius: 10px;
+	color: #f2f2f2;
+	float: right;
+	font-family: Georgia;
+	font-size: 12pt; 
+	padding: 11px; 
+	text-align: center; 
+	
+}
+button:hover {
+	cursor: pointer;
+}
+:focus{
+	cursor: auto;
+	outline: none;
+	
+}
+
+.hiddenStyle {
+	color: #f2f2f2;
+	font-family:Georgia;
+	font-size: 11pt;
+	position: relative;
+	text-align: left;
+	top: 100px;
+	visibility: hidden;
+}
+
+
+/* 
+This is for the new post
+*/
+
+.nPost {
+
+	background-color: white;
+	border-radius: 10px;
+	height: 375px;
+	margin: 7% 10% 5% 15%;	
+	width:70%;
+
+}
+
+.break {
+	border-color: #0259A8;
+	border-width: 2px;
+	margin-left:0;
+	text-align:left;
+	width:80%;	
+}
+
+
+.create {
+	padding-left: 15px;
+	padding-top: 10px;
+
+	
+}
+.postheader {
+	color: black;
+	font-family: Georgia;
+	font-weight: bold;
+	text-align: left;
+	
+}
+.floatleft {
+	float: left;
+}
+
+.floatright {
+	float: right;
+}
+.username {
+	
+	padding-left: 15px;
+	padding-right: 48px;
+}
+
+.name {
+	border-left: 2px solid #0259A8;
+	
+	padding-left: 15px;
+}
+
+.name input {
+	font-family: Georgia;
+	
+}
+
+.class {
+	padding-left: 15px;
+	padding-right: 52px;
+}
+
+.classes {
+	border-left: 2px solid #0259A8;
+	border-right: 2px solid #0259A8 ;
+	padding-left: 15px;
+	padding-right: 15px;
+	
+}
+.classes input {
+	font-family: Georgia;
+	
+}
+
+.topic {
+	border-right: 2px solid #0259A8;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.topics {
+	padding-left: 15px;
+}
+
+
+.container {
+	padding-right: 15px;
+}
+
+.title {
+
+	padding-left: 15px;
+	padding-right: 59px;
+}
+
+.titleText {
+	border-left: 2px solid #0259A8;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.titleText input {
+	
+	font-family: Georgia;
+	
+}
+
+.text {
+
+	padding-left: 15px;
+	padding-right: 7px;
+}
+
+.userText {
+	border-left: 2px solid #0259A8;
+	padding-left: 15px;
+	padding-right: 15px;
+	
+}
+
+.userText input {
+	color: black;
+	font-family: Georgia;
+	
+	
+
+}
+.postdescription {
+	display: block;
+	font-family: Georgia;
+	height: 200px;
+	width: 100%;
+	
+	
+}
+.submit {
+	left: 47%;
+	position: absolute;
+	top: 80%;
+	
+}
+
+.submitbutton  {
+	background-color: gray;
+	border-radius: 10px;
+	color: #8ec0e7;
+	padding: 3px;
+	
+}
+
+/*
+    THIS IS A CSS FOR THE MAIN/HOME PAGE
+*/
+body{
+	margin: 0 auto;
+}
+
+.forum-div{
+	margin: auto;
+	margin-top: 4em;
+	padding-top: 1em;
+	text-align: center;
+	width: 90%;
+
+}
+
+.table-format{
+	background-color: #e6eaf0;
+	border: 2px solid #0259A8;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+.item-forum, .item-post{
+	border-right: 2px solid #0259A8;
+}
+.item-forum{
+	flex-basis: 80%;
+
+}
+.item-post{
+	flex-basis: 10%;
+}
+.item-date{
+	flex-basis: 10%;
+}
+
+.item-forum .item-category{
+	display: flex;
+	flex-direction: row;
+	/*border-right: 2px solid #8ec0e7;*/
+}
+
+.sub-title{
+	display:flex;
+	flex-direction: column;
+	padding-left: 1em;
+	text-align: start;
+}
+.sub-heading{
+	text-decoration: none;
+}
+.sub-description{
+	color: slategrey;
+	font-weight: normal;
+	
+}
+
+
+.course-title, .no-class{
+	background-color:#0259A8 ;
+	color: white;
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+}
+.no-class{
+	
+	background-color: #e6eaf0;
+	border-radius: 10px;
+	color: black;
+	font-family: Georgia;
+	height: 30px;
+	width: 80%;
+	
+}
+
+
+/*
+    Subforum CSS
+*/
+.table-sub-format {
+	background-color: #e6eaf0;
+	border: 1px solid #0259A8;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	overflow-wrap: break-word;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+.item-subforum {
+	flex-basis: 70%;
+	
+	text-align: left;
+	width: 30%;
+}
+
+.item-post-title {
+	display: flex;
+	flex-basis: 70%;
+	flex-direction: row;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	width: 30%;
+}
+
+.item-subforum--author {
+	display: flex;
+	flex-basis: 70%;
+	flex-direction: row;
+	width: 30%;
+}
+
+.item-replies, .item-views, .item-last-post {
+
+	text-align:center;
+	width: 30%;
+}
+
+
+.new-post-button button{
+	background-color: #0259A8;
+	border: none;
+	color: #e6eaf0;
+	font-family:Georgia;
+	margin-top: 10px;
+	padding: 8px;
+	position: relative;
+	text-align: center;
+	
+}
+
+.item-subforum, .item-replies, .item-views {
+	border-right: 1px solid #0259A8;
+}
+
+
+
+.subforum-div {
+	font-family: Georgia;
+	margin: auto;
+	margin-top: 4em;
+	padding-top: 1em;
+	text-align: center;
+	width: 90%;
+
+}
+
+.subforum-sub-description {
+	color: slategrey;
+	display: flex;
+	flex-basis: 70%;
+	font-size: 12px;
+	font-weight: normal;
+	
+}
+
+.hidden-subforum {
+	visibility: hidden;
+}
+
+/*FONT CSS*/
+.small-font {
+	font-size: 10pt;
+}
+
+/*Edit Profile CSS*/
+.edit-input {
+	background-color: white;
+	border: 1px solid #0259A8;
+	border-radius: 10px;
+	font-family:Georgia;
+	padding: 3px;
+}
+
+.edit-buttons {
+	left: 60%;
+	position: absolute;
+	top: 12%;
+	
+}
+
+.edit-buttons-button {
+	background-color: #8EC0E7;
+	border: none;
+	border-radius: 15px;
+	color: #e6eaf0;
+	font-family:Georgia;
+	padding: 8px;
+	text-align: center;	
+	
+}
+
+
+.input-picture {
+	background-color: #0259A8;
+	border-radius: 10px;
+	color: white;
+	margin-top: 10px;
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 25, 2020, 1:20:33 PM
+    Author     : barto
+*/
+
+.vpcontainer{
+    background-color:#e6eaf0;
+	border-radius: 15px;
+	display:flex;
+	flex-direction:column;
+    margin-left:auto;
+	margin-right:auto;
+	margin-top:80px;
+    padding-bottom:10px;
+	width:60%;
+}
+.headerbox{
+	align-content:center;
+    background-color:#e6eaf0;
+	border-radius: 15px;
+    display:flex;
+    justify-content:center;
+	width:100%;
+}
+.headerbox > div{
+    color:#f2f2f2;
+    font-size:20px; 
+    min-width:50px;
+    overflow:hidden;
+	padding:5px;
+	position:relative;
+	white-space:nowrap;
+}
+.headerbox > input{
+	margin-bottom:auto;
+    margin-top:auto;
+   
+}
+.headerbox > label{
+	margin-bottom:auto;
+    margin-top:auto;
+    padding:5px;
+}
+.profileandbody{
+	align-content:flex-start;
+    display:flex;
+    justify-content:flex-start;
+	margin-left: 10px;
+	margin-right: 10px;
+    
+}
+.profilebox{
+	align-content:center;
+    display:flex;
+	flex-direction:column;
+	height:auto;
+	justify-content:center;
+	margin-left: 10px;
+	margin-right: 10px;
+    overflow:hidden;
+	width:30%;
+}
+
+.profilebox > div{
+	flex-wrap:wrap;
+    text-align:center;
+    
+    
+}
+/*
+.profilebox > img{
+    width:100%;
+    margin:auto;
+    height:auto;
+}*/
+.profilebox > button{
+    background-color:red;
+	border:1px solid black;
+    color:white;
+}
+.bodybox{
+	border-left: 1px solid #0259A8;
+	
+	margin-top: 10px;
+	padding-left: 10px;
+    /*width:70%;*/
+    
+}
+.bodybox > div{
+	overflow-wrap:break-word;
+    padding:5px;
+   
+}
+.bodybox > img{
+	height:auto;
+    /*padding:5px;*/
+    width:30%;
+    
+}
+.viewprofilebuttons{
+    display:flex;
+    justify-content:flex-end;
+    width:100%;
+}
+.viewprofilebuttons > button{
+	background-color: #0259A8;
+	border: none;
+	border-radius: 15px;
+	color: #e6eaf0;
+	font-family:Georgia;
+	margin-right: 10px;
+	padding: 8px;
+	text-align: center;	
+}
+.post-admin-controls {
+	left: 47%;
+	margin-right: 30px;
+	margin-top: 10px;
+	overflow-wrap: break-word;
+	position: relative;
+	top: 50%;
+	width: 20%;
+}
+
+.post-admin-controls label{
+	color: white;
+}
+
+.post-admin-controls button {
+	background-color:  #e6eaf0;
+	border: 1px solid red;
+	border-radius: 15px;
+	color: red;
+	margin-right: 10px;
+	padding: 6px;
+}
+
+.admin-controls {
+	left: 40%;
+	margin-right: 30px;
+	margin-top: 10px;
+	overflow-wrap: break-word;
+	position: relative;
+	top: 60%;
+	width: 25%;
+}
+
+.admin-controls label{
+	color: black;
+}
+
+.admin-controls button {
+	background-color:  #e6eaf0;
+	border: 1px solid red;
+	border-radius: 15px;
+	color: red;
+	margin-right: 10px;
+	padding: 6px;
+}
+
+.post-profile-picture {
+	background-color: transparent;
+	border-radius: 50%;
+	height: auto;
+	margin-bottom: 10px;
+	position: relative;
+	top: 10px;
+	width: 80%;
+	z-index: 10;
+	
+}
+
+.flag-post {
+	margin-right: 10px;
+	position: relative;
+	top: 6px;
+}
+
+.indent {
+	margin-left: 7px;
+}
+
+.profile {
+	display: flex;
+	width: 30%;
+}
+
+.reply-msg {
+	align-content:center;
+	background-color:#e6eaf0;
+	border: 2px solid #0259A8;
+	border-radius: 15px;
+	color: #0259A8;
+	justify-content:center;
+	left: 20%;
+	margin-right: 40%;
+	margin-top: 10px;
+	padding: 5px;
+	position: relative;
+	top: 40%;
+}

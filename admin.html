@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Project Name: Cougar Rescue Forum
+Course: CIS444
+Description: This file is the html for the admin home page.
+			
+-->
+
+<html lang="en">
+	<head>
+		<!--Page Information-->
+		<title>Cougar Rescue Forum</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="cougar_rescue.css"/>
+		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="admin.js"></script>
+	</head>
+	
+	<body id="admin" class="pagestyle" onload="retrieveInformation();">
+		<div id="navlist" class="navlist"> 
+			<div>
+				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
+			</div>
+				<!-- seach bar left align -->
+			<div class="search"> 
+				<form action="admin.html" onsubmit="return searchForum(this)"> 
+					<input aria-label="search" type="text" placeholder=" Search forum topics" name="search" id="searchInput" required /> 
+					<button aria-label="search" type="submit"> <i class="fa fa-search" ></i> </button> 
+				</form> 
+			</div> 
+			<!--Coming back to this-->
+			<button class="logoutNav" onclick="logout()">Logout</button> 
+			<a href="admin.html">Home</a> 
+			  
+		</div>
+
+		<div class="adminpage">
+			<h1 class="admin" id="adminheading">Admin Home Page</h1>
+			
+			<div id="searchResults">
+				<!--When the user searches, the search results will be appended here-->
+			</div>
+			
+			<div id="flaggedPosts">
+				<h2 class="adminsubheadings">Flagged Posts</h2>
+				
+				<!--Page loads flagged posts from database-->
+			</div>
+			
+			<div id="usersList">
+				<h2 class="adminsubheadings">Students Registered for Cougar Rescue Forum</h2>
+				
+				<!--Page loads list of users from database-->
+			</div>
+		</div>
+
+	</body>
+	
+</html>
