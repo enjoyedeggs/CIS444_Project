@@ -13,8 +13,10 @@ Description: This file is the html for the admin view of a post.
         <link rel="stylesheet" href="cougar_rescue.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body class="pagestyle" onload="getInfo()">
+        <script type="text/javascript" src="admin_viewpost.js"> </script>
+
+	</head>
+    <body class="pagestyle">
 	<div id="whole-post">
 	<div id="navlist" class="navlist">
 			<div>
@@ -22,7 +24,7 @@ Description: This file is the html for the admin view of a post.
 			</div>
 			
 			<button class="logoutNav" onclick="logout()">Logout</button>
-			<a href="admin.html">Home</a>
+			<a href="admin.php">Home</a>
         </div>
         <div class="vpcontainer" id="post">
             <div class="headerbox"  id="head">
@@ -47,8 +49,6 @@ Description: This file is the html for the admin view of a post.
 		<div id="replies">
 		
 		</div>
-        <script type="text/javascript" src="admin_viewpost.js"> </script>
-		<noscript>Your browser does not support JavaScript</noscript>
 	</div>
     </body>
 </html>

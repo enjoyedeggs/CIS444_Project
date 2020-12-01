@@ -121,12 +121,11 @@ Description: This file is the html for the admin home page.
 			}
 			//Get Users
 			$users_query = "SELECT CONCAT(u.fname, ' ', u.lname) as 'Student',
-							GROUP_CONCAT(c.crsNumber SEPARATOR ', ') as 'Courses',
-							u.email, COUNT(DISTINCT p.postID) + COUNT(DISTINCT r.replyID) as '#
+							GROUP_CONCAT(DISTINCT c.crsNumber SEPARATOR ', ') as 'Courses',
+							u.email, COUNT(DISTINCT p.postID)  as '#
 							of Posts', u.acctStatus
 							FROM Users u, Posts p, Replies r, User_Courses c
 							WHERE p.userEmail = u.email
-							AND r.replyAuthor = p.userEmail
 							AND c.email = u.email
 							GROUP BY u.email;";
 							
