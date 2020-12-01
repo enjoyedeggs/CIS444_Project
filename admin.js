@@ -319,5 +319,5 @@ function viewPost(id) {
 
 function logout() {
 	//TODO: log user out.
-	window.location.href = "admin_index.php";
+	window.location.href = "admin_login.php";
 }

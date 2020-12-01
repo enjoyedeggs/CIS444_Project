@@ -84,18 +84,22 @@ Description: This file is the html for the forgot password page.
 						
 						$to = $email;
 						$subject = "Cougar Rescue Password Reset";
-						$headers = "From: cougarrescue.noreply@gmail.com";
+						//$headers = "From: cougarrescue.noreply@gmail.com";
 
 						
 						// the message
 						$msg = "If you did not request to reset your password, please ignore this email. " .
 						"Your temporary password for Cougar Rescue is: 'cougarrescuereset'. Please login and reset your password in your profile ASAP.";
-
+						
+						// Always set content-type when sending HTML email
+						$headers = "MIME-Version: 1.0" . "\r\n";
+						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+						$headers .= 'From: <cougarrescue.noreply@gmail.com>' . "\r\n";
+						
 						// use wordwrap() if lines are longer than 70 characters
 						$msg = wordwrap($msg,70);
-
-						// send email
-						$returnval = mail($to,$subject,$msg,$headers);
+						
+						$returnval = mail($to, $subject, $msg, $headers);
 						if ($returnval != true) {
 							print "<script type='text/javascript'>";
 							print "invalidEmail('Error sending email. Please try again.');";
@@ -106,6 +110,8 @@ Description: This file is the html for the forgot password page.
 							print "goLogin();";
 							print "</script>";
 						}
+						
+
 					}
 				}
 	

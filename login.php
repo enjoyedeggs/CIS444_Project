@@ -43,8 +43,8 @@ Description: This file is the php for the index/home page.
 				
 				<label for="passField">Password <br />
 				<input class="inputstyle" type="password" placeholder="Password" name="passField" id="passField" required /><br /></label>
-				<a href="forgot_password.html">Forgot Password?</a><br /><br />
-				<a href="register.html">Don't have an account? Register here!</a><br /><br />
+				<a href="forgot_password.php">Forgot Password?</a><br /><br />
+				<a href="register.php">Don't have an account? Register here!</a><br /><br />
 				<input class="submitstyle" name="loginbtn" type="submit" value="Login" id="submitLogin" />
 				<input class="adminlogin" type="button" value="Admin Login" id="adminLogin" onclick="goAdmin()"/>
 			</form>

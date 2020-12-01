@@ -27,12 +27,12 @@ Description: This file is the html for the index/home page.
 		<div class="formstyle">
 			<form id="loginForm" action="admin_login.php" method="post" onsubmit="return login(this)">
 				<p>
-				<a href="admin_index.html">
+				<a href="admin_login.php">
 				<img src="images/cr_logo.png" alt="Cougar Rescue Forum Logo" /></a>
 				</p>
 				<p class="description">
 				Welcome to the Cougar Rescue Forum. This is the administrator login. If you are not an administrator please
-				visit the <a href="index.html">Cougar Rescue Forum</a> to login or register as a student.
+				visit the <a href="login.php">Cougar Rescue Forum</a> to login or register as a student.
 				</p>
 				<p id="invalidMessage" name="invalidmsg" class="invalid">
 				Invalid credentials. Please try again or click the &quot;Forgot Password&quot; link.
@@ -42,7 +42,7 @@ Description: This file is the html for the index/home page.
 				
 				<label for="passField">Password <br />
 				<input class="inputstyle" type="password" placeholder="Password" name="passField" id="passField" required /><br /></label>
-				<a href="forgot_password.html">Forgot Password?</a><br /><br />
+				<a href="forgot_password.php">Forgot Password?</a><br /><br />
 				<input class="submitstyle" name="loginbtn" type="submit" value="Login" id="submitLogin" />
 				</form>
 		</div>
