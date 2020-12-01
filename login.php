@@ -30,13 +30,10 @@ Description: This file is the php for the index/home page.
 				<a href="login.php">
 				<img src="images/cr_logo.png" alt="Cougar Rescue Forum Logo" /></a>
 				</p>
-				<p class="description">
+				<p class="description" id="description">
 				Welcome to the Cougar Rescue Forum. The Cougar Rescue Forum is a student-led,
 				safe space for CSUSM students to ask course-related questions and receive 
 				guidance and answers from their classmates. 
-				</p>
-				<p id="invalidMessage" name="invalidmsg" class="invalid">
-				Invalid credentials. Please try again or click the &quot;Forgot Password&quot; link.
 				</p>
 				<label for="emailField">Email <br />
 				<input class="inputstyle" type="email" placeholder="CSUSM Email" name="emailField" id="emailField" required /><br /></label>
@@ -63,7 +60,7 @@ Description: This file is the php for the index/home page.
 				$pass = $_POST['passField'];
 				
 				//Create query
-				$query = "SELECT email, pass, acctStatus FROM Users WHERE email='"  . $email . "' AND pass='" . $pass . "' AND acctStatus='enabled';";
+				$query = "SELECT email, pass, acctStatus, acctType FROM Users WHERE email='"  . $email . "' AND pass='" . $pass . "';";
 				
 				//Execute query
 				$result = mysqli_query($db, $query);
@@ -76,20 +73,30 @@ Description: This file is the php for the index/home page.
 				// Get the number of rows in the result
 				$num_rows = mysqli_num_rows($result);
 				$row = mysqli_fetch_assoc($result);
-				if ($row[2] == 'disabled')
-				{
+				$disabled = 'disabled';
+				$student = 'student';
+				print "<script type='text/javascript'>console.log('". $row['acctType'] . " " . $row['acctStatus']. "'); </script>";
+				if ($num_rows == 0)
+				{	
 					
-					print "<script type='text/javascript'>errorCredentials('Your account is disabled. Please contact cougarrescue.noreply@gmail.com to resolve.'); </script>";
-					exit();
-				}
-				else if ($num_rows == 0)
-				{
-				
+					
 					print "<script type='text/javascript'>errorCredentials('Invalid login credentials. Please try again or visit the Forgot Password page.'); </script>";
 					exit();
 					
 				}
-				else if ($num_rows == 1)
+				else if ($row['acctStatus'] == $disabled && $row['acctType'] == $student)
+				{
+					print "<script type='text/javascript'>console.log('disabled + student '); </script>";
+					print "<script type='text/javascript'>errorCredentials('Your account is disabled. Please contact cougarrescue.noreply@gmail.com to resolve.'); </script>";
+					exit();
+				} 
+				else if ($row['acctType'] != $student) {
+						
+						print "<script type='text/javascript'>errorCredentials('This is an administrator account. Please login on the admin login page.'); </script>";
+						exit();
+					
+				}
+				else if ($num_rows == 1 && $row['acctStatus'] != $disabled && $row['acctType'] == $student)
 				{
 					$_SESSION["user"] = $email;
 					print "<script type='text/javascript'>";
@@ -98,6 +105,7 @@ Description: This file is the php for the index/home page.
 					exit();
 
 				}
+				
 			}
 			mysqli_close($db);
 		?>

@@ -12,14 +12,26 @@ function login(event) {
 }
 function errorCredentials(errorMsg)
 {
-	var dom = document.getElementById("invalidMessage");
-	dom.value = errorMsg;
+	console.log('in error');
+	var dom = document.createElement("p");
 	dom.setAttribute("class", "invalid");
+	dom.setAttribute("id", "invalidMessage");
+	dom.innerHTML = errorMsg;
 	dom.style.visibility = "visible";
+	var desc = document.getElementById("description");
+	//dom.innerHTML = errorMsg;
+	//console.log(errorMsg);
+	//dom.setAttribute("class", "invalid");
+	//dom.style.visibility = "visible";
+	insertAfter(desc, dom);
 	var email = document.getElementById("emailField");
 	email.focus();
 	return false;
 	
+}
+
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 function goAdmin() {
 	window.location.href = "admin_login.php";
