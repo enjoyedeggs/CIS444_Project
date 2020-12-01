@@ -359,10 +359,22 @@ h1, h2 {
 	
 	
 }
+.status {
+	background-color: transparent;
+
+	flex-basis: 10%;
+	min-width: 16%;
+	overflow-wrap: break-word;
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+	
+}
 
 .item-disable {
+	background-color: transparent;
+	border: 1px solid #0259A8;
+	border-radius: 25px;
 	flex-basis: 10%;
-	max-width: 20%;
 	min-width: 16%;
 	overflow-wrap: break-word;
 	padding: 5px 5px 5px 5px;
