@@ -13,27 +13,13 @@ function validateFields(event) {
 		
 		return false;
 	}
+	var ciphertext =  CryptoJS.SHA256(pass);
+	console.log(ciphertext.toString());
+	document.getElementById("passField").value = ciphertext;
+		
+	return true;
 	
-	//TODO: Check with PHP function if email is already in use or not.
-	var validated = true;
-	if (validated == true){
-		//TODO: Send to PHP function to create account with encrypted password
-		//Encrypt Password
-		var ciphertext = CryptoJS.AES.encrypt(pass.value, 'secretkey128');
-		
-		
-		//Clear fields
-		fname = '';
-		lname = '';
-		email = '';
-		pass = '';
-		cpass = '';
-		return true;
-	}
-	else {
-		alert('This email address is already in use. Please log in or navigate to the "Forgot Password" page.');
-		return false;
-	}
+
 }
 
 function matchingPasswords(pass1, pass2) {
@@ -60,4 +46,28 @@ function csusmEmail(email) {
 		return false;
 	}
 	return true;
+}
+
+function valid(validated)
+{
+	var pass = document.getElementById("passField");
+	
+	if (validated == true){
+		
+		//Clear fields
+		fname = '';
+		lname = '';
+		email = '';
+		pass = '';
+		cpass = '';
+		return true;
+	}
+	else {
+		alert('This email address is already in use. Please log in or navigate to the "Forgot Password" page.');
+		return false;
+	}
+}
+
+function toMain() {
+	window.location.href = "main.php";
 }
