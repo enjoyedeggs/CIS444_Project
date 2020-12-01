@@ -7,29 +7,32 @@ function login(event) {
 	// Encrypt Password
 	var encrypted = CryptoJS.SHA256(pass.value);
 	//console.log(encrypted.toString());
-	//TODO: validate credentials with database
-	//placeholder for PHP function
-	var acctStatus = 'enabled';
-	var isValid = true; 
-	if (isValid == true && acctStatus === 'enabled') {
-		//Redirects the user to the main page upon successful login.
-		email.value = '';
-		pass.value = '';
-		return true;
-	}
-	else if (acctStatus === 'disabled') {
-		alert("Your account is disabled. Please contact cougarrescue.noreply@gmail.com to resolve.");
-	}
-	else {
-		var dom = document.getElementById("invalidMessage");
-		dom.style.visibility = "visible";
-		
-		pass.value = '';
-		email.focus();
-		return false;
-	}
+	document.getElementById("passField").value = encrypted;
+
+}
+function errorCredentials(errorMsg)
+{
+	var dom = document.getElementById("invalidMessage");
+	dom.value = errorMsg;
+	dom.setAttribute("class", "invalid");
+	dom.style.visibility = "visible";
+	var email = document.getElementById("emailField");
+	email.focus();
+	return false;
+	
+}
+function goAdmin() {
+	window.location.href = "admin_login.php";
 }
 
-function goAdmin() {
-	window.location.href = "admin_index.html";
+function toMain()
+{
+	//console.log("going to main");
+	window.location.href = "main.php"; 
+}
+
+function toAdmin() 
+{
+	
+	window.location.href = "admin.php";
 }
