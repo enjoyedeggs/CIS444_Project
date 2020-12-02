@@ -30,12 +30,9 @@ Description: This file is the html for the index/home page.
 				<a href="admin_login.php">
 				<img src="images/cr_logo.png" alt="Cougar Rescue Forum Logo" /></a>
 				</p>
-				<p class="description">
+				<p class="description" id="description">
 				Welcome to the Cougar Rescue Forum. This is the administrator login. If you are not an administrator please
 				visit the <a href="login.php">Cougar Rescue Forum</a> to login or register as a student.
-				</p>
-				<p id="invalidMessage" name="invalidmsg" class="invalid">
-				Invalid credentials. Please try again or click the &quot;Forgot Password&quot; link.
 				</p>
 				<label for="emailField">Email <br />
 				<input class="inputstyle" type="email" placeholder="CSUSM Email" name="emailField" id="emailField" required /><br /></label>
@@ -46,7 +43,7 @@ Description: This file is the html for the index/home page.
 				<input class="submitstyle" name="loginbtn" type="submit" value="Login" id="submitLogin" />
 				</form>
 		</div>
-				<?php
+			<?php
 		
 			$db = mysqli_connect("db", "root", "test", "myDb");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
@@ -60,7 +57,7 @@ Description: This file is the html for the index/home page.
 				$pass = $_POST['passField'];
 				
 				//Create query
-				$query = "SELECT email, pass, acctStatus FROM Users WHERE email='"  . $email . "' AND pass='" . $pass . "' AND acctType='admin';";
+				$query = "SELECT email, pass, acctType FROM Users WHERE email='"  . $email . "' AND pass='" . $pass . "';";
 				
 				//Execute query
 				$result = mysqli_query($db, $query);
@@ -82,7 +79,12 @@ Description: This file is the html for the index/home page.
 					exit();
 					
 				}
-				else if ($num_rows == 1)
+				if ($row['acctType'] != 'admin') {
+					print "<script type='text/javascript'>errorCredentials('This is a student account. Please use the student login.'); </script>";
+					exit();
+				}
+				
+				else if ($num_rows == 1 && $row['acctType'] == 'admin')
 				{
 					
 					$_SESSION["admin"] = $email;

@@ -35,10 +35,11 @@ Description: This file is the html/php for the main/home page.
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
-			<button class="logoutNav" onclick="logout()">Logout</button>
-
-			<a href="search.html">Search</a>
-			<a href="view_profile.html">Profile</a>
+			<form id="logoutForm" method="post" action="logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form>
+			<a href="search.php">Search</a>
+			<a href="view_profile.php">Profile</a>
 			<a href="main.php">Home</a>
 
 		</div>

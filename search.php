@@ -1,5 +1,5 @@
-//<?php
-	//session_start();
+<?php
+	session_start();
 	
 //	if (!isset($_SESSION["users"])){
 //		header("location:login.php");
@@ -7,7 +7,7 @@
 //	}
 	
 	
-//?>
+?>
 <!DOCTYPE html>
 <!--
 Project Name: Cougar Rescue Forum
@@ -56,7 +56,7 @@ Description: This file is the html for the search page.
 			<!--When the user searches, the search results will be appended here-->
 		</div>
 		<?php
-            $db = mysqli_connect("localhost", "root", "", "cc_forum");
+            $db = mysqli_connect("db", "root", "test", "myDb");
             //$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
             if(mysqli_connect_errno()){
                 print "Connect failed" . mysqli_connect_error();

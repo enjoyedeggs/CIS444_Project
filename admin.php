@@ -41,7 +41,9 @@ Description: This file is the html for the admin home page.
 				</form> 
 			</div> 
 			<!--Coming back to this-->
-			<button class="logoutNav" onclick="logout()">Logout</button> 
+			<form id="logoutForm" method="post" action="admin_logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form>
 			<a href="admin.php">Home</a> 
 			  
 		</div>
@@ -60,8 +62,17 @@ Description: This file is the html for the admin home page.
 			</div>
 			
 			<div id="usersList">
-				<h2 class="adminsubheadings">Students Registered for Cougar Rescue Forum</h2>
-				
+				<h2 class="adminsubheadings">Students Registered for Cougar Rescue Forum </h2>
+				<form  id="sorting" method="post" >
+					<label class="adminsubheadings dropdownlbl" align="center" for="sortby">Sort By: 
+					<select id="sortby" name="sortby" size="1">
+					  <option value="default" selected="selected">Default</option>
+					  <option value="fname">First Name</option>
+					</select>
+			
+					<input  aria-label="sortmethod" type="submit" value="Apply" name="sortmethod" onclick="sortUsers()"/>
+				</form>
+				</label>
 				<!--Page loads list of users from database-->
 			</div>
 		</div>
@@ -127,8 +138,12 @@ Description: This file is the html for the admin home page.
 							FROM Users u, Posts p, Replies r, User_Courses c
 							WHERE p.userEmail = u.email
 							AND c.email = u.email
-							GROUP BY u.email;";
-							
+							GROUP BY u.email";
+			if (isset($_GET["sortBy"]) && $_GET["sortBy"] == 'fname') {
+				$users_query .= " ORDER BY fname;";
+			}
+			$users_query .= ";";
+			print $users_query;
 			$users = mysqli_query($db, $users_query);
 			
 			if (!$users) {
@@ -149,7 +164,7 @@ Description: This file is the html for the admin home page.
 								u.fname, u.lname
 								FROM Posts p, Users u
 								WHERE p.userEmail = u.email
-								AND (content LIKE '%PHP%' OR title LIKE '%". $term . "%');";
+								AND (content LIKE '%" . $term . "%' OR title LIKE '%". $term . "%');";
 								
 				$search = mysqli_query($db, $search_query);		
 				if (!$search) {
