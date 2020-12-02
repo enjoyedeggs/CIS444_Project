@@ -9,8 +9,13 @@ function retrieveInformation() {
 	if (pos > 0){
 		var coursePos = forumName.search(/course=/);
 		var subforumPos = forumName.search(/&subforum=/);
+		var sortPause = forumName.search(/&sortBy=/);
+		var end = forumName.length;
+		if (sortPause > 0) {
+			end = sortPause;
+		}
 		course = forumName.substring(coursePos+7, subforumPos);
-		subforum = forumName.substring(subforumPos+10);
+		subforum = forumName.substring(subforumPos+10, end);
 		forumName = course + " " + subforum;
 		var doc = document.getElementsByTagName("html")[0];
 		doc.style.visibility="visible";
@@ -108,3 +113,13 @@ function viewPost(id) {
 function newPost(id) {
 	window.location.href = "new_post.php?course=" + course + "&subforum=" +subforum;
 }
+
+function sortPosts() {
+	var dom = document.getElementById("sortby");
+	console.log("admin.php?sortBy=" + dom.value);
+	console.log(subforum);
+	var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?course=" + course + "&subforum=" + subforum + "&sortBy=" +dom.value;
+	window.history.pushState({path:url}, '', url);
+	//window.location.href = "admin.php?sortBy=" + dom.value;
+}
+
