@@ -43,9 +43,9 @@ Description: This file is the html for the index/home page.
 				<input class="submitstyle" name="loginbtn" type="submit" value="Login" id="submitLogin" />
 				</form>
 		</div>
-				<?php
+			<?php
 		
-			$db = mysqli_connect("localhost", "root", "", "cis444");
+			$db = mysqli_connect("db", "root", "test", "myDb");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
 			if (mysqli_connect_errno()) {
 				print "Connect failed: " . mysqli_connect_error();

@@ -60,7 +60,7 @@ Description: This file is the html for the sub forum page.
 		</div>
 
 		<?php
-			$db = mysqli_connect("localhost", "root", "", "cis444");
+			$db = mysqli_connect("db", "root", "test", "myDb");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
 			if (mysqli_connect_errno()) {
 				print "Connect failed: " . mysqli_connect_error();
@@ -76,8 +76,8 @@ Description: This file is the html for the sub forum page.
 			WHERE p.userEmail = u.email 
 			AND r.postID = p.postID 
 			AND p.subType = "'.$_GET["subforum"].'" AND p.crsNumber= "'.$_GET["course"].'"
+			GROUP BY u.fname, u.lname, p.title, p.postID;';
 			
-			GROUP BY u.fname, u.lname, p.title;';
 
 			//Execute Query
 			$result = mysqli_query($db, $query);
