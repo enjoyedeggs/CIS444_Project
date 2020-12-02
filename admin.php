@@ -164,7 +164,7 @@ Description: This file is the html for the admin home page.
 								u.fname, u.lname
 								FROM Posts p, Users u
 								WHERE p.userEmail = u.email
-								AND (content LIKE '%PHP%' OR title LIKE '%". $term . "%');";
+								AND (content LIKE '%" . $term . "%' OR title LIKE '%". $term . "%');";
 								
 				$search = mysqli_query($db, $search_query);		
 				if (!$search) {
