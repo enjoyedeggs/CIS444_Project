@@ -77,7 +77,7 @@ Description: This file is the html for the admin home page.
 			</div>
 		</div>
 		<?php
-			$db = mysqli_connect("db", "root", "test", "myDb");
+			$db = mysqli_connect("localhost", "root", "", "cis444");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
 			if (mysqli_connect_errno()) {
 				print "Connect failed: " . mysqli_connect_error();
