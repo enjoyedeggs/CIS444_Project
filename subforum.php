@@ -41,8 +41,8 @@ Description: This file is the html for the sub forum page.
 			
 		</div>
         
-		<form  id="sorting" method="post" >
-					<label class="adminsubheadings dropdownlbl" align="center" for="sortby">Sort By: 
+		<form   id="sorting" method="post" >
+					<label  class="sorting-subforum dropdownlbl" for="sortby">Sort By: 
 					<select id="sortby" name="sortby" size="1">
 					  <option value="default" selected="selected">Default</option>
 					  <option value="fname">Student</option>
@@ -73,8 +73,8 @@ Description: This file is the html for the sub forum page.
 		</div>
 
 		<?php
-			$db = mysqli_connect("localhost", "root", "", "cis444");
-			//$db = mysqli_connect("db", "root", "test", "myDb");
+			//$db = mysqli_connect("localhost", "root", "", "cis444");
+			$db = mysqli_connect("db", "root", "test", "myDb");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
 			if (mysqli_connect_errno()) {
 				print "Connect failed: " . mysqli_connect_error();

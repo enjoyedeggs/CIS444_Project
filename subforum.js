@@ -116,8 +116,8 @@ function newPost(id) {
 
 function sortPosts() {
 	var dom = document.getElementById("sortby");
-	console.log("admin.php?sortBy=" + dom.value);
-	console.log(subforum);
+	//console.log("admin.php?sortBy=" + dom.value);
+	//console.log(subforum);
 	var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?course=" + course + "&subforum=" + subforum + "&sortBy=" +dom.value;
 	window.history.pushState({path:url}, '', url);
 	//window.location.href = "admin.php?sortBy=" + dom.value;

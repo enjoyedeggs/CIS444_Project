@@ -16,7 +16,7 @@ function getInfo(postinfo) {
 	try {
 		var len = postinfo.length;
 	}catch(err) {}
-	
+	//console.log(postinfo);
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
 	queryPos = pos;
@@ -34,15 +34,13 @@ function getInfo(postinfo) {
 		posth.setAttribute("id", post+"post-header");
 		//console.log(postStatus);
 		//console.log(postStatus === "flagged");
-		var inner;
-		title = postinfo[0][3]
-		postStatus = postinfo[0][5];
-		if (postStatus === "NULL")
-			inner = postinfo[0][3]; //Placeholder for PHP
-		else if (postStatus === "flagged")
-			inner = title + " -- FLAGGED"; //Placeholder for PHP
+		var inner = postinfo[0][3];
+		//console.log(title);
+		postStatus = postinfo[0][5]; //Placeholder for PHP
+		if (postStatus === "flagged")
+			inner = inner + " -- FLAGGED"; //Placeholder for PHP
 		else if (postStatus === "locked") 
-			inner = title + " -- LOCKED";
+			inner = inner + " -- LOCKED";
 			
 		posth.innerHTML = inner;	
 		
