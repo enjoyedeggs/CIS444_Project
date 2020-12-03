@@ -1,8 +1,11 @@
-function retrieveInformation() {
-	displayProfilePicture();
-	displayUserInfo();
-	displayInfo("signature", getSignature());
-    displayInfo("courses", getCourses());
+function retrieveInformation(results) {
+	
+	//console.log(results);
+	displayProfilePicture(results[0][3]);
+	displayUserInfo(results[0][0], results[0][1],results[0][2]);
+	displayInfo("signature", results[0][4]);
+	var crs = results[0][5].split(', ');
+    displayInfo("courses", getCourses(crs));
 	return false;
 }
 
@@ -14,8 +17,8 @@ function displayInfo(piece, info) {
     piece_Display.appendChild(innerP);
     document.getElementById(piece).appendChild(piece_Display);
 }
-function displayProfilePicture() {
-	var filename = getProfilePicture(); //placeholder
+function displayProfilePicture(filename) {
+	var filename = "users/" + filename; //placeholder
 	if (filename !== "NULL") {
     var innerP = document.createElement("img");
     innerP.setAttribute("src", filename);
@@ -24,10 +27,8 @@ function displayProfilePicture() {
     document.getElementById("profile-picture-div").appendChild(innerP);}
 }
 
-function displayUserInfo() {
-	var fname = getFirstName();
-	var lname = getLastName();
-	var email = getEmailAddress();
+function displayUserInfo(fname, lname, email) {
+
 	var dom = document.getElementById("user-info");
 	
 	var fnameElem = document.createElement("div");
@@ -41,35 +42,12 @@ function displayUserInfo() {
 	
 	
 }
-function getProfilePicture(){
-    var profile_picture = "images/linkedin.jpg";//placeholder for PHP function 
-	
-    return profile_picture;
-}
 
-function getFirstName(){
-    var first_name = "Suchi"; //PHP placeholder
-    return first_name;
-}
 
-function getLastName(){
-    var last_name = "Kapur"; //PHP placeholder
-    return last_name;
-}
-
-function getEmailAddress(){
-    var email_address = "kapur005@cougars.csusm.edu";//"couga001@cougars.csusm.edu";
-    return email_address;
-}
-
-function getSignature(){
-    var sig = "I love being a CIS major!";
-    return sig;
-}
-
-function getCourses(){
-    var course_list = new Array();
-	course_list = ["CIS444", "CS433", "MKTG302"];
+function getCourses(course_list){
+	//console.log(course_list);
+    //var course_list = new Array();
+	//ourse_list = ["CIS444", "CS433", "MKTG302"];
     var count_courses = course_list.length;
     var courses = "";
     var i;
@@ -83,6 +61,6 @@ function getCourses(){
             courses += "<br>";
         }
     }
-
+	//console.log(courses);
     return courses;
 }
