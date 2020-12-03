@@ -28,7 +28,7 @@ Description: This file is the html for the admin home page.
 		<script type="text/javascript" src="admin.js"></script>
 	</head>
 	
-	<body id="admin" class="pagestyle" onload="retrieveInformation();">
+	<body id="admin" class="pagestyle">
 		<div id="navlist" class="navlist"> 
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
