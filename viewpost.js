@@ -12,6 +12,7 @@ var queryPos;
 var title;
 var postStatus;
 function getInfo(postInfo) {
+	//console.log(postInfo);
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
 	queryPos = pos;
@@ -82,7 +83,7 @@ function getInfo(postInfo) {
 		
 
 		var user = document.getElementById("username");
-		user.innerHTML = postInfo[3];//PHP Placeholder: Get user name from database
+		user.innerHTML = postInfo[0] + " " + postInfo[1];//PHP Placeholder: Get user name from database
 		
 		
 		//TODO: get post content
@@ -94,8 +95,8 @@ function getInfo(postInfo) {
 		doc.style.visibility="visible";
 	}
 	else {
-		alert("Cannot access this page without selecting a forum on the main page. You will be redirected to the main page.");
-		window.location.href = "main.html";
+		//alert("Cannot access this page without selecting a forum on the main page. You will be redirected to the main page.");
+		window.location.href = "main.php";
 	}
 }
 function getReplies(replies) {
@@ -169,12 +170,12 @@ function getReplies(replies) {
 }
 
 function newReply() {
-	window.location.href = "new_post.html?"+ (window.location).toString().substring(queryPos+1);
+	window.location.href = "new_post.php?"+ (window.location).toString().substring(queryPos+1);
 }
 
 function newPostReply(id) {
 	id = id.substring(0, id.length - 1);
-	window.location.href = "new_post.html?course=" + course + "subforum=" + subforum + "postid=" + id;
+	window.location.href = "new_post.php?course=" + course + "&subforum=" + subforum + "&postid=" + id;
 	
 }
 

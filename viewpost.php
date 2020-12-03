@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	
+	if (!isset($_SESSION["user"])){
+		header("location:login.php");
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <!--
 Project Name: Cougar Rescue Forum
@@ -21,7 +29,9 @@ Description: This file is the html for the student view of a post.
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
 			
-			<button class="logoutNav" onclick="logout()">Logout</button>
+			<form id="logoutForm" method="post" action="logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form>
 			<a href="search.php">Search</a>
 			<a href="view_profile.php">Profile</a>
 			<a href="main.php">Home</a>
@@ -62,7 +72,8 @@ Description: This file is the html for the student view of a post.
     <!-- PHP --> 
     <?php
     /***********Change***************************************** */
-    $db = mysqli_connect("localhost", "root", "", "myDb");
+    //$db = mysqli_connect("localhost", "root", "", "myDb");
+	$db = mysqli_connect("db", "root", "test", "myDb");	
     if (mysqli_connect_errno()) {
         print "Connect failed: " . mysqli_connect_error();
         exit();
@@ -71,7 +82,12 @@ Description: This file is the html for the student view of a post.
     $course = $_GET["course"];
     $subforum = $_GET["subforum"];
     $postid = $_GET["postid"];
-
+	print '<script type="text/javascript"> console.log("'. $course . '");</script>';
+	print '<script type="text/javascript"> console.log("'. $subforum . '");</script>';
+	print '<script type="text/javascript"> console.log('. $postid . ');</script>';
+	//print $course;
+	//print $subforum;
+	//print $postid;
     $postInfo=getPostInfo($postid,$db); 
     $replies=getPostReplies($postid,$db); 
     

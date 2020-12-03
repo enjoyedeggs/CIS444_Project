@@ -85,20 +85,23 @@ Description: This file is the html for the sub forum page.
 
 			//Create query
 			$email = $_SESSION["user"];
-			$query = 'SELECT CONCAT(u.fname, " ", u.lname) as "Author", p.title,
+			/*$query = 'SELECT CONCAT(u.fname, " ", u.lname) as "Author", p.title,
 			p.postID, COUNT(r.replyID) as "Replies" , 
 			(SELECT GREATEST(MAX(p.postDate), MAX(r.replyTime))) as "Last Post"
 			FROM Posts p, Users u, Replies r 
 			WHERE p.userEmail = u.email 
 			AND r.postID = p.postID 
 			AND p.subType = "'.$_GET["subforum"].'" AND p.crsNumber= "'.$_GET["course"].'" 
-			GROUP BY u.lname, u.fname, p.title, p.postID';
+			GROUP BY u.lname, u.fname, p.title, p.postID';*/
+			$query = 'SELECT CONCAT(u.fname, " ", u.lname) as "Author", p.title, p.postID, 0 as "Replies", 
+			p.postDate as "Post Date" FROM Posts p, Users u 
+			WHERE p.userEmail = u.email  AND p.subType = "'.$_GET["subforum"].'" AND p.crsNumber= "'.$_GET["course"].'"  GROUP BY u.lname, u.fname, p.title, p.postID';
 
 			if (isset($_GET["sortBy"]) && ($_GET["sortBy"] != "default")){
 				$query .= " ORDER BY ". $_GET["sortBy"];
 			}
 			$query .= ";";
-			// print $query;
+			//print $query;
 
 			//Execute Query
 			$result = mysqli_query($db, $query);
@@ -114,6 +117,14 @@ Description: This file is the html for the sub forum page.
 			$rows = array();
 			while($r = mysqli_fetch_assoc($result)) {
 				$values = array_values($r);
+				//print $values[2];
+				$reply_query = 'SELECT COALESCE(COUNT(DISTINCT r.replyID), 0) as "Replies" FROM Posts p, Replies r WHERE r.postID = p.postID AND p.postID = '. $values[2] . ';';
+				$reply_res = mysqli_query($db, $reply_query);
+				$num_reply = mysqli_fetch_assoc($reply_res);
+				$replies = array(3 => $num_reply["Replies"]);
+				$values = array_replace($values, $replies);
+				//print $num_reply["Replies"];
+				//print $values[3];
 				$rows[] = $values;
 			}
 			//print(json_encode($rows));

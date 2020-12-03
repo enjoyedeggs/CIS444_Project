@@ -12,7 +12,7 @@ function login(event) {
 }
 function errorCredentials(errorMsg)
 {
-	console.log('in error');
+	//console.log('in error');
 	var dom = document.createElement("p");
 	dom.setAttribute("class", "invalid");
 	dom.setAttribute("id", "invalidMessage");

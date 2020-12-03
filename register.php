@@ -84,7 +84,7 @@ Description: This file is the html for the registration page.
 						print "</script>";
 						
 						$register_query = "INSERT INTO Users (email, fname, lname, profilePicture, signature, pass, acctStatus, acctType, adminEmail)
-										VALUES ('". $email ."', '" . $fname . "', '" . $lname . "', NULL, NULL, '".$pass ."','enabled', 'student',
+										VALUES ('". $email ."', '" . $fname . "', '" . $lname . "', 'default.jpg', NULL, '".$pass ."','enabled', 'student',
 										(SELECT adminUser.email FROM (SELECT email from Users WHERE acctType = 'admin') as adminUser));";
 						
 						//Insert user into db - execute query
