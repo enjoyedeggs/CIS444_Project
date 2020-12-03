@@ -33,7 +33,9 @@ Description: This file is the html for the sub forum page.
 			</div>	
 			<!--Coming back to this-->
 
-			<form action=""></form> 
+			<form id="logoutForm" method="post" action="logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form>
 
 			<a href="search.php">Search</a>
 			<a href="view_profile.php">Profile</a>
