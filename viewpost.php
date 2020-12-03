@@ -52,10 +52,10 @@ Description: This file is the html for the student view of a post.
                 </div>
             </div>
             <div id="user-controls" class="viewprofilebuttons">
-			
-                <input  type="checkbox" id="flag"/>
-				<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post</label>
-                <button  id="rplybutton" onclick="newReply()">Reply to Post</button>
+			<input  type="checkbox"  name="flagged" id="flag"/>
+			<label class="flag-post floatright" for="flag" id="flaglabel">Flag Post</label>
+                
+			<button  id="rplybutton" onclick="newReply()">Reply to Post</button>
             </div>
         </div>
 		<div id="replies">
@@ -82,9 +82,32 @@ Description: This file is the html for the student view of a post.
     $course = $_GET["course"];
     $subforum = $_GET["subforum"];
     $postid = $_GET["postid"];
-	print '<script type="text/javascript"> console.log("'. $course . '");</script>';
-	print '<script type="text/javascript"> console.log("'. $subforum . '");</script>';
-	print '<script type="text/javascript"> console.log('. $postid . ');</script>';
+	$del_flag= $_GET["flag"];
+	if (isset($del_flag)) {
+		print '<script type="text/javascript"> console.log("here");</script>';
+		$del_query = "UPDATE Posts
+					SET postStatus = 'flagged'
+					WHERE postID =".(int)$del_flag. ";";
+						
+		$result = mysqli_query($db, $del_query);
+		
+		if (!$result) {
+			print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+			exit();
+		}
+		else {
+			//print '<script type="text/javascript">';
+			//print 'console.log("' . $course . ',' . $subforum . ',' . $postid .'");';
+			//print '</script>';
+			print '<script type="text/javascript">';
+			print 'toPost("' . $course . '","' . $subforum . '","' . $postid .'");';
+			print '</script>';
+			
+		}
+	}
+	//print '<script type="text/javascript"> console.log("'. $course . '");</script>';
+	//print '<script type="text/javascript"> console.log("'. $subforum . '");</script>';
+	//print '<script type="text/javascript"> console.log('. $postid . ');</script>';
 	//print $course;
 	//print $subforum;
 	//print $postid;

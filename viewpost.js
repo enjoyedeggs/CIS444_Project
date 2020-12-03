@@ -26,18 +26,24 @@ function getInfo(postInfo) {
 		var coursePos = forumName.search(/course=/);
 		var subforumPos = forumName.search(/&subforum=/);
 		var postPos = forumName.search(/&postid=/);
+		
+		var flagPos =  forumName.search(/&flag=/);
+		var end = forumName.length;
+		if (flagPos > 0) {
+			end = flagPos;
+		}
 		/*********************************************** */
 
 		/**********************************************************/
 		course = forumName.substring(coursePos+7, subforumPos);
-		post = forumName.substring(postPos);
+		post = forumName.substring(postPos+8,end);
 		//console.log(post);
 		subforum = forumName.substring(subforumPos+10, postPos);
 		forumName = course + " " + subforum;
 		/***********************************************************/
 		//console.log('"'+ admin + '"');
 		var flagbtn = document.getElementById("flag");
-		flagbtn.setAttribute("onchange", "Flagfunc(this,'"+post+"post-header');");
+		flagbtn.setAttribute("onchange", "flagPost(this.id,'"+post+"post-header');");
 
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
@@ -45,6 +51,7 @@ function getInfo(postInfo) {
 		
 		/****************************/
 		title = postInfo['title'];
+		console.log(postInfo['postStatus']);
 		if (postSatus=postInfo['postStatus'] === null){
 			postStatus="NULL";
 		}
@@ -188,7 +195,37 @@ function Flagfunc(element, header)
 	element.disabled = true;
 }
 
+function flagPost(id, header) {
+	console.log("flagging");
+	//console.log(newid);
+	//console.log(id);
+	console.log(course);
+	console.log(subforum);
+	console.log(post);
+	
+	//var head = document.getElementById(newid+"post-header");
+	//document.getElementById("admin-lock-del").submit();
+	var dom = document.getElementById(id);
+	if (dom.checked) {
+		//head.innerHTML = title + " -- FLAGGED";
+		//document.getElementById(id).disabled = true;
+		
+		//var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + newid + "&lock=" +newid;
+		//window.history.pushState({path:url}, '', url);
+		var url = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&flag=" +post;
+		//console.log(url);
+		window.location.href = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&flag=" +post;
+		
+	}
+	else {
+		head.innerHTML = title;
+	}
+}
 
+function toPost(course, subforum, post) {
+	
+	window.location.href = "viewpost.php?course=" + course + "&subforum=" + subforum + "&postid=" + post;
+}
 
 function logout() {
 	

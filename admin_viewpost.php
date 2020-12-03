@@ -54,9 +54,11 @@ Description: This file is the html for the admin view of a post.
 		<div id="admin-section" class="post-admin-controls">
 		<form  method="post">
 			<button  class="adminlogin" type="submit" name="delete" id="disablebtn" onclick="deletePost(this.id)" >Delete Post </button>
+		
+			<input  name="lock" type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost(this.id)" value="true"/><label for="lockpost">Lock Post</label>
 		</form>
 		<form  method="post">
-			<input  name="lock" type="checkbox" name="Lock Post" id="lockpost" onchange="lockPost(this.id)" value="true"/><label for="lockpost">Lock Post</label>
+			<input class="adminlogin" aria-label="unflag" value="Resolve" type="submit" onclick="resolve(this.id);" name="unflag" id="unflag" />
 		</form>
 		</div>
 		<div id="replies">
@@ -73,6 +75,11 @@ Description: This file is the html for the admin view of a post.
 			exit();
 		}
 		$del_lock= $_GET["lock"];
+		$del_resolve = $_GET["unflag"];
+		$course = $_GET["course"];
+		$subforum = $_GET["subforum"];
+		$postid = $_GET["postid"];
+		
 		if (isset($del_lock)) {
 			//print '<script type="text/javascript"> console.log("here");</script>';
 
@@ -87,12 +94,34 @@ Description: This file is the html for the admin view of a post.
 				exit();
 			}
 			else {
-				$course = $_GET["course"];
-				$subforum = $_GET["subforum"];
-				$postid = $_GET["postid"];
+				
+				//print '<script type="text/javascript">';
+				//print 'console.log("' . $course . ',' . $subforum . ',' . $postid .'");';
+				//print '</script>';
 				print '<script type="text/javascript">';
-				print 'console.log("' . $course . ',' . $subforum . ',' . $postid .'");';
+				print 'toPost("' . $course . '","' . $subforum . '","' . $postid .'");';
 				print '</script>';
+				
+			}
+		}
+		if (isset($del_resolve)) {
+			//print '<script type="text/javascript"> console.log("here");</script>';
+
+			$del_query = "UPDATE Posts
+						SET postStatus = 'NULL'
+						WHERE postID =".(int) $postid. ";";
+			print '<script type="text/javascript"> console.log("here");</script>';
+
+			$result = mysqli_query($db, $del_query);
+		
+			if (!$result) {
+				print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+				exit();
+			}
+			else {
+				//print '<script type="text/javascript">';
+				//print 'console.log("' . $course . ',' . $subforum . ',' . $postid .'");';
+				//print '</script>';
 				print '<script type="text/javascript">';
 				print 'toPost("' . $course . '","' . $subforum . '","' . $postid .'");';
 				print '</script>';

@@ -219,7 +219,23 @@ function lockPost(id) {
 	else {
 		head.innerHTML = title;
 	}
-	//TODO: lock post
+	
+	
+}
+
+function resolve(id) {
+	//var newid = id.replace("lock", "");
+	//console.log(newid);
+	//console.log(id);
+	var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&unflag=" +post;
+	window.history.pushState({path:url}, '', url);
+	var url = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&unflag=" +post;
+	console.log(url);
+	console.log(post);
+	//var head = document.getElementById(id+"post-header");
+	//document.getElementById("admin-lock-del").submit();
+	//var dom = document.getElementById(id);
+	//window.location.href = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&unflag=" +post;
 	
 }
 
