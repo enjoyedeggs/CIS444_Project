@@ -9,27 +9,51 @@ var course;
 var subforum;
 var post;
 var queryPos;
-var title= "Homework 6"; //dummy data
-var postStatus = "flagged";
-function getInfo() {
+var title;
+var postStatus;
+function getInfo(postInfo) {
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
 	queryPos = pos;
+	try {
+		var len = postInfo.length;
+	}catch(err) {}
+
+	
 	if (pos > 0){
+		/*****************THIS GRABS POSTID FROM URL*****************/
 		var coursePos = forumName.search(/course=/);
 		var subforumPos = forumName.search(/&subforum=/);
 		var postPos = forumName.search(/&postid=/);
+		/*********************************************** */
+
+		/**********************************************************/
 		course = forumName.substring(coursePos+7, subforumPos);
 		post = forumName.substring(postPos);
+		//console.log(post);
 		subforum = forumName.substring(subforumPos+10, postPos);
 		forumName = course + " " + subforum;
+		/***********************************************************/
 		//console.log('"'+ admin + '"');
 		var flagbtn = document.getElementById("flag");
 		flagbtn.setAttribute("onchange", "Flagfunc(this,'"+post+"post-header');");
 
 		var posth = document.getElementById("post-header");
 		posth.setAttribute("id", post+"post-header");
-		var inner;
+
+		
+		/****************************/
+		title = postInfo['title'];
+		if (postSatus=postInfo['postStatus'] === null){
+			postStatus="NULL";
+		}
+		else {
+			postStatus=postInfo['postStatus'];
+		}
+		/****************************/
+
+
+		var inner; 
 		if (postStatus === "NULL")
 			inner = title; //Placeholder for PHP
 		else if (postStatus === "flagged") {
@@ -50,21 +74,21 @@ function getInfo() {
 		var profilepic = document.createElement("img");
 		
 		//TODO: get user's profile picture
-		var profile_src = "images/profilepicture.png";//Placeholder
+		var profile_src = "users/" + postInfo['profilePicture'];
 		profilepic.setAttribute("src", profile_src);
 		profilepic.setAttribute("alt", "Author's profile picture");
 		profilepic.setAttribute("class", "post-profile-picture");
 		profilebox.appendChild(profilepic);
+		
+
 		var user = document.getElementById("username");
-		user.innerHTML = getUserName(post);//PHP Placeholder: Get user name from database
+		user.innerHTML = postInfo[3];//PHP Placeholder: Get user name from database
 		
 		
 		//TODO: get post content
 		var postcont = document.getElementById("post-content");
-		postcont.innerHTML = getPostContent(post); //Placeholder
+		postcont.innerHTML = postInfo['content']; //Placeholder
 		
-		//TODO: Get replies
-		getReplies(post);
 		
 		var doc = document.getElementsByTagName("html")[0];
 		doc.style.visibility="visible";
@@ -74,17 +98,8 @@ function getInfo() {
 		window.location.href = "main.html";
 	}
 }
-function getUserName(postid) {
-	return "Mhealyssah Bustria"; //Dummy Data
-}
-
-function getPostContent(postid) {
-	return "Where do I store my mySQL scripts?";
-}
-
-function getReplies(postid) {
-	var replies = new Array(); //Placeholder for PHP function
-	replies = [["RE: Homework 6", "Bartholomew Falzarano", "104", "You can store them in your home directory on the server.", "NULL"]];
+function getReplies(replies) {
+	
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';
@@ -99,7 +114,7 @@ function getReplies(postid) {
 			head.setAttribute("class", "headerbox");
 			var postTitle = document.createElement("h2");
 			postTitle.setAttribute("id", replies[i][2]+"post-header");
-			postTitle.innerHTML = replies[i][0];
+			postTitle.innerHTML = replies[i][3];
 			postTitle.setAttribute("class", "postheader");
 			head.appendChild(postTitle);
 			postDiv.appendChild(head);
@@ -111,11 +126,11 @@ function getReplies(postid) {
 			var user = document.createElement("div");
 			user.setAttribute("class", "indent");
 			user.setAttribute("id", replies[i][1]);
-			user.innerHTML = replies[i][1];
+			user.innerHTML = replies[i][0] +" " + replies[i][1];
 			authorsec.appendChild(user);
 			var bodycont = document.createElement("div");
 			bodycont.setAttribute("class", "bodybox");
-			bodycont.innerHTML = replies[i][3];
+			bodycont.innerHTML = replies[i][4];
 			
 			profile_sec.appendChild(authorsec);
 			profile_sec.appendChild(bodycont);
