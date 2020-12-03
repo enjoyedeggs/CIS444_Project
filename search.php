@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	
-//	if (!isset($_SESSION["users"])){
-//		header("location:login.php");
+//	if (!isset($_SESSION["search"])){
+//		header("location:search.php");
 //		exit();
 //	}
 	
@@ -51,39 +51,67 @@ Description: This file is the html for the search page.
 		</div>
 		
 		<h1 class="admin" id="searchheading">Cougar Rescue Forum: Search</h1>
+        <form  id="sorting" method="post">
+            <label class="adminsubheadings dropdownlbl"  for="sortby">Sort By:
+                <select id="sortby" name="sortby" size="1">
+                    <option value="course_name" selected="selected">Course Name</option>
+                    <option value="fname">First Name</option>
+                </select>
+
+                <input  aria-label="sortmethod" type="submit" value="Apply" name="sortmethod"/>
+        </form></label>
+
+
 		<p class="hiddenStyle" id="resultsInstr"></p>
 		<div id="searchResults">
 			<!--When the user searches, the search results will be appended here-->
 		</div>
 		<?php
-            $db = mysqli_connect("db", "root", "test", "myDb");
+            $db = mysqli_connect("db", "root", "test", "myDB");
             //$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
             if(mysqli_connect_errno()){
                 print "Connect failed" . mysqli_connect_error();
                 exit();
             }
-            //search function
-            if(isset($_GET["search"])){
-                $search_word = $_GET["search"];
-                $search_query = "SELECT DISTINCT p.postID, p.title, p.content, p.subType, p.crsNumber, u.fname, u.lname 
-                FROM Posts p, Users u
-                WHERE p.userEmail = u.email
-                AND (content LIKE '%" . $search_word . "%' OR title LIKE '%" . $search_word . "%');";
-                $search_result = mysqli_query($db, $search_query);
-                if(!$search_query){
-                    print '<script type="text/javascrip">
-                    alert("Error: the query could not executed."'. mysqli_error(). ');</script>';
-                    exit();
+            //search results
+                if(isset($_GET["search"])){
+                    $search_word = $_GET["search"];
+                    $search_query = "SELECT DISTINCT p.postID, p.title, p.content, p.subType, p.crsNumber, u.fname, u.lname 
+                                            FROM Posts p, Users u
+                                            WHERE p.userEmail = u.email
+                                            AND (content LIKE '%" . $search_word . "%' OR title LIKE '%" . $search_word . "%')";
+                    if(isset($_POST["sortby"])){
+                        switch($_POST["sortby"]){
+                            case "fname":
+                                $search_query .= " ORDER BY u.fname;";
+                                break;
+                            case "course_name":
+                                $search_query .= " ORDER BY p.crsNumber;";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    print $search_query;
+                    $search_result = mysqli_query($db, $search_query);
+                    if(!$search_query){
+                        print '<script type="text/javascrip">
+                            alert("Error: the query could not executed."'. mysqli_error(). ');</script>';
+                        exit();
+                    }
+                    $search_row = array();
+                    while($r = mysqli_fetch_assoc($search_result)){
+                        $values = array_values($r);
+                        $searchrow[] = $values;
+                    }
+                    print "<script type='text/javascript'>searchForum(" . json_encode($searchrow) . ");</script>";
+
                 }
-                $search_row = array();
-                while($r = mysqli_fetch_assoc($search_result)){
-                    $values = array_values($r);
-                    $searchrow[] = $values;
-                }
-                print "<script type='text/javascript'>searchForum(" . json_encode($searchrow) . ");</script>";
-                
-            }
+
+
+
             mysqli_close($db);
+
             
         ?>
 		
