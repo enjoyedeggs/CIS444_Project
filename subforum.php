@@ -33,7 +33,9 @@ Description: This file is the html for the sub forum page.
 			</div>	
 			<!--Coming back to this-->
 
-			<button class="logoutNav" onclick="logout()">Logout</button> 
+			<form id="logoutForm" method="post" action="logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form>
 
 			<a href="search.php">Search</a>
 			<a href="view_profile.php">Profile</a>
@@ -41,9 +43,22 @@ Description: This file is the html for the sub forum page.
 			
 		</div>
         
-		
+		<form   id="sorting" method="post" >
+					<label  class="sorting-subforum dropdownlbl" for="sortby">Sort By: 
+					<select id="sortby" name="sortby" size="1">
+					  <option value="default" selected="selected">Default</option>
+					  <option value="fname">Student</option>
+						<option value="title">Post Title</option>
+						<option value="postDate">Post Date</option>
+					</select>
+			
+					<input  aria-label="sortmethod" type="submit" value="Apply" name="sortmethod" onclick="sortPosts()"/>
+					</label>
+		</form>
         <div class="subforum-div" id="subforum-div">
 		<h1> Welcome to the Cougar Rescue Forum!</h1>
+
+
             <div class="table-sub-format">
                 <p id="forum-name" class="bolded"></p>
                 <div class="new-post-button">
@@ -60,6 +75,7 @@ Description: This file is the html for the sub forum page.
 		</div>
 
 		<?php
+			//$db = mysqli_connect("localhost", "root", "", "cis444");
 			$db = mysqli_connect("db", "root", "test", "myDb");
 			//$db = mysqli_connect("db", "group3", "g5tw9ShSexHH", "group3");
 			if (mysqli_connect_errno()) {
@@ -75,9 +91,14 @@ Description: This file is the html for the sub forum page.
 			FROM Posts p, Users u, Replies r 
 			WHERE p.userEmail = u.email 
 			AND r.postID = p.postID 
-			AND p.subType = "'.$_GET["subforum"].'" AND p.crsNumber= "'.$_GET["course"].'"
-			GROUP BY u.fname, u.lname, p.title, p.postID;';
-			
+			AND p.subType = "'.$_GET["subforum"].'" AND p.crsNumber= "'.$_GET["course"].'" 
+			GROUP BY u.lname, u.fname, p.title, p.postID';
+
+			if (isset($_GET["sortBy"]) && ($_GET["sortBy"] != "default")){
+				$query .= " ORDER BY ". $_GET["sortBy"];
+			}
+			$query .= ";";
+			// print $query;
 
 			//Execute Query
 			$result = mysqli_query($db, $query);

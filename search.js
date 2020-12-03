@@ -1,5 +1,9 @@
 function searchForum(results) {
+	var len = 0;
 	//TODO: gather search results from php
+	try {
+		len = results.length;
+	}catch(err) {}
 	
 	//Change "Admin Page" heading to Search Results"
 	var heading = document.getElementById("searchheading");
@@ -12,7 +16,7 @@ function searchForum(results) {
 //	var results = new Array(); //replace with PHP function call to get results
 	
 	
-	if (results.length == 0)
+	if (len == 0)
 	{
 		var dom = document.getElementById("resultsInstr");
 		dom.style.visibility = "hidden";
@@ -27,7 +31,7 @@ function searchForum(results) {
 		
 		var dom = document.getElementById("resultsInstr");
 		dom.style.visibility = "visible";
-		for (var i = 0; i < results.length; i++) {
+		for (var i = 0; i < len; i++) {
 			
 			var resultsDisplay = document.createElement("div");
 			resultsDisplay.setAttribute("onclick", "goToPost(this.id)");

@@ -28,7 +28,7 @@ Description: This file is the html for the admin home page.
 		<script type="text/javascript" src="admin.js"></script>
 	</head>
 	
-	<body id="admin" class="pagestyle" onload="retrieveInformation();">
+	<body id="admin" class="pagestyle">
 		<div id="navlist" class="navlist"> 
 			<div>
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
@@ -140,10 +140,10 @@ Description: This file is the html for the admin home page.
 							AND c.email = u.email
 							GROUP BY u.email";
 			if (isset($_GET["sortBy"]) && $_GET["sortBy"] == 'fname') {
-				$users_query .= " ORDER BY fname;";
+				$users_query .= " ORDER BY fname";
 			}
 			$users_query .= ";";
-			print $users_query;
+			//print $users_query;
 			$users = mysqli_query($db, $users_query);
 			
 			if (!$users) {

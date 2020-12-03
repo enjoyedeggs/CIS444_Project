@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	
-//	if (!isset($_SESSION["search"])){
-//		header("location:search.php");
-//		exit();
-//	}
+	if (!isset($_SESSION["user"])){
+		header("location:login.php");
+		exit();
+	}
+
 	
 	
 ?>
@@ -42,7 +42,9 @@ Description: This file is the html for the search page.
 				</form> 
 			</div> 
 			<!--Coming back to this-->
-			<button class="logoutNav" onclick="logout()">Logout</button> 
+			<form id="logoutForm" method="post" action="logout.php">
+				<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+			</form> 
 			<a href="search.php">Search</a>
 			<a href="view_profile.php">Profile</a>
 			<a href="main.php">Home</a> 
