@@ -13,10 +13,11 @@ var title; //dummy data
 var postStatus;
 function getInfo(postinfo) {
 	//console.log(postinfo);
+	var len = 0;
 	try {
-		var len = postinfo.length;
+		len = postinfo.length;
 	}catch(err) {}
-	
+	//console.log(postinfo);
 	forumName = (window.location).toString();
 	var pos = forumName.search(/\?/);
 	queryPos = pos;
@@ -34,15 +35,13 @@ function getInfo(postinfo) {
 		posth.setAttribute("id", post+"post-header");
 		//console.log(postStatus);
 		//console.log(postStatus === "flagged");
-		var inner;
-		title = postinfo[0][3]
-		postStatus = postinfo[0][5];
-		if (postStatus === "NULL")
-			inner = postinfo[0][3]; //Placeholder for PHP
-		else if (postStatus === "flagged")
-			inner = title + " -- FLAGGED"; //Placeholder for PHP
+		var inner = postinfo[0][3];
+		//console.log(title);
+		postStatus = postinfo[0][5]; //Placeholder for PHP
+		if (postStatus === "flagged")
+			inner = inner + " -- FLAGGED"; //Placeholder for PHP
 		else if (postStatus === "locked") 
-			inner = title + " -- LOCKED";
+			inner = inner + " -- LOCKED";
 			
 		posth.innerHTML = inner;	
 		
@@ -88,8 +87,9 @@ function getInfo(postinfo) {
 function getReplies(replies) {
 	//var replies = new Array(); //Placeholder for PHP function
 	//replies = [["RE: Database Connection with PHP", "Jason Luu", "100", "Watch the last lecture video recording.", "NULL"]];
+	var len = 0;
 	try {
-		var len = replies.length;
+		len = replies.length;
 	}catch(err) {}
 	var replies_dom = document.getElementById("replies");
 	if (len == 0) {
@@ -97,7 +97,7 @@ function getReplies(replies) {
 		replies_dom.setAttribute("class", "reply-msg");
 	}
 	else {
-		for (var i = 0; i < replies.length; i++) {
+		for (var i = 0; i < len; i++) {
 			var postDiv = document.createElement("div");
 			postDiv.setAttribute("class", "vpcontainer");
 			postDiv.setAttribute("id", replies[i][6]);

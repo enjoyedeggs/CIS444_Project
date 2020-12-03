@@ -324,7 +324,7 @@ function logout() {
 
 function sortUsers() {
 	var dom = document.getElementById("sortby");
-	console.log("admin.php?sortBy=" + dom.value);
+	//console.log("admin.php?sortBy=" + dom.value);
 	var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + "sortBy=" +dom.value;
 	window.history.pushState({path:url}, '', url);
 	//window.location.href = "admin.php?sortBy=" + dom.value;
