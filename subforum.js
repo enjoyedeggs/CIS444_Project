@@ -42,14 +42,15 @@ function getPosts(posts) {
 	// posts = [["Mhealyssah Bustria", "Homework 6", "104", "1", "11-12-2020"],
 	// 	["Bartholomew Falzarano", "PHP with JavaScript", "105", "1", "11-12-2020"]];
 	//var posts = forumname;
+	var len = 0;
 	try {
-		var len = posts.length;
+		 len = posts.length;
 		//console.log(len);
 	} catch (err) {};
 	//Case of not having any class
 	var forum = document.getElementById("forum-name");
 	forum.innerHTML = forumName;
-	if (posts.length == 0) {
+	if (len == 0) {
         var divElem0 = document.createElement("div");
         divElem0.setAttribute("class", "table-sub-format");
 	    divElem0.innerHTML = "No posts to show, click \"New Post\" to be the first!";
@@ -59,7 +60,7 @@ function getPosts(posts) {
 		
 	}
 	else {
-		for (var i = 0; i < posts.length; i++) {
+		for (var i = 0; i < len; i++) {
 
 			
     	var divElem0 = document.createElement("div");

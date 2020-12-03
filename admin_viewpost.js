@@ -13,8 +13,9 @@ var title; //dummy data
 var postStatus;
 function getInfo(postinfo) {
 	//console.log(postinfo);
+	var len = 0;
 	try {
-		var len = postinfo.length;
+		len = postinfo.length;
 	}catch(err) {}
 	//console.log(postinfo);
 	forumName = (window.location).toString();
@@ -86,8 +87,9 @@ function getInfo(postinfo) {
 function getReplies(replies) {
 	//var replies = new Array(); //Placeholder for PHP function
 	//replies = [["RE: Database Connection with PHP", "Jason Luu", "100", "Watch the last lecture video recording.", "NULL"]];
+	var len = 0;
 	try {
-		var len = replies.length;
+		len = replies.length;
 	}catch(err) {}
 	var replies_dom = document.getElementById("replies");
 	if (len == 0) {
@@ -95,7 +97,7 @@ function getReplies(replies) {
 		replies_dom.setAttribute("class", "reply-msg");
 	}
 	else {
-		for (var i = 0; i < replies.length; i++) {
+		for (var i = 0; i < len; i++) {
 			var postDiv = document.createElement("div");
 			postDiv.setAttribute("class", "vpcontainer");
 			postDiv.setAttribute("id", replies[i][6]);
