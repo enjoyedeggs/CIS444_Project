@@ -1,4 +1,5 @@
 <?php
+	session_set_cookie_params(30 * 60, "/; samesite=Strict", $_SERVER['HTTP_HOST'], 1, 0);
 	session_start();
 	
 	if (!isset($_SESSION["admin"])){
@@ -133,7 +134,7 @@ Description: This file is the html for the admin home page.
 			}
 			//Get Users
 			$users_query = "SELECT CONCAT(u.fname, ' ', u.lname) as 'Student', '' as 'Courses',  u.email, 0 as '# of Posts', u.acctStatus 
-			FROM Users u WHERE acctType = 'student';";
+			FROM Users u WHERE acctType = 'student'";
 							
 			if (isset($_GET["sortBy"]) && $_GET["sortBy"] == 'fname') {
 				$users_query .= " ORDER BY fname";

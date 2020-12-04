@@ -164,6 +164,15 @@ body form {
 	z-index: 10;
 	
 }
+
+.edit-profile-picture {
+	border-radius: 50%;
+	height: 10%;
+	width: 100px;
+	
+	
+}
+
 .profile-size {
 	height: auto;
 	margin: auto;

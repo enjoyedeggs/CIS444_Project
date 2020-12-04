@@ -1,4 +1,5 @@
 <?php
+	session_set_cookie_params(30 * 60, "/; samesite=Strict", $_SERVER['HTTP_HOST'], 1, 0);
 	session_start();
 	
 	if (!isset($_SESSION["user"])){

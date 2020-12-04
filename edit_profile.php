@@ -1,4 +1,5 @@
 <?php
+	session_set_cookie_params(30 * 60, "/; samesite=Strict", $_SERVER['HTTP_HOST'], 1, 0);
 	session_start();
 	
 	
@@ -50,7 +51,7 @@ Description: This file is the html for the update/edit profile page.
 			<h1>Edit My Profile</h1>
 			<p class="invalid" id="error">
 			</p>
-            <div class="profile-picture">
+            <div class="edit-profile-picture">
 				<div id="profile-picture-div" >
 				</div>
 			</div>
@@ -85,7 +86,22 @@ Description: This file is the html for the update/edit profile page.
                         <p class="profile-text border-bottom-div">Signature</p>
 						<textarea aria-label="signature" name="signature" id="signature" class="edit-input" rows="5" cols="30" ></textarea><br />
 					</div>
-					
+					<div>
+						<input id="saveButton"
+							class="edit-buttons-button"
+							type="submit"
+							value="Save Profile"
+							name="saveButton"
+							/>
+						<input id="cancelButton"
+							class="adminlogin"
+							type="button"
+							value="Cancel"
+							onclick="window.location.href='view_profile.php'"
+							/>
+					</div>
+	
+				</form>
 					<div id="password-div">
 					<form method="post" >
                         <p class="profile-text border-bottom-div">Change Password? </p>
@@ -104,22 +120,7 @@ Description: This file is the html for the update/edit profile page.
 						
 					</form>
 					</div>
-					<div>
-						<input id="saveButton"
-							class="edit-buttons-button"
-							type="submit"
-							value="Save Profile"
-							name="saveButton"
-							/>
-						<input id="cancelButton"
-							class="adminlogin"
-							type="button"
-							value="Cancel"
-							onclick="window.location.href='view_profile.php'"
-							/>
-					</div>
-	
-				</form>
+
                 </div>
             </div>
 
@@ -158,7 +159,7 @@ Description: This file is the html for the update/edit profile page.
 			
 			$profile_pic = $rows[0][3];
 			
-			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as “Courses” FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
+			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as "Courses" FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
 			$result = mysqli_query($db, $crs);
 		
 			if (!$result) {

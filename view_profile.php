@@ -1,4 +1,5 @@
 <?php
+	session_set_cookie_params(30 * 60, "/; samesite=Strict", $_SERVER['HTTP_HOST'], 1, 0);
 	session_start();
 	
 	if (!isset($_SESSION["user"])){
@@ -6,7 +7,7 @@
 		exit();
 	}
 ?>
-
+<!DOCTYPE html>
 <!--
 Project Name: Cougar Rescue Forum
 Course: CIS444
@@ -91,7 +92,7 @@ Description: This file is the html for a student's profile page.
 			}
 			//print json_encode($rows);
 			
-			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as “Courses” FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
+			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as "Courses" FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
 			$result = mysqli_query($db, $crs);
 		
 			if (!$result) {

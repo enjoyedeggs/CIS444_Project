@@ -30,7 +30,7 @@ function getPicture(pictureLink) {
 	
 	var dom = document.getElementById("personal-info");
 	//<img class="profile-picture floatleft" id="picture" alt="Your Profile Picture Here"/>
-	imgElem.setAttribute("class", "profile-picture floatleft");
+	imgElem.setAttribute("class", "edit-profile-picture floatleft");
 	imgElem.setAttribute("id", "picture");
 	imgElem.setAttribute("name", "profilepicture");
 	//alert(pictureLink);

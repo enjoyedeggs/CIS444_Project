@@ -1,4 +1,5 @@
 <?php
+	session_set_cookie_params(30 * 60, "/; samesite=Strict", $_SERVER['HTTP_HOST'], 1, 0);
 	session_start();
 	
 	if (!isset($_SESSION["user"])){
@@ -21,6 +22,7 @@ Description: This file is the html for the student view of a post.
         <link rel="stylesheet" href="cougar_rescue.css"/>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="viewpost.js"> </script>
     </head>
     <body class="pagestyle">
 	<div id="whole-post">
@@ -61,8 +63,6 @@ Description: This file is the html for the student view of a post.
 		<div id="replies">
 		
 		</div>
-        <script type="text/javascript" src="viewpost.js"> </script>
-		<noscript>Your browser does not support JavaScript</noscript>
 	</div>
     </body>
 
