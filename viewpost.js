@@ -107,7 +107,6 @@ function getInfo(postInfo) {
 	}
 }
 function getReplies(replies) {
-	
 	var replies_dom = document.getElementById("replies");
 	if (replies.length == 0) {
 		replies_dom.innerHTML = 'This post does not have any replies yet.';

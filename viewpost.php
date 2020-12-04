@@ -111,8 +111,8 @@ Description: This file is the html for the student view of a post.
 	//print $course;
 	//print $subforum;
 	//print $postid;
-    $postInfo=getPostInfo($postid,$db); 
-    $replies=getPostReplies($postid,$db); 
+    getPostInfo($postid,$db); 
+    getPostReplies($postid,$db); 
     
 
 /***************Gets post information*************************************/
@@ -147,8 +147,7 @@ function getPostReplies($postid,$db){
     AND r.postID = " .(int)$postid.";";
 
     $result = mysqli_query($db,$sql_query);
-    
-    if(!mysqli_num_rows($result))
+    if(!$result)
     {
         exit();
     }
@@ -159,7 +158,7 @@ function getPostReplies($postid,$db){
         $values = array_values($r);
         $rows[] = $values;
     }
-    echo "<script type = 'text/javascript'>getReplies(".json_encode($rows).");</script>";          
+    print "<script type = 'text/javascript'>getReplies(".json_encode($rows).");</script>";          
 }
 
     ?>
