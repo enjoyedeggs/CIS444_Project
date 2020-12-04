@@ -51,7 +51,7 @@ function getInfo(postInfo) {
 		
 		/****************************/
 		title = postInfo['title'];
-		console.log(postInfo['postStatus']);
+		//console.log(postInfo['postStatus']);
 		if (postSatus=postInfo['postStatus'] === null){
 			postStatus="NULL";
 		}
@@ -196,12 +196,12 @@ function Flagfunc(element, header)
 }
 
 function flagPost(id, header) {
-	console.log("flagging");
+	//console.log("flagging");
 	//console.log(newid);
 	//console.log(id);
-	console.log(course);
-	console.log(subforum);
-	console.log(post);
+	//console.log(course);
+	//console.log(subforum);
+	//console.log(post);
 	
 	//var head = document.getElementById(newid+"post-header");
 	//document.getElementById("admin-lock-del").submit();

@@ -1,11 +1,17 @@
-function retrieveInformation(results) {
+function retrieveInformation(results, courses) {
 	
 	//console.log(results);
+	//console.log(courses == null);
 	displayProfilePicture(results[0][3]);
 	displayUserInfo(results[0][0], results[0][1],results[0][2]);
 	displayInfo("signature", results[0][4]);
-	var crs = results[0][5].split(', ');
-    displayInfo("courses", getCourses(crs));
+	if (courses[0][0] != null){
+		var crs = courses[0][0].split(', ');
+		displayInfo("courses", getCourses(crs));
+	}
+	else {
+		 displayInfo("courses", "");
+	}
 	return false;
 }
 

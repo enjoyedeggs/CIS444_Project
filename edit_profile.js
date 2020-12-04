@@ -109,7 +109,10 @@ function invalidPass(oldMatch, msg) {
 			var dom = document.getElementById("change-pass");
 			dom.checked=true;
 			makeVisible();
-			var opass = document.getElementById("oldpass").value=orig_pass;
+			document.getElementById("oldpass").value = '';
+			document.getElementById("newpass").value = '';
+			document.getElementById("confpass").value = '';
+			//var opass = document.getElementById("oldpass").value=orig_pass;
 			//console.log("invalid");
 			return;
 		}

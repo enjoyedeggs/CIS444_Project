@@ -165,7 +165,7 @@ function deletePost(id) {
 	var isreply = false;
 	//console.log(id.length);
 	var pos = id.search(/r/);
-	console.log(pos);
+	//console.log(pos);
 	if (pos == id.length-1) {
 		isreply = true;
 		//console.log("here");
@@ -209,15 +209,12 @@ function lockPost(id) {
 	//document.getElementById("admin-lock-del").submit();
 	var dom = document.getElementById(id);
 	if (dom.checked) {
-		head.innerHTML = title + " -- LOCKED";
-		document.getElementById(id).disabled = true;
+		//head.innerHTML = title + " -- LOCKED";
+		//document.getElementById(id).disabled = true;
 		
 		//var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + newid + "&lock=" +newid;
 		//window.history.pushState({path:url}, '', url);
 		window.location.href = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + newid + "&lock=" +newid;
-	}
-	else {
-		head.innerHTML = title;
 	}
 	
 	
@@ -230,8 +227,8 @@ function resolve(id) {
 	var url = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&unflag=" +post;
 	window.history.pushState({path:url}, '', url);
 	var url = window.location.pathname + "?" + "course=" + course + "&subforum=" + subforum + "&postid=" + post + "&unflag=" +post;
-	console.log(url);
-	console.log(post);
+	//console.log(url);
+	//console.log(post);
 	//var head = document.getElementById(id+"post-header");
 	//document.getElementById("admin-lock-del").submit();
 	//var dom = document.getElementById(id);

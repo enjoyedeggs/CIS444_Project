@@ -74,7 +74,7 @@ function goToPost(id) {
 	var subforumEnd = id.search(/-/);
 	var subforum = id.substring(0, subforumEnd);
 	var postID = id.substring(subforumEnd+1);
-	window.location.href="viewpost.html?course="+course+"subforum="+subforum+ "postid="+postID;
+	window.location.href="viewpost.php?course="+course+"&subforum="+subforum+ "&postid="+postID;
 }
 
 

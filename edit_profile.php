@@ -141,13 +141,10 @@ Description: This file is the html for the update/edit profile page.
 			FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ='". $email."';";
 			
 			$result = mysqli_query($db, $query);
-			/*$originalData = mysqli_fetch_array($result, MYSQLI_BOTH);
-			$query = "select crsNumber from user_courses where email ='".$_SESSION["user"]."'";
-			$result = mysqli_query($db, $query);
-			$originalClasses = mysqli_fetch_array($result, MYSQLI_BOTH);*/
+			
 			
 			$username = substr($_SESSION["user"], 0, 8);
-			//$result = mysqli_query($db, $query);
+			
 		
 			if (!$result) {
 				print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
@@ -159,8 +156,8 @@ Description: This file is the html for the update/edit profile page.
 				$rows[] = $values;
 			}
 			$orig_courses = explode(', ', $rows[0][5]);
-			//print json_encode($courses);
-			//print '<script type="text/javascript">console.log('. $courses . ');</script>';
+			$profile_pic = $rows[0][3];
+			
 			print '<script type="text/javascript">retrieveInformation('. json_encode($rows) . ');</script>';
 
 			$email = $_SESSION["user"] ;
@@ -169,9 +166,9 @@ Description: This file is the html for the update/edit profile page.
 			if (isset($_POST["change"])) {	
 				$pass = $_POST['oldpass'];
 				$npass = $_POST['newpass'];	
-				//print "oldpass " . $pass;
-				//print "\nnewpass " .$npass;
-				if (($npass == "" || $_POST["confpass"] == "") || $npass != $_POST["confpass"] ) {
+				
+				//blank field
+				if (($npass == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" || $_POST["confpass"] == "") || $npass != $_POST["confpass"] ) {
 					print '<script type="text/javascript">invalidPass(false, "Please confirm your new password and ensure it matches.");</script>';
 					exit();
 				}
@@ -194,7 +191,7 @@ Description: This file is the html for the update/edit profile page.
 					}
 				}
 				if (!isset($_POST['saveButton'])) {
-					print '<script type="text/javascript"> toProfile();</script>';
+					//print '<script type="text/javascript"> toProfile();</script>';
 				}
 			}
 			if (isset($_POST['saveButton'])){
@@ -245,7 +242,7 @@ Description: This file is the html for the update/edit profile page.
 					
 				}
 				if(!isset($_FILES['pictureInput']) || $_FILES['pictureInput']['error'] == 4){
-					$target_file = "users/default.jpg";
+					$target_file = $profile_pic;
 					//print "here";
 				
 				} else{
@@ -273,7 +270,7 @@ Description: This file is the html for the update/edit profile page.
 						print '<script type="text/javascript">';
 						print 'alert("Sorry, there was an error uploading your file. Please try again later.");';
 						print '</script>';
-						$target_file = "default.jpg";
+						$target_file = $profile_pic;
 					
 					}
 					//$filename = $username . '.' . $extension;

@@ -95,7 +95,7 @@ Description: This file is the html for the search page.
                                 break;
                         }
                     }
-                    print $search_query;
+                    //print $search_query;
                     $search_result = mysqli_query($db, $search_query);
                     if(!$search_query){
                         print '<script type="text/javascrip">

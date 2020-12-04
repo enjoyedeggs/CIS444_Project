@@ -32,7 +32,9 @@ Description: This file is the html for the admin view of a post.
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
 			
-			<button class="logoutNav" onclick="logout()">Logout</button>
+			<form id="logoutForm" method="post" action="admin_logout.php">
+                <input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
+            </form>
 			<a href="admin.php">Home</a>
         </div>
         <div class="vpcontainer" id="post">
@@ -208,7 +210,8 @@ Description: This file is the html for the admin view of a post.
 		}
 		//print(json_encode($rows));
 		print "<script type='text/javascript'>getReplies(" . json_encode($rows) . ");</script>";
-			
+		
+		mysqli_close($db);
 	?>
     </body>
 </html>

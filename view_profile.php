@@ -76,8 +76,7 @@ Description: This file is the html for a student's profile page.
 			
 			$email = $_SESSION["user"];
 			//print $email;
-			$query = 'SELECT u.fname, u.lname, u.email, u.profilePicture, u.signature, GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as “Courses” FROM Users u, User_Courses uc 
-			WHERE u.email = uc.email AND u.email = "' . $email . '";';
+			$query = 'SELECT u.fname, u.lname, u.email, u.profilePicture, u.signature FROM Users u WHERE  u.email ="' . $email . '";';
 			//print $query;			
 			$result = mysqli_query($db, $query);
 		
@@ -91,7 +90,21 @@ Description: This file is the html for a student's profile page.
 				$rows[] = $values;
 			}
 			//print json_encode($rows);
-			print '<script type="text/javascript"> retrieveInformation(' . json_encode($rows) . ');</script>';
+			
+			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as “Courses” FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
+			$result = mysqli_query($db, $crs);
+		
+			if (!$result) {
+				print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+				exit();
+			}
+			$courses = array();
+			while($r = mysqli_fetch_assoc($result)) {
+				$values = array_values($r);
+				$courses[] = $values;
+			}
+			//print json_encode($courses);
+			print '<script type="text/javascript"> retrieveInformation(' . json_encode($rows) . ',' . json_encode($courses) . ');</script>';
 
 			mysqli_close($db);
 		?>

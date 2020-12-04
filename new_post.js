@@ -69,7 +69,7 @@ function redirect()
 		course = forumName.substring(coursePos+7, subforumPos);
 		subforum = forumName.substring(subforumPos+10, postPos);
 		var post = forumName.substring(postPos+8);
-		console.log(course, subforum, post);
+		//console.log(course, subforum, post);
 		//var url = window.location.protocol + "//" + window.location.host + "viewpost.php?course=" + course + "&subforum=" + subforum + "postid=" + post;
 		//console.log(url);
 		//window.history.pushState({path:url}, '', url);

@@ -75,7 +75,7 @@ Description: This file is the php for the index/home page.
 				$row = mysqli_fetch_assoc($result);
 				$disabled = 'disabled';
 				$student = 'student';
-				print "<script type='text/javascript'>console.log('". $row['acctType'] . " " . $row['acctStatus']. "'); </script>";
+				//print "<script type='text/javascript'>console.log('". $row['acctType'] . " " . $row['acctStatus']. "'); </script>";
 				if ($num_rows == 0)
 				{	
 					
