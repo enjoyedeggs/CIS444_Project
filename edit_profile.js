@@ -12,12 +12,16 @@ function makeVisible() {
 	}
 }
 
-function retrieveInformation(userInfo) {
+function retrieveInformation(userInfo, courses) {
 	getPicture('users/' + userInfo[0][3]);
     document.getElementById("fname").value = userInfo[0][0];
     document.getElementById("lname").value = userInfo[0][1];
     document.getElementById("email").value = userInfo[0][2];
-	document.getElementById("courses-list").value = userInfo[0][5].replace(/, /g, '\n');
+	if (courses[0][0] != null ) {
+		document.getElementById("courses-list").value = courses[0][0].replace(/, /g, '\n');
+	} else {
+		document.getElementById("courses-list").value = "";
+	}
     document.getElementById("signature").value = userInfo[0][4];
 }
 

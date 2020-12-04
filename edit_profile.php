@@ -137,8 +137,8 @@ Description: This file is the html for the update/edit profile page.
 			}
 			
 			$email = $_SESSION["user"];
-			$query = "SELECT u.fname, u.lname, u.email, u.profilePicture, u.signature, GROUP_CONCAT(uc.crsNumber SEPARATOR ', ') as “Courses” 
-			FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ='". $email."';";
+			$query = "SELECT u.fname, u.lname, u.email, u.profilePicture, u.signature
+			FROM Users u WHERE u.email ='". $email."';";
 			
 			$result = mysqli_query($db, $query);
 			
@@ -155,10 +155,23 @@ Description: This file is the html for the update/edit profile page.
 				$values = array_values($r);
 				$rows[] = $values;
 			}
-			$orig_courses = explode(', ', $rows[0][5]);
+			
 			$profile_pic = $rows[0][3];
 			
-			print '<script type="text/javascript">retrieveInformation('. json_encode($rows) . ');</script>';
+			$crs = 'SELECT GROUP_CONCAT(uc.crsNumber SEPARATOR ", ") as “Courses” FROM Users u, User_Courses uc WHERE u.email = uc.email AND u.email ="'. $email . '";';
+			$result = mysqli_query($db, $crs);
+		
+			if (!$result) {
+				print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+				exit();
+			}
+			$courses = array();
+			while($r = mysqli_fetch_assoc($result)) {
+				$values = array_values($r);
+				$courses[] = $values;
+			}
+			$orig_courses = explode(', ', $courses[0][0]);
+			print '<script type="text/javascript">retrieveInformation(' . json_encode($rows) . ',' . json_encode($courses) . ');</script>';
 
 			$email = $_SESSION["user"] ;
 			$check_pass = "SELECT email FROM Users WHERE email='" . $email . "' AND pass='" . $_POST["oldpass"] . "';";
