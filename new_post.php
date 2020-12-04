@@ -105,9 +105,9 @@ Description: This file is the html for the new post/reply page.
 			{
 				
 
-				$title = $_POST['TextTitle'];
+				$title = addslashes($_POST['TextTitle']);
 
-				$description = $_POST['UsersText'];
+				$description = addslashes($_POST['UsersText']);
 
 				//when the subforum URL is 0 then it is a new post with no replies  //DONT THINK THIS IS CORRECT
 				if(!isset($_GET["postid"]))
