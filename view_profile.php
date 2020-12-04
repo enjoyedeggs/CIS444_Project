@@ -32,7 +32,6 @@ Description: This file is the html for a student's profile page.
 				<img class = "logo"  src="images/cr_logo_plain.png" alt="Cougar Rescue Forum Logo"/>
 			</div>
 			
-            <button class="logoutNav" onclick="logout()">Logout</button>
             <form id="logoutForm" method="post" action="logout.php">
                 <input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
             </form>
@@ -51,7 +50,7 @@ Description: This file is the html for a student's profile page.
             <div class="profile-format">
                 <div class="sub-title floatright">
                     <div id="user-info">
-                        <p class="profile-text border-bottom-div">Personal Information <a href="edit_profile.html" class="nolink small-font floatright" >
+                        <p class="profile-text border-bottom-div">Personal Information <a href="edit_profile.php" class="nolink small-font floatright" >
 				Edit Profile<!--<img src="images/edit.png" alt="Edit Profile" class="edit-icon ">--></a></p>
                         <!--JS-->
                     </div>

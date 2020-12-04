@@ -1,6 +1,9 @@
+var orig_pass;
+var conf_pass;
 function makeVisible() {
 	var dom = document.getElementById("change-pass");
 	var divNode = document.getElementById("change-pass-div");
+	
 	if (dom.checked) {
 		divNode.style.visibility = "visible";
 	}
@@ -9,22 +12,26 @@ function makeVisible() {
 	}
 }
 
-function retrieveInformation() {
-	getPicture();
-    document.getElementById("fname").value = "Suchi";
-    document.getElementById("lname").value = "Kapur";
-    document.getElementById("email").value = "kapur005@cougars.csusm.edu";
-	document.getElementById("courses-list").value = "CIS444\nCS433\nMKTG302";
-    document.getElementById("signature").value = "I love being a CIS major!";
+function retrieveInformation(userInfo) {
+	getPicture('users/' + userInfo[0][3]);
+    document.getElementById("fname").value = userInfo[0][0];
+    document.getElementById("lname").value = userInfo[0][1];
+    document.getElementById("email").value = userInfo[0][2];
+	document.getElementById("courses-list").value = userInfo[0][5].replace(/, /g, '\n');
+    document.getElementById("signature").value = userInfo[0][4];
 }
 
-function getPicture() {
+function getPicture(pictureLink) {
 	var imgElem = document.createElement("img");
+	
 	var dom = document.getElementById("personal-info");
 	//<img class="profile-picture floatleft" id="picture" alt="Your Profile Picture Here"/>
 	imgElem.setAttribute("class", "profile-picture floatleft");
 	imgElem.setAttribute("id", "picture");
-	imgElem.setAttribute("src", "images/linkedin.jpg");//placeholder for PHP
+	imgElem.setAttribute("name", "profilepicture");
+	//alert(pictureLink);
+	imgElem.setAttribute("src", pictureLink);
+	//imgElem.setAttribute("value", pictureLink);
 	dom.appendChild(imgElem);
 }
 
@@ -53,8 +60,13 @@ function getSignature(){
 
 function getCourses(){
     var crs = document.getElementById("courses-list").value;
-	crs = crs.replace('/ */', '');
+	//console.log("here");
+	
+	crs = crs.replace(/\n/g, ", ");
 	crs = crs.toUpperCase();
+	document.getElementById("courses-list").value = crs;
+	//console.log(crs);
+	//return document.getElementById("courses-list").value;
 	//alert(crs);
 }
 
@@ -63,59 +75,75 @@ function changePicture(){
 	document.getElementById("picture").src = URL.createObjectURL(document.getElementById("pictureInput").files[0]);
 }
 
+function saveUpdates(event) {
+	getCourses();
+	
+}
   
 function saveChanges(){ 
 
 	var dom = document.getElementById("change-pass");
 	var opass = document.getElementById("oldpass");
-	var npass = document.getElementById("newpass");
-	var cpass = document.getElementById("confpass");
-	if (dom.checked) {
-		if (opass.value === "") {
-			alert("You must enter your old password");
-			return false;
-		}
-		
-		//TODO: verify encrypted old password against database
-		var ciphertext = CryptoJS.AES.encrypt(opass.value, 'secretkey128');
-		
-		var oldMatch = true; //placeholder for PHP
-		if (oldMatch == false) {
-			alert('The password you have entered in the \"Old Password\" field is incorrect');
-		}
-		if (matchingPasswords(npass.value, cpass.value) == false) {
-			return false;
-		}
-		else {
-			alert("Password has been reset!");
-		}
-	}
 	
-	//alert("saving changes")
-	getProfilePicture();
-	getFirstName();
-	getLastName();
-	getEmailAddress();
-	getSignature();
-	getCourses();
-	window.location.href="view_profile.html";
-	// use PUT requests to save data when database is made
+	
+	var cpass = document.getElementById("confpass");
+	
+	origpass=opass.value;
+	var ciphertext = CryptoJS.SHA256(opass.value);
+	document.getElementById("oldpass").value = ciphertext;
+			//console.log(ciphertext.toString());
+	var npass = document.getElementById("newpass");
+	var cipher = CryptoJS.SHA256(npass.value);
+	document.getElementById("newpass").value = cipher;
+	
+	cipher = CryptoJS.SHA256(cpass.value);
+	document.getElementById("confpass").value = cipher;
+
+	return true;
+}
+function invalidPass(oldMatch, msg) {
+		//TODO: verify encrypted old password against database
+	
+		if (oldMatch == false) {
+			errorMessage(msg);
+			var dom = document.getElementById("change-pass");
+			dom.checked=true;
+			makeVisible();
+			var opass = document.getElementById("oldpass").value=orig_pass;
+			//console.log("invalid");
+			return;
+		}
+}
+function encryptPass() {
+	var npass = document.getElementById("newpass");
+	var ciphertext = CryptoJS.SHA256(npass.value);
+	document.getElementById("newpass").value = ciphertext;
 }
 
 function matchingPasswords(pass1, pass2) {
 	
+	
 	if (pass1 === pass2) {
 		if (pass1.length < 8) {
-			alert("Password must be at least 8 characters long.");
+			errorMessage("Password must be at least 8 characters long.");
 			return false;
 		}
 		else
 			return true;
 	}
 	else {
-		alert("Passwords must match!");
+		errorMessage("Passwords must match!");
 		return false;
 	}
 	
 }
 
+function errorMessage(message) {
+	var msg = document.getElementById("error");
+	msg.innerHTML = message;
+	msg.style.visibility = "visible";
+}
+
+function toProfile() {
+	window.location.href = "view_profile.php";
+}
