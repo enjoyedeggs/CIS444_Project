@@ -78,7 +78,7 @@ Description: This file is the html for the search page.
             }
             //search results
                 if(isset($_GET["search"])){
-                    $search_word = $_GET["search"];
+                    $search_word = addslashes($_GET["search"]);
                     $search_query = "SELECT DISTINCT p.postID, p.title, p.content, p.subType, p.crsNumber, u.fname, u.lname 
                                             FROM Posts p, Users u
                                             WHERE p.userEmail = u.email

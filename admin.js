@@ -133,7 +133,8 @@ function getUsers(users) {
 			var coursesList = document.createElement("div");
 			coursesList.setAttribute("class", "item-courses");
 			var courses = document.createElement("div");
-			courses.innerHTML = users[i][1];
+			courses.innerHTML = users[i][1] == null ? "N/A" : users[i][1];
+			console.log(courses.innerHTML);
 			coursesList.appendChild(courses);
 			var email = document.createElement("div");
 			email.setAttribute("class", "item-email");

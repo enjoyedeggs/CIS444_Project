@@ -132,14 +132,9 @@ Description: This file is the html for the admin home page.
 
 			}
 			//Get Users
-			$users_query = "SELECT CONCAT(u.fname, ' ', u.lname) as 'Student',
-							GROUP_CONCAT(DISTINCT c.crsNumber SEPARATOR ', ') as 'Courses',
-							u.email, COUNT(DISTINCT p.postID)  as '#
-							of Posts', u.acctStatus
-							FROM Users u, Posts p, Replies r, User_Courses c
-							WHERE p.userEmail = u.email
-							AND c.email = u.email
-							GROUP BY u.email";
+			$users_query = "SELECT CONCAT(u.fname, ' ', u.lname) as 'Student', '' as 'Courses',  u.email, 0 as '# of Posts', u.acctStatus 
+			FROM Users u WHERE acctType = 'student';";
+							
 			if (isset($_GET["sortBy"]) && $_GET["sortBy"] == 'fname') {
 				$users_query .= " ORDER BY fname";
 			}
@@ -154,13 +149,26 @@ Description: This file is the html for the admin home page.
 			$userrows = array();
 			while($r = mysqli_fetch_assoc($users)) {
 				$values = array_values($r);
+				$crs_query = "SELECT GROUP_CONCAT(DISTINCT crsNumber SEPARATOR ', ') as 'Courses' FROM User_Courses WHERE email ='" . $values[2] . "';";
+				$course_yes = mysqli_query($db, $crs_query);
+				$num_crs = mysqli_fetch_assoc($course_yes);
+				$courses = array(1 => $num_crs["Courses"]);
+				$values1 = array_replace($values, $courses);
+				$posts_query = "SELECT COUNT(DISTINCT p.postID) as 'Posts' from Posts p, Users u WHERE p.userEmail ='" . $values[2] . "';";
+				$posts_yes = mysqli_query($db, $posts_query);
+				$num_posts = mysqli_fetch_assoc($posts_yes);
+				$posts = array(3 => $num_posts["Posts"]);
+				$values = array_replace($values1, $posts);
 				$userrows[] = $values;
 			}
+			
+	
+			
 			print "<script type='text/javascript'>getUsers(" . json_encode($userrows) . ");</script>";
 			
 			if (isset($_GET["keyword"])){
 				//Search Results
-				$term = $_GET["keyword"];
+				$term = addslashes($_GET["keyword"]);
 				$search_query = "SELECT DISTINCT p.postID, p.title, p.content, p.subType, p.crsNumber,
 								u.fname, u.lname
 								FROM Posts p, Users u

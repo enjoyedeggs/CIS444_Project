@@ -59,18 +59,18 @@ Description: This file is the html/php for the main/home page.
 			
 			//Create query
 			$email = $_SESSION["user"];
-			$query = "SELECT s.crsNumber, s.subType,
-						(SELECT COUNT(DISTINCT p.postID) + COUNT(DISTINCT r.replyID)
-						FROM Posts p, Replies r WHERE s.subType = p.subType AND
-						s.crsNumber = p.crsNumber AND r.postID = p.postID)
-						as 'Posts',
-						MAX(p.postDate) as 'Date'
-						FROM Subforums s, Posts p, Replies r, Users u, User_Courses c
-						WHERE r.postID = p.postID
-						AND u.email = '". $email ."'
-						AND u.email = c.email
-						AND s.crsNumber = c.crsNumber
-						GROUP BY s.crsNumber, s.subType;";
+			$query = "SELECT s.crsNumber, s.subType, 
+			(SELECT COUNT(DISTINCT p.postID) FROM Posts p 
+			WHERE s.subType = p.subType 
+			AND s.crsNumber = p.crsNumber)
+			as 'Posts', 
+			MAX(p.postDate) as 'Date' 
+			FROM Subforums s, Posts p, Replies r, Users u, User_Courses c 
+			WHERE r.postID = p.postID AND u.email='". $email ."'
+			AND u.email = c.email 
+			AND s.crsNumber = c.crsNumber 
+			GROUP BY s.crsNumber, s.subType;";
+			//print $query;
 						
 			//Execute query
 			$result = mysqli_query($db, $query);

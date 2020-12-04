@@ -38,7 +38,7 @@ function writeTable(courses){
         //Create Post column
         var post_col = document.createElement("div");
         post_col.setAttribute("class","item-post");
-        post_col.innerHTML = "Post";
+        post_col.innerHTML = "Posts";
         table_format_heading.appendChild(post_col);
         //Create Date Column
         var date_col = document.createElement("div");

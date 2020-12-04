@@ -63,10 +63,10 @@ Description: This file is the html for the update/edit profile page.
 						name="pictureInput" accept="image/png, image/jpeg" onchange="changePicture()"><br><br>
 						
 						<label for="fname">First Name:
-						<input class="edit-input" name="fname" id="fname" type="text" /></label><br /><br />
+						<input class="edit-input" name="fname" id="fname" type="text" required /></label><br /><br />
 						
 						<label for="lname">Last Name:
-						<input class="edit-input" name="lname" id="lname" type="text" /></label><br /><br />
+						<input class="edit-input" name="lname" id="lname" type="text" required /></label><br /><br />
 						
 						<label for="email">CSUSM Email: 
 						<input class="edit-input" name="email" id="email" type="text"  disabled /></label>
@@ -222,38 +222,61 @@ Description: This file is the html for the update/edit profile page.
 										//delete student from all courses
 				$remove = "DELETE FROM User_Courses WHERE email='" . $email . "';";
 				$rem_res = mysqli_query($db, $remove);
-				for ($i = 0; $i < count($courses); $i++) {
-						//if new course, first check if course exists
-						$query = 'SELECT crsNumber from Courses WHERE crsNumber="'.$courses[$i].'";';
-						$exists = mysqli_query($db, $query);
-						if (!$exists) {
-							print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
-							exit();
-						}
-						$row = mysqli_fetch_assoc($exists);
-						if ($row['crsNumber'] != $courses[$i]) {
-							//if course doesn't exist, create it
-							$insert = "INSERT INTO Courses VALUES ('" . $courses[$i] . "');";
-							$created = mysqli_query($db, $insert);
-							if (!$created) {
+				//print '<script type="text/javascript"> console.log("'. $courses[0] . ' ' . $courses .'");</script>';
+
+				if($courses[0] != ""){
+					for ($i = 0; $i < count($courses); $i++) {
+							//if new course, first check if course exists
+							$query = 'SELECT crsNumber from Courses WHERE crsNumber="'.$courses[$i].'";';
+							$exists = mysqli_query($db, $query);
+							if (!$exists) {
 								print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
 								exit();
 							}
-							
-						}
+							$row = mysqli_fetch_assoc($exists);
+							if ($row['crsNumber'] != $courses[$i]) {
+								//if course doesn't exist, create it
+								$insert = "INSERT INTO Courses VALUES ('" . trim($courses[$i]) . "');";
+								$created = mysqli_query($db, $insert);
+								if (!$created) {
+									print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+									exit();
+								}
+								$subs = array('HW', 'TEST', 'OTHER/MISC', 'QUIZ');
+								
+								for ($j = 0; $j < 4; $j++){
+									//then create its subforums
+									$insert_sub = "INSERT INTO Subforums (subType, crsNumber) VALUES ('" . $subs[$j] . "','" . trim($courses[$i]) . "');";
+									//print $insert_sub;
+									$newf = mysqli_query($db, $insert_sub);
+									if (!$newf) {
+										print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+										exit();
+									}
+								}
+								
+							}
 
+							
+							//then add student to course
+							$new_student = "INSERT INTO User_Courses (email, crsNumber) VALUES ('". $email . "', '" . $courses[$i] . "');";
+							//print $new_student;
+							$inserted = mysqli_query($db, $new_student);
+							if (!$inserted) {
+									print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
+									exit();
+							}
+							
 						
-						//then add student to course
-						$new_student = "INSERT INTO User_Courses (email, crsNumber) VALUES ('". $email . "', '" . $courses[$i] . "');";
-						//print $new_student;
-						$inserted = mysqli_query($db, $new_student);
-						if (!$inserted) {
-								print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
-								exit();
-						}
-						
-					
+					}
 				}
+				else {
+				$remove = "DELETE FROM User_Courses WHERE email='" . $email . "';";
+				$rem_res = mysqli_query($db, $remove);
+				//print '<script type="text/javascript"> console.log("'. $courses[0] . ' ' . $courses .'");</script>';
+
+				}
+				
 				if(!isset($_FILES['pictureInput']) || $_FILES['pictureInput']['error'] == 4){
 					$target_file = $profile_pic;
 					//print "here";
