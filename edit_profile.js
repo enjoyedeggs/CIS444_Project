@@ -85,25 +85,29 @@ function saveUpdates(event) {
 }
   
 function saveChanges(){ 
-
+	//console.log("in save changes");
 	var dom = document.getElementById("change-pass");
 	var opass = document.getElementById("oldpass");
 	
-	
+	var npass = document.getElementById("newpass");
 	var cpass = document.getElementById("confpass");
-	
 	origpass=opass.value;
 	var ciphertext = CryptoJS.SHA256(opass.value);
 	document.getElementById("oldpass").value = ciphertext;
-			//console.log(ciphertext.toString());
-	var npass = document.getElementById("newpass");
-	var cipher = CryptoJS.SHA256(npass.value);
-	document.getElementById("newpass").value = cipher;
-	
-	cipher = CryptoJS.SHA256(cpass.value);
-	document.getElementById("confpass").value = cipher;
+	if (matchingPasswords(npass.value, cpass.value)) {
+		
+		
+		//console.log("matching");
+		
+		var cipher = CryptoJS.SHA256(npass.value);
+		document.getElementById("newpass").value = cipher;
+		
+		cipher = CryptoJS.SHA256(cpass.value);
+		document.getElementById("confpass").value = cipher;
+		return true;
+	}
 
-	return true;
+	return false;
 }
 function invalidPass(oldMatch, msg) {
 		//TODO: verify encrypted old password against database
@@ -122,6 +126,7 @@ function invalidPass(oldMatch, msg) {
 		}
 }
 function encryptPass() {
+	//console.log("in encrypt");
 	var npass = document.getElementById("newpass");
 	var ciphertext = CryptoJS.SHA256(npass.value);
 	document.getElementById("newpass").value = ciphertext;
@@ -129,19 +134,16 @@ function encryptPass() {
 
 function matchingPasswords(pass1, pass2) {
 	
-	
-	if (pass1 === pass2) {
-		if (pass1.length < 8) {
+	//console.log("in matching");
+	if (pass1.length < 8 || pass2.length < 8) {
 			errorMessage("Password must be at least 8 characters long.");
 			return false;
-		}
-		else
-			return true;
 	}
-	else {
-		errorMessage("Passwords must match!");
-		return false;
+	else if (pass1 !== pass2) {
+			errorMessage("Passwords must match!");
+			return false;
 	}
+	return true;
 	
 }
 

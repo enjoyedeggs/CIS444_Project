@@ -102,8 +102,8 @@ Description: This file is the html for the update/edit profile page.
 					</div>
 	
 				</form>
-					<div id="password-div">
-					<form method="post" >
+				<div id="password-div">
+					<form method="post" onsubmit="return saveChanges(this);">
                         <p class="profile-text border-bottom-div">Change Password? </p>
 						<label for="change-pass"><input onchange="makeVisible();" type="checkbox" id="change-pass" name="changepass" value="Yes"/>Yes</label>
 						<div id="change-pass-div" class="hidden-subforum">
@@ -115,11 +115,11 @@ Description: This file is the html for the update/edit profile page.
 							
 							<label for="confpass"> Confirm Password:
 							<input type="password" id="confpass" name="confpass" class="edit-input"  /></label><br /><br />
-						<input type="submit" name="change" id="changbtn" value="Change Password" aria-label="change" class="submitstyle" onclick="saveChanges();"/>
+							<input type="submit" name="change" id="changbtn" value="Change Password" aria-label="change" class="submitstyle" /><!--onclick="saveChanges();"-->
 						</div>
 						
 					</form>
-					</div>
+				</div>
 
                 </div>
             </div>
@@ -131,6 +131,7 @@ Description: This file is the html for the update/edit profile page.
 		
 		<?php
 			$db = mysqli_connect("db", "root", "test", "myDb");
+			//$db = mysqli_connect("localhost", "group3", "g5tw9ShSexHH", "group3");
 			//$db = mysqli_connect("localhost", "root", "", "test");
 			if (mysqli_connect_errno()) {
 				print "Connect failed: " . mysqli_connect_error();
@@ -182,7 +183,8 @@ Description: This file is the html for the update/edit profile page.
 				$npass = $_POST['newpass'];	
 				
 				//blank field
-				if (($npass == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" || $_POST["confpass"] == "") || $npass != $_POST["confpass"] ) {
+				$blank = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+				if (($npass == $blank || $_POST["confpass"] == $blank) || $npass != $_POST["confpass"] ) {
 					print '<script type="text/javascript">invalidPass(false, "Please confirm your new password and ensure it matches.");</script>';
 					exit();
 				}

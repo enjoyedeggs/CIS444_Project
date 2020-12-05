@@ -24,7 +24,7 @@ Description: This file is the html/php for the main/home page.
 	<head>
 		<title>Cougar Rescue Forum</title>
 		<meta charset="utf-8"/>
-		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin="anonymous"></script>
 		<link rel="icon" href="images/cr_logo.png" type="image/x-icon" />
 		<script type="text/javascript" src="nav.js"></script>
 		<script type="text/javascript" src="main.js"></script>
