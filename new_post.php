@@ -39,9 +39,9 @@ Description: This file is the html for the new post/reply page.
 				<form id="logoutForm" method="post" action="logout.php">
 						<input name="logout" aria-label="logout" type="submit" class="logoutNav" value="Logout"/>
 				</form>
-				<a href="search.html">Search</a>
-				<a href="view_profile.html">Profile</a>
-				<a href="main.html">Home</a>
+				<a href="search.php">Search</a>
+				<a href="view_profile.php">Profile</a>
+				<a href="main.php">Home</a>
 
 			</div>
 				
