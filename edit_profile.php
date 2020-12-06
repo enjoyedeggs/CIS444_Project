@@ -190,7 +190,6 @@ Description: This file is the html for the update/edit profile page.
 				}
 				else {
 					print '<script type="text/javascript">encryptPass();</script>';
-
 				}
 				$is_valid = mysqli_query($db, $check_pass);
 				$row = mysqli_fetch_assoc($is_valid);
@@ -230,7 +229,7 @@ Description: This file is the html for the update/edit profile page.
 				if($courses[0] != ""){
 					for ($i = 0; $i < count($courses); $i++) {
 							//if new course, first check if course exists
-							$query = 'SELECT crsNumber from Courses WHERE crsNumber="'.$courses[$i].'";';
+							$query = 'SELECT crsNumber from Courses WHERE crsNumber="'.str_replace(' ', '', $courses[$i]).'";';
 							$exists = mysqli_query($db, $query);
 							if (!$exists) {
 								print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
@@ -239,7 +238,7 @@ Description: This file is the html for the update/edit profile page.
 							$row = mysqli_fetch_assoc($exists);
 							if ($row['crsNumber'] != $courses[$i]) {
 								//if course doesn't exist, create it
-								$insert = "INSERT INTO Courses VALUES ('" . trim($courses[$i]) . "');";
+								$insert = "INSERT INTO Courses VALUES ('" . str_replace(' ', '', $courses[$i]) . "');";
 								$created = mysqli_query($db, $insert);
 								if (!$created) {
 									print '<script type="text/javascript"> alert("Error: the query could not be executed."' . mysqli_error() . ');</script>';
@@ -249,7 +248,7 @@ Description: This file is the html for the update/edit profile page.
 								
 								for ($j = 0; $j < 4; $j++){
 									//then create its subforums
-									$insert_sub = "INSERT INTO Subforums (subType, crsNumber) VALUES ('" . $subs[$j] . "','" . trim($courses[$i]) . "');";
+									$insert_sub = "INSERT INTO Subforums (subType, crsNumber) VALUES ('" . $subs[$j] . "','" . str_replace(' ', '', $courses[$i]) . "');";
 									//print $insert_sub;
 									$newf = mysqli_query($db, $insert_sub);
 									if (!$newf) {
@@ -262,7 +261,7 @@ Description: This file is the html for the update/edit profile page.
 
 							
 							//then add student to course
-							$new_student = "INSERT INTO User_Courses (email, crsNumber) VALUES ('". $email . "', '" . $courses[$i] . "');";
+							$new_student = "INSERT INTO User_Courses (email, crsNumber) VALUES ('". $email . "', '" . str_replace(' ', '', $courses[$i]) . "');";
 							//print $new_student;
 							$inserted = mysqli_query($db, $new_student);
 							if (!$inserted) {
